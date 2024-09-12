@@ -2,7 +2,6 @@ import Image, { StaticImageData } from "next/image";
 import React from "react";
 
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
-// Import gambar dan tipe StaticImageData
 import konten from "@/public/images/konten.jpg";
 
 // Perbarui interface untuk menggunakan StaticImageData
@@ -13,15 +12,37 @@ interface CarouselItemData {
 }
 
 // Data contoh untuk carousel
-const carouselData: CarouselItemData[] = [
-  { id: 1, image: konten, alt: "Logo UTS Dani" },
-  { id: 2, image: konten, alt: "Logo UTS Dani" },
-  { id: 3, image: konten, alt: "Logo UTS Dani" },
-  { id: 4, image: konten, alt: "Logo UTS Dani" },
-  { id: 5, image: konten, alt: "Logo UTS Dani" },
-  { id: 6, image: konten, alt: "Logo UTS Dani" },
-  { id: 7, image: konten, alt: "Logo UTS Dani" },
-  { id: 8, image: konten, alt: "Logo UTS Dani" },
+const carouselData1: CarouselItemData[] = [
+  { id: 1, image: konten, alt: "picture" },
+  { id: 2, image: konten, alt: "picture" },
+  { id: 3, image: konten, alt: "picture" },
+  { id: 4, image: konten, alt: "picture" },
+  { id: 5, image: konten, alt: "picture" },
+  { id: 6, image: konten, alt: "picture" },
+  { id: 7, image: konten, alt: "picture" },
+  { id: 8, image: konten, alt: "picture" },
+];
+
+const carouselData2: CarouselItemData[] = [
+  { id: 1, image: konten, alt: "picture" },
+  { id: 2, image: konten, alt: "picture" },
+  { id: 3, image: konten, alt: "picture" },
+  { id: 4, image: konten, alt: "picture" },
+  { id: 5, image: konten, alt: "picture" },
+  { id: 6, image: konten, alt: "picture" },
+  { id: 7, image: konten, alt: "picture" },
+  { id: 8, image: konten, alt: "picture" },
+];
+
+const carouselData3: CarouselItemData[] = [
+  { id: 1, image: konten, alt: "picture" },
+  { id: 2, image: konten, alt: "picture" },
+  { id: 3, image: konten, alt: "picture" },
+  { id: 4, image: konten, alt: "picture" },
+  { id: 5, image: konten, alt: "picture" },
+  { id: 6, image: konten, alt: "picture" },
+  { id: 7, image: konten, alt: "picture" },
+  { id: 8, image: konten, alt: "picture" },
 ];
 
 export const Pictures: React.FC = () => {
@@ -36,30 +57,13 @@ export const Pictures: React.FC = () => {
                 Panduan
               </span>
             </h4>
-            <h3 className="text-green-600 underline">Cara Download Aplikasi</h3>
+            <h3 className="text-green-600">Cara Download Aplikasi</h3>
           </div>
+
           <CarouselContent>
-            {carouselData.map((item) => (
+            {carouselData1.map((item) => (
               <CarouselItem key={item.id}>
-                <div
-                  style={{
-                    border: "2px solid black",
-                    borderRadius: "10px",
-                    overflow: "hidden",
-                    width: "fit-content",
-                    height: "fit-content",
-                  }}
-                >
-                  <Image
-                    src={item.image.src}
-                    alt={item.alt}
-                    style={{
-                      width: "100%",
-                      height: "100%",
-                      objectFit: "cover",
-                    }}
-                  />
-                </div>
+                <Image width={1000} height={1000} src={item.image.src} alt={item.alt} className="rounded-xl" />
               </CarouselItem>
             ))}
           </CarouselContent>
@@ -92,30 +96,12 @@ export const Pictures: React.FC = () => {
                 Panduan
               </span>
             </h4>
-            <h3 className="text-green-600 underline">Cara Menggunakan Aplikasi</h3>
+            <h3 className="text-green-600">Cara Menggunakan Aplikasi</h3>
           </div>
           <CarouselContent>
-            {carouselData.map((item) => (
+            {carouselData2.map((item) => (
               <CarouselItem key={item.id}>
-                <div
-                  style={{
-                    border: "2px solid black",
-                    borderRadius: "10px",
-                    overflow: "hidden",
-                    width: "fit-content",
-                    height: "fit-content",
-                  }}
-                >
-                  <Image
-                    src={item.image.src}
-                    alt={item.alt}
-                    style={{
-                      width: "100%",
-                      height: "100%",
-                      objectFit: "cover",
-                    }}
-                  />
-                </div>
+                <Image width={1000} height={1000} src={item.image.src} alt={item.alt} className="rounded-xl" />
               </CarouselItem>
             ))}
           </CarouselContent>
@@ -148,30 +134,12 @@ export const Pictures: React.FC = () => {
                 Panduan
               </span>
             </h4>
-            <h3 className="text-green-600 underline">Cara Update Aplikasi</h3>
+            <h3 className="text-green-600">Cara Update Aplikasi</h3>
           </div>
           <CarouselContent>
-            {carouselData.map((item) => (
+            {carouselData3.map((item) => (
               <CarouselItem key={item.id}>
-                <div
-                  style={{
-                    border: "2px solid black",
-                    borderRadius: "10px",
-                    overflow: "hidden",
-                    width: "fit-content",
-                    height: "fit-content",
-                  }}
-                >
-                  <Image
-                    src={item.image.src}
-                    alt={item.alt}
-                    style={{
-                      width: "100%",
-                      height: "100%",
-                      objectFit: "cover",
-                    }}
-                  />
-                </div>
+                <Image width={1000} height={1000} src={item.image.src} alt={item.alt} className="rounded-xl" />
               </CarouselItem>
             ))}
           </CarouselContent>

@@ -22,6 +22,7 @@
     "next": "15.0.0-canary.85",
     "react": "19.0.0-rc.0",
     "react-dom": "19.0.0-rc.0",
+    "react-youtube": "^10.1.0",
     "tailwind-merge": "^2.5.2",
     "tailwind-variants": "^0.2.1",
     "tailwindcss-animate": "^1.0.7"

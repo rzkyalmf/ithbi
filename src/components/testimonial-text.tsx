@@ -23,7 +23,7 @@ const testimonialData: TestimonialData[] = [
   {
     id: 2,
     content:
-      "Sangat bersyukur bisa belajar disini, banyak sekali ilmu yang di dapat, dan juga sangat berpengalaman sekali guru guru didalamnya, Sangat bersyukur bisa belajar disini, banyak sekali ilmu yang di dapat, dan juga sangat berpengalaman sekali guru guru didalamnya, alhamdulillah selesai dari sini saya sudah banyak melakukan terapi dan banyak juga yang merasakan manfaatnya setelah saya lakukan terapi alhamdulillah selesai dari sini saya sudah banyak melakukan terapi dan banyak juga yang merasakan manfaatnya setelah saya lakukan terapi",
+      "Sangat bersyukur bisa belajar disini, banyak sekali ilmu yang di dapat, dan juga sangat berpengalaman sekali guru guru didalamnya, alhamdulillah selesai dari sini saya sudah banyak melakukan terapi dan banyak juga yang merasakan manfaatnya setelah saya lakukan terapi",
     name: "Ustadz Abdurahman Dani",
     account: "@rzkyalmf",
     avatar: ustdani,
@@ -31,31 +31,7 @@ const testimonialData: TestimonialData[] = [
   {
     id: 3,
     content:
-      "Sangat bersyukur bisa belajar disini, banyak sekali ilmu yang di dapat, dan juga sangat berpengalaman sekali guru guru didalamnya",
-    name: "Ustadz Abdurahman Dani",
-    account: "@rzkyalmf",
-    avatar: ustdani,
-  },
-  {
-    id: 3,
-    content:
-      "Sangat bersyukur bisa belajar disini, banyak sekali ilmu yang di dapat, dan juga sangat berpengalaman sekali guru guru didalamnya",
-    name: "Ustadz Abdurahman Dani",
-    account: "@rzkyalmf",
-    avatar: ustdani,
-  },
-  {
-    id: 3,
-    content:
-      "Sangat bersyukur bisa belajar disini, banyak sekali ilmu yang di dapat, dan juga sangat berpengalaman sekali guru guru didalamnya",
-    name: "Ustadz Abdurahman Dani",
-    account: "@rzkyalmf",
-    avatar: ustdani,
-  },
-  {
-    id: 3,
-    content:
-      "Sangat bersyukur bisa belajar disini, banyak sekali ilmu yang di dapat, dan juga sangat berpengalaman sekali guru guru didalamnya",
+      "Sangat bersyukur bisa belajar disini, banyak sekali ilmu yang di dapat, dan juga sangat berpengalaman sekali guru guru didalamnya, alhamdulillah selesai dari sini saya sudah banyak melakukan terapi dan banyak juga yang merasakan manfaatnya setelah saya lakukan terapi",
     name: "Ustadz Abdurahman Dani",
     account: "@rzkyalmf",
     avatar: ustdani,
@@ -78,7 +54,7 @@ const testimonialData: TestimonialData[] = [
   },
 ];
 
-export const TestimonialPatient: React.FC = () => {
+export const TestimonialText: React.FC = () => {
   return (
     <div className="bg-gray-50 py-28">
       <div className="mx-auto w-[1280px] px-4 sm:px-6 lg:px-8">

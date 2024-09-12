@@ -9,21 +9,21 @@ export const Footer = () => {
   return (
     <div className="flex items-center justify-center bg-[#1F2937]">
       <div className="flex w-[1280px] flex-col items-center justify-center gap-6 px-5 py-20 text-white">
-        <Link href={"/"}>
+        <Link href={"/"} className="rounded-full border-b-4 border-yellow-500 bg-white px-9 py-6">
           <Image src={logo} alt="logo" width={60} height={60} />
         </Link>
         <div className="flex gap-8">
           <Link href={"/"}>
-            <h5 className="text-white">Home</h5>
+            <h5 className="text-white hover:text-yellow-500">Home</h5>
           </Link>
           <Link href={"/"}>
-            <h5 className="text-white">Program Kami</h5>
+            <h5 className="text-white hover:text-yellow-500">Program Kami</h5>
           </Link>
           <Link href={"/"}>
-            <h5 className="text-white">Tentang Kami</h5>
+            <h5 className="text-white hover:text-yellow-500">Tentang Kami</h5>
           </Link>
           <Link href={"/"}>
-            <h5 className="text-white">Pendaftaran</h5>
+            <h5 className="text-white hover:text-yellow-500">Pendaftaran</h5>
           </Link>
         </div>
 

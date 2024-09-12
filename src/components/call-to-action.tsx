@@ -8,7 +8,7 @@ export const CallToAction = () => {
       <div className="mx-auto w-[1080px] py-16 text-center">
         <div className="space-y-8">
           <h2 className="relative inline-block">
-            <span className="absolute -bottom-5 left-1/2 -translate-x-1/2 -rotate-1 whitespace-nowrap rounded-sm bg-yellow-100 px-4 py-2 font-medium text-yellow-600 shadow-sm">
+            <span className="absolute -bottom-5 left-1/2 -translate-x-1/2 -rotate-1 whitespace-nowrap rounded-sm border-b-2 bg-yellow-100 px-4 py-2 font-medium text-yellow-600 shadow-sm">
               Gratis Khusus 1000 Orang Pertama !
             </span>
           </h2>

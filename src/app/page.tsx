@@ -5,8 +5,8 @@ import { Header } from "@/components/header";
 import { Hero } from "@/components/hero";
 import { Pictures } from "@/components/pictures";
 import { Quotes } from "@/components/quotes";
-import { TestimonialPatient } from "@/components/testimonial-patient";
 import { TestimonialStudent } from "@/components/testimonial-student";
+import { TestimonialVideo } from "@/components/testimonial-video";
 
 export default function Home() {
   return (
@@ -16,10 +16,10 @@ export default function Home() {
         <Hero />
         <Features />
         <Quotes />
-        <TestimonialStudent />
         <CallToAction />
         <Pictures />
-        <TestimonialPatient />
+        <TestimonialStudent />
+        <TestimonialVideo />
       </main>
       <Footer />
     </>
