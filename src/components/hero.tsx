@@ -17,9 +17,7 @@ export const Hero: React.FC = () => {
             </span>
           </h3>
 
-          <h1 className="text-center text-7xl text-emerald-600 lg:text-left lg:text-7xl">
-            Kuliah Thibbun Nabawi & Kedokteran Arab Klasik
-          </h1>
+          <h1 className="text-center text-emerald-600 lg:text-left lg:text-7xl">Kuliah Thibbun Nabawi & Kedokteran Arab Klasik</h1>
 
           <h4 className="w-10/12 text-center text-slate-600 lg:text-left">
             Download Sekarang Juga Aplikasi Diklat Kuliah Kesehatan Akademi Ath Thibbul Badil Indonesia!

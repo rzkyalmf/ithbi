@@ -81,7 +81,7 @@ const testimonialData: TestimonialData[] = [
 ];
 
 export const TestimonialVideo: React.FC = () => {
-  const opts = {
+  const web = {
     height: "200",
     width: "100%",
     playerVars: {
@@ -102,7 +102,7 @@ export const TestimonialVideo: React.FC = () => {
           {testimonialData.map((item) => (
             <div key={item.id} className="flex flex-col justify-between gap-5 rounded-lg bg-white p-6 shadow-md">
               <div className="mb-6">
-                <YouTube videoId={item.videoId} opts={opts} />
+                <YouTube videoId={item.videoId} opts={web} />
               </div>
               <div className="flex items-center">
                 <div className="mr-4 h-12 w-12 overflow-hidden rounded-full">

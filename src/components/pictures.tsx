@@ -63,7 +63,7 @@ export const Pictures: React.FC = () => {
           <CarouselContent>
             {carouselData1.map((item) => (
               <CarouselItem key={item.id} className="flex justify-center">
-                <Image width={1000} height={1000} src={item.image.src} alt={item.alt} className="w-8/12 rounded-xl lg:w-screen" />
+                <Image width={1000} height={1000} src={item.image.src} alt={item.alt} className="w-10/12 rounded-xl lg:w-screen" />
               </CarouselItem>
             ))}
           </CarouselContent>
@@ -102,7 +102,7 @@ export const Pictures: React.FC = () => {
           <CarouselContent>
             {carouselData2.map((item) => (
               <CarouselItem key={item.id} className="flex justify-center">
-                <Image width={1000} height={1000} src={item.image.src} alt={item.alt} className="w-8/12 rounded-xl lg:w-screen" />
+                <Image width={1000} height={1000} src={item.image.src} alt={item.alt} className="w-10/12 rounded-xl lg:w-screen" />
               </CarouselItem>
             ))}
           </CarouselContent>
@@ -141,7 +141,7 @@ export const Pictures: React.FC = () => {
           <CarouselContent>
             {carouselData3.map((item) => (
               <CarouselItem key={item.id} className="flex justify-center">
-                <Image width={1000} height={1000} src={item.image.src} alt={item.alt} className="w-8/12 rounded-xl lg:w-screen" />
+                <Image width={1000} height={1000} src={item.image.src} alt={item.alt} className="w-10/12 rounded-xl lg:w-screen" />
               </CarouselItem>
             ))}
           </CarouselContent>

@@ -36,7 +36,7 @@ export const TestimonialStudent: React.FC = () => {
   return (
     <div className="py-16">
       <div className="mx-auto flex max-w-7xl flex-col items-center gap-10">
-        <h1 className="text-green-600">
+        <h1 className="text-5xl text-green-600">
           <span className="rounded-lg border-b-2 bg-green-100 px-5 shadow-sm">Testimoni Alumni</span>
         </h1>
 

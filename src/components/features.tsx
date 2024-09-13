@@ -33,7 +33,7 @@ export const Features = () => {
     <div className="mx-auto max-w-6xl">
       <div className="flex flex-col items-center gap-10 px-10 lg:flex-row lg:items-start lg:px-5">
         <div className="w-full space-y-5 text-center lg:w-1/2 lg:text-start">
-          <h1 className="text-green-600">
+          <h1 className="text-6xl text-green-600">
             <span className="rounded-lg border-b-2 bg-green-100 px-5 shadow-sm">5 Alasan Utama </span>
           </h1>
           <h2>Kenapa harus belajar di Akademi Ath Thibbul Badil ?</h2>
