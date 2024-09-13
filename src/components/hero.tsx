@@ -11,13 +11,15 @@ export const Hero: React.FC = () => {
     <div>
       <div className="mx-auto my-12 flex max-w-7xl flex-col items-center sm:px-10 lg:flex-row lg:px-10 xl:px-0">
         <div className="flex flex-col items-center space-y-5 py-10 lg:w-7/12 lg:items-start lg:py-0">
-          <h3 className="relative w-full">
+          <h3 className="relative w-full text-xl lg:text-2xl">
             <span className="absolute -bottom-1 left-24 -rotate-1 rounded-sm border-b-2 bg-yellow-100 px-4 py-2 font-medium text-yellow-600 shadow-sm md:left-64 lg:left-0">
               Gratis Khusus 1000 Orang Pertama !
             </span>
           </h3>
 
-          <h1 className="text-center text-emerald-600 lg:text-left">Kuliah Thibbun Nabawi & Kedokteran Arab Klasik</h1>
+          <h1 className="text-center text-6xl text-emerald-600 lg:text-left lg:text-7xl">
+            Kuliah Thibbun Nabawi & Kedokteran Arab Klasik
+          </h1>
 
           <h4 className="w-10/12 text-center text-slate-600 lg:text-left">
             Download Sekarang Juga Aplikasi Diklat Kuliah Kesehatan Akademi Ath Thibbul Badil Indonesia!
