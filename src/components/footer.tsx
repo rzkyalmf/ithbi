@@ -14,16 +14,16 @@ export const Footer = () => {
         </Link>
         <div className="flex gap-8">
           <Link href={"/"}>
-            <h5 className="text-white hover:text-yellow-500">Home</h5>
+            <h5 className="text-base text-white hover:text-yellow-500 lg:text-lg">Home</h5>
           </Link>
           <Link href={"/"}>
-            <h5 className="text-white hover:text-yellow-500">Program Kami</h5>
+            <h5 className="text-base text-white hover:text-yellow-500 lg:text-lg">Program Kami</h5>
           </Link>
           <Link href={"/"}>
-            <h5 className="text-white hover:text-yellow-500">Tentang Kami</h5>
+            <h5 className="text-base text-white hover:text-yellow-500 lg:text-lg">Tentang Kami</h5>
           </Link>
           <Link href={"/"}>
-            <h5 className="text-white hover:text-yellow-500">Pendaftaran</h5>
+            <h5 className="text-base text-white hover:text-yellow-500 lg:text-lg">Pendaftaran</h5>
           </Link>
         </div>
 
