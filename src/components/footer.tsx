@@ -12,18 +12,18 @@ export const Footer = () => {
         <Link href={"/"} className="rounded-full border-b-4 border-yellow-500 bg-white px-9 py-6">
           <Image src={logo} alt="logo" width={60} height={60} />
         </Link>
-        <div className="flex gap-8">
+        <div className="flex gap-6">
           <Link href={"/"}>
-            <h5 className="text-base text-white hover:text-yellow-500 lg:text-lg">Home</h5>
+            <h5 className="text-sm text-white hover:text-yellow-500 lg:text-lg">Home</h5>
           </Link>
           <Link href={"/"}>
-            <h5 className="text-base text-white hover:text-yellow-500 lg:text-lg">Program Kami</h5>
+            <h5 className="text-sm text-white hover:text-yellow-500 lg:text-lg">Program Kami</h5>
           </Link>
           <Link href={"/"}>
-            <h5 className="text-base text-white hover:text-yellow-500 lg:text-lg">Tentang Kami</h5>
+            <h5 className="text-sm text-white hover:text-yellow-500 lg:text-lg">Tentang Kami</h5>
           </Link>
           <Link href={"/"}>
-            <h5 className="text-base text-white hover:text-yellow-500 lg:text-lg">Pendaftaran</h5>
+            <h5 className="text-sm text-white hover:text-yellow-500 lg:text-lg">Pendaftaran</h5>
           </Link>
         </div>
 
