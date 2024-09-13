@@ -30,16 +30,16 @@ const contentData = [
 
 export const Features = () => {
   return (
-    <div className="mx-auto w-[1080px]">
-      <div className="flex flex-row gap-10">
-        <div className="w-1/2 space-y-5">
+    <div className="mx-auto max-w-6xl">
+      <div className="flex flex-col items-center gap-10 px-10 lg:flex-row lg:items-start lg:px-5">
+        <div className="w-full space-y-5 text-center lg:w-1/2 lg:text-start">
           <h1 className="text-green-600">
             <span className="rounded-lg border-b-2 bg-green-100 px-5 shadow-sm">5 Alasan Utama </span>
           </h1>
           <h2>Kenapa harus belajar di Akademi Ath Thibbul Badil ?</h2>
         </div>
 
-        <div className="w-1/2">
+        <div className="w-full lg:w-1/2">
           {contentData.map((item, index) => (
             <div className="mb-6 flex items-start gap-4" key={index}>
               <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-yellow-100">

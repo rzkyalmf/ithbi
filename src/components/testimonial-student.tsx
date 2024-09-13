@@ -35,24 +35,24 @@ const testimonialData: TestimonialData[] = [
 export const TestimonialStudent: React.FC = () => {
   return (
     <div className="py-16">
-      <div className="mx-auto flex w-[1280px] flex-col items-center gap-10">
+      <div className="mx-auto flex max-w-7xl flex-col items-center gap-10">
         <h1 className="text-green-600">
           <span className="rounded-lg border-b-2 bg-green-100 px-5 shadow-sm">Testimoni Alumni</span>
         </h1>
 
-        <div className="w-1/2">
+        <div className="w-full px-10 lg:w-8/12">
           <Carousel>
             <CarouselContent>
               {testimonialData.map((item) => (
                 <CarouselItem key={item.id}>
-                  <div className="flex w-full flex-col items-center p-6">
+                  <div className="flex w-full flex-col items-center rounded-xl p-6">
                     <div className="mb-10 flex">
                       {Array.from({ length: 5 }).map((_, i) => (
                         <Star key={i} className="h-8 w-8 fill-current text-yellow-400" />
                       ))}
                     </div>
 
-                    <h4 className="mb-10 text-center">{item.content}</h4>
+                    <h4 className="mb-10 text-center">&quot;{item.content}&quot;</h4>
 
                     <div className="flex items-center">
                       <div className="mr-4 h-16 w-16 overflow-hidden rounded-full">
@@ -67,8 +67,8 @@ export const TestimonialStudent: React.FC = () => {
                 </CarouselItem>
               ))}
             </CarouselContent>
-            <CarouselPrevious />
-            <CarouselNext />
+            <CarouselPrevious className="mx-6" />
+            <CarouselNext className="mx-6" />
           </Carousel>
         </div>
       </div>

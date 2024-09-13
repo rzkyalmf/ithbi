@@ -48,7 +48,7 @@ const carouselData3: CarouselItemData[] = [
 export const Pictures: React.FC = () => {
   return (
     <div className="py-16">
-      <div className="mx-auto flex w-[1280px] items-center justify-between gap-16">
+      <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-36 px-10 lg:flex-row lg:gap-16 lg:px-5">
         {/* Cara Download */}
         <Carousel>
           <div className="flex flex-col items-center space-y-2 pb-8 text-center">
@@ -62,8 +62,8 @@ export const Pictures: React.FC = () => {
 
           <CarouselContent>
             {carouselData1.map((item) => (
-              <CarouselItem key={item.id}>
-                <Image width={1000} height={1000} src={item.image.src} alt={item.alt} className="rounded-xl" />
+              <CarouselItem key={item.id} className="flex justify-center">
+                <Image width={1000} height={1000} src={item.image.src} alt={item.alt} className="w-8/12 rounded-xl lg:w-screen" />
               </CarouselItem>
             ))}
           </CarouselContent>
@@ -98,10 +98,11 @@ export const Pictures: React.FC = () => {
             </h4>
             <h3 className="text-green-600">Cara Menggunakan Aplikasi</h3>
           </div>
+
           <CarouselContent>
             {carouselData2.map((item) => (
-              <CarouselItem key={item.id}>
-                <Image width={1000} height={1000} src={item.image.src} alt={item.alt} className="rounded-xl" />
+              <CarouselItem key={item.id} className="flex justify-center">
+                <Image width={1000} height={1000} src={item.image.src} alt={item.alt} className="w-8/12 rounded-xl lg:w-screen" />
               </CarouselItem>
             ))}
           </CarouselContent>
@@ -136,10 +137,11 @@ export const Pictures: React.FC = () => {
             </h4>
             <h3 className="text-green-600">Cara Update Aplikasi</h3>
           </div>
+
           <CarouselContent>
             {carouselData3.map((item) => (
-              <CarouselItem key={item.id}>
-                <Image width={1000} height={1000} src={item.image.src} alt={item.alt} className="rounded-xl" />
+              <CarouselItem key={item.id} className="flex justify-center">
+                <Image width={1000} height={1000} src={item.image.src} alt={item.alt} className="w-8/12 rounded-xl lg:w-screen" />
               </CarouselItem>
             ))}
           </CarouselContent>

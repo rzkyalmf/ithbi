@@ -6,24 +6,28 @@ import logoithbi from "@/public/images/ithbi1.png";
 import logoustdani from "@/public/images/logoustdani.jpg";
 import ustdani from "@/public/images/ustdani.png";
 
-export const Hero = () => {
+export const Hero: React.FC = () => {
   return (
-    <div className="mx-auto my-12 flex w-[1280px] flex-col items-center">
-      <div className="mb-24 flex items-center justify-between">
-        <div className="w-1/2">
-          <h3 className="relative pb-5">
-            <span className="absolute -left-5 bottom-1 -rotate-1 rounded-sm border-b-2 bg-yellow-100 px-4 py-2 font-medium text-yellow-600 shadow-sm">
+    <div>
+      <div className="mx-auto my-12 flex max-w-7xl flex-col items-center sm:px-10 lg:flex-row lg:px-10 xl:px-0">
+        <div className="flex flex-col items-center space-y-5 py-10 lg:w-7/12 lg:items-start lg:py-0">
+          <h3 className="relative w-full">
+            <span className="absolute -bottom-1 left-24 -rotate-1 rounded-sm border-b-2 bg-yellow-100 px-4 py-2 font-medium text-yellow-600 shadow-sm md:left-64 lg:left-0">
               Gratis Khusus 1000 Orang Pertama !
             </span>
           </h3>
-          <h1 className="pb-5 text-emerald-600">Kuliah Thibbun Nabawi & Kedokteran Arab Klasik</h1>
-          <h4 className="pb-5 text-slate-600">
+
+          <h1 className="text-center text-emerald-600 lg:text-left">Kuliah Thibbun Nabawi & Kedokteran Arab Klasik</h1>
+
+          <h4 className="w-10/12 text-center text-slate-600 lg:text-left">
             Download Sekarang Juga Aplikasi Diklat Kuliah Kesehatan Akademi Ath Thibbul Badil Indonesia!
           </h4>
+
           <Button size={"lg"} className="text-md bg-yellow-400 px-12 py-7 text-black hover:text-white">
             Download Sekarang
           </Button>
         </div>
+
         <div className="flex h-[600px] w-1/2 items-center justify-end">
           <Image src={ustdani} alt="logo" width={400} height={400} />
         </div>
