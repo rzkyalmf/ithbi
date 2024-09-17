@@ -34,12 +34,12 @@ export default function Page() {
           <CarouselContent>
             {carouselData.map((item) => (
               <CarouselItem key={item.id} className="flex items-center justify-center">
-                <Image width={500} height={500} src={item.image.src} alt={item.alt} className="w-1/3 rounded-xl lg:w-1/3" />
+                <Image width={500} height={500} src={item.image.src} alt={item.alt} className="w-9/12 rounded-xl lg:w-1/3" />
               </CarouselItem>
             ))}
           </CarouselContent>
-          <CarouselPrevious className="absolute left-96 top-1/2 -translate-y-1/2 bg-green-700 text-white" />
-          <CarouselNext className="absolute right-96 top-1/2 -translate-y-1/2 bg-green-700 text-white" />
+          <CarouselPrevious className="absolute left-1/4 top-1/2 -translate-y-1/2 bg-green-700 text-white" />
+          <CarouselNext className="absolute right-1/4 top-1/2 -translate-y-1/2 bg-green-700 text-white" />
         </Carousel>
       </div>
     </div>
