@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 
 import { Button } from "@/components/ui/button";
@@ -22,11 +23,11 @@ export const Hero: React.FC = () => {
           <h4 className="w-10/12 text-center text-slate-600 lg:text-left">
             Download Sekarang Juga Aplikasi Diklat Kuliah Kesehatan Akademi Ath Thibbul Badil Indonesia!
           </h4>
-          <link href="https://drive.google.com/file/d/1pAaPcGWa7ssmZTG-iEagnRFK_zwKlv0a/view?usp=sharing">
+          <Link href="https://drive.google.com/file/d/1pAaPcGWa7ssmZTG-iEagnRFK_zwKlv0a/view?usp=sharing">
             <Button size={"lg"} className="text-md bg-yellow-400 px-12 py-7 text-black hover:text-white">
               Download Sekarang
             </Button>
-          </link>
+          </Link>
         </div>
 
         <div className="flex h-[600px] w-1/2 items-center justify-end">
