@@ -23,6 +23,7 @@ export const Hero: React.FC = () => {
           <h4 className="w-10/12 text-center text-slate-600 lg:text-left">
             Download Sekarang Juga Aplikasi Diklat Kuliah Kesehatan Akademi Ath Thibbul Badil Indonesia!
           </h4>
+
           <Link href="https://drive.google.com/file/d/1pAaPcGWa7ssmZTG-iEagnRFK_zwKlv0a/view?usp=sharing">
             <Button size={"lg"} className="text-md bg-yellow-400 px-12 py-7 text-black hover:text-white">
               Download Sekarang
@@ -31,7 +32,7 @@ export const Hero: React.FC = () => {
         </div>
 
         <div className="flex h-[600px] w-1/2 items-center justify-end">
-          <Image src={ustdani} alt="logo" width={400} height={400} />
+          <Image src={ustdani} alt="hero" width={400} height={400} />
         </div>
       </div>
 

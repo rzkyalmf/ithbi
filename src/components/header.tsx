@@ -35,7 +35,7 @@ export const Header: React.FC = () => {
         {/* Menu Desktop */}
         <div className="hidden gap-12 md:flex">
           <NavLink href="/" text="Home" />
-          <NavLink href="/" text="Program Kami" />
+          <NavLink href="/program" text="Program Kami" />
           <NavLink href="/" text="Tentang Kami" />
           <NavLink href="/" text="Pendaftaran" />
         </div>
