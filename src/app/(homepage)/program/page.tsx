@@ -38,8 +38,8 @@ export default function Page() {
               </CarouselItem>
             ))}
           </CarouselContent>
-          <CarouselPrevious className="absolute left-1/2 top-1/2 -translate-y-1/2 bg-green-700 text-white lg:left-1/4" />
-          <CarouselNext className="absolute right-1/2 top-1/2 -translate-y-1/2 bg-green-700 text-white lg:right-1/4" />
+          <CarouselPrevious className="absolute left-1 top-1/2 -translate-y-1/2 bg-green-700 text-white lg:left-1/4" />
+          <CarouselNext className="absolute right-1 top-1/2 -translate-y-1/2 bg-green-700 text-white lg:right-1/4" />
         </Carousel>
       </div>
     </div>
