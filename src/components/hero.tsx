@@ -1,11 +1,8 @@
 import Image from "next/image";
-import Link from "next/link";
+// import Link from "next/link";
 import React from "react";
 
 import { Button } from "@/components/ui/button";
-import logoithbi from "@/public/images/ithbi1.png";
-import logoustdani from "@/public/images/logoustdani.jpg";
-import ustdani from "@/public/images/ustdani.png";
 
 export const Hero: React.FC = () => {
   return (
@@ -24,23 +21,27 @@ export const Hero: React.FC = () => {
             Download Sekarang Juga Aplikasi Diklat Kuliah Kesehatan Akademi Ath Thibbul Badil Indonesia!
           </h4>
 
-          <Link href="https://drive.google.com/file/d/1pAaPcGWa7ssmZTG-iEagnRFK_zwKlv0a/view?usp=sharing">
+          <a href="/app-release.apk" download="aplikasi-ithbi.apk">
             <Button size={"lg"} className="text-md bg-yellow-400 px-12 py-7 text-black hover:text-white">
               Download Sekarang
             </Button>
-          </Link>
+          </a>
+
+          {/* <a href="/images/brosur1.jpeg" download="my-image.png">
+            download
+          </a> */}
         </div>
 
         <div className="flex h-[600px] w-1/2 items-center justify-end">
-          <Image src={ustdani} alt="hero" width={400} height={400} />
+          <Image src="/images/ustdani.png" alt="hero" width={400} height={400} />
         </div>
       </div>
 
       <div className="w-full rounded-sm px-5 py-4">
         <div className="flex items-center justify-center gap-8">
           <p className="text-sm font-medium tracking-normal text-gray-400">Supported :</p>
-          <Image src={logoithbi} alt="logo" className="" width={35} height={35} />
-          <Image src={logoustdani} alt="logo" className="" width={45} height={45} />
+          <Image src="/images/ithbi1.png" alt="logo" className="" width={35} height={35} />
+          <Image src="/images/logoustdani.jpg" alt="logo" className="" width={45} height={45} />
         </div>
       </div>
     </div>

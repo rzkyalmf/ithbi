@@ -1,16 +1,15 @@
 import { Star } from "lucide-react";
-import Image, { StaticImageData } from "next/image";
+import Image from "next/image";
 import React from "react";
 
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
-import ustdani from "@/public/images/ustdani.png";
 
 interface TestimonialData {
   id: number;
   content: string;
   name: string;
   followers: string;
-  avatar: StaticImageData;
+  avatar: string;
 }
 
 const testimonialData: TestimonialData[] = [
@@ -20,7 +19,7 @@ const testimonialData: TestimonialData[] = [
       "Sangat bersyukur bisa belajar disini, banyak sekali ilmu yang di dapat, dan juga sangat berpengalaman sekali guru guru didalamnya, alhamdulillah selesai dari sini saya sudah banyak melakukan terapi dan banyak juga yang merasakan manfaatnya setelah saya lakukan terapi",
     name: "Ustadz Abdurahman Dani",
     followers: "Alumni Darul Hadist Yaman",
-    avatar: ustdani,
+    avatar: "/images/ustdani.png",
   },
   {
     id: 1,
@@ -28,7 +27,7 @@ const testimonialData: TestimonialData[] = [
       "Sangat bersyukur bisa belajar disini, banyak sekali ilmu yang di dapat, dan juga sangat berpengalaman sekali guru guru didalamnya, alhamdulillah selesai dari sini saya sudah banyak melakukan terapi dan banyak juga yang merasakan manfaatnya setelah saya lakukan terapi",
     name: "Ustadz Abdurahman Dani",
     followers: "Alumni Darul Hadist Yaman",
-    avatar: ustdani,
+    avatar: "/images/ustdani.png",
   },
 ];
 

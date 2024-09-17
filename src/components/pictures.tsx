@@ -1,48 +1,47 @@
-import Image, { StaticImageData } from "next/image";
+import Image from "next/image";
 import React from "react";
 
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
-import konten from "@/public/images/konten.jpg";
 
 // Perbarui interface untuk menggunakan StaticImageData
 interface CarouselItemData {
   id: number;
-  image: StaticImageData;
+  image: string;
   alt: string;
 }
 
 // Data contoh untuk carousel
 const carouselData1: CarouselItemData[] = [
-  { id: 1, image: konten, alt: "picture" },
-  { id: 2, image: konten, alt: "picture" },
-  { id: 3, image: konten, alt: "picture" },
-  { id: 4, image: konten, alt: "picture" },
-  { id: 5, image: konten, alt: "picture" },
-  { id: 6, image: konten, alt: "picture" },
-  { id: 7, image: konten, alt: "picture" },
-  { id: 8, image: konten, alt: "picture" },
+  { id: 1, image: "/images/konten.jpg", alt: "picture" },
+  { id: 2, image: "/images/konten.jpg", alt: "picture" },
+  { id: 3, image: "/images/konten.jpg", alt: "picture" },
+  { id: 4, image: "/images/konten.jpg", alt: "picture" },
+  { id: 5, image: "/images/konten.jpg", alt: "picture" },
+  { id: 6, image: "/images/konten.jpg", alt: "picture" },
+  { id: 7, image: "/images/konten.jpg", alt: "picture" },
+  { id: 8, image: "/images/konten.jpg", alt: "picture" },
 ];
 
 const carouselData2: CarouselItemData[] = [
-  { id: 1, image: konten, alt: "picture" },
-  { id: 2, image: konten, alt: "picture" },
-  { id: 3, image: konten, alt: "picture" },
-  { id: 4, image: konten, alt: "picture" },
-  { id: 5, image: konten, alt: "picture" },
-  { id: 6, image: konten, alt: "picture" },
-  { id: 7, image: konten, alt: "picture" },
-  { id: 8, image: konten, alt: "picture" },
+  { id: 1, image: "/images/konten.jpg", alt: "picture" },
+  { id: 2, image: "/images/konten.jpg", alt: "picture" },
+  { id: 3, image: "/images/konten.jpg", alt: "picture" },
+  { id: 4, image: "/images/konten.jpg", alt: "picture" },
+  { id: 5, image: "/images/konten.jpg", alt: "picture" },
+  { id: 6, image: "/images/konten.jpg", alt: "picture" },
+  { id: 7, image: "/images/konten.jpg", alt: "picture" },
+  { id: 8, image: "/images/konten.jpg", alt: "picture" },
 ];
 
 const carouselData3: CarouselItemData[] = [
-  { id: 1, image: konten, alt: "picture" },
-  { id: 2, image: konten, alt: "picture" },
-  { id: 3, image: konten, alt: "picture" },
-  { id: 4, image: konten, alt: "picture" },
-  { id: 5, image: konten, alt: "picture" },
-  { id: 6, image: konten, alt: "picture" },
-  { id: 7, image: konten, alt: "picture" },
-  { id: 8, image: konten, alt: "picture" },
+  { id: 1, image: "/images/konten.jpg", alt: "picture" },
+  { id: 2, image: "/images/konten.jpg", alt: "picture" },
+  { id: 3, image: "/images/konten.jpg", alt: "picture" },
+  { id: 4, image: "/images/konten.jpg", alt: "picture" },
+  { id: 5, image: "/images/konten.jpg", alt: "picture" },
+  { id: 6, image: "/images/konten.jpg", alt: "picture" },
+  { id: 7, image: "/images/konten.jpg", alt: "picture" },
+  { id: 8, image: "/images/konten.jpg", alt: "picture" },
 ];
 
 export const Pictures: React.FC = () => {
@@ -63,7 +62,7 @@ export const Pictures: React.FC = () => {
           <CarouselContent>
             {carouselData1.map((item) => (
               <CarouselItem key={item.id} className="flex justify-center">
-                <Image width={1000} height={1000} src={item.image.src} alt={item.alt} className="w-10/12 rounded-xl lg:w-screen" />
+                <Image width={1000} height={1000} src={item.image} alt={item.alt} className="w-10/12 rounded-xl lg:w-screen" />
               </CarouselItem>
             ))}
           </CarouselContent>
@@ -102,7 +101,7 @@ export const Pictures: React.FC = () => {
           <CarouselContent>
             {carouselData2.map((item) => (
               <CarouselItem key={item.id} className="flex justify-center">
-                <Image width={1000} height={1000} src={item.image.src} alt={item.alt} className="w-10/12 rounded-xl lg:w-screen" />
+                <Image width={1000} height={1000} src={item.image} alt={item.alt} className="w-10/12 rounded-xl lg:w-screen" />
               </CarouselItem>
             ))}
           </CarouselContent>
@@ -141,7 +140,7 @@ export const Pictures: React.FC = () => {
           <CarouselContent>
             {carouselData3.map((item) => (
               <CarouselItem key={item.id} className="flex justify-center">
-                <Image width={1000} height={1000} src={item.image.src} alt={item.alt} className="w-10/12 rounded-xl lg:w-screen" />
+                <Image width={1000} height={1000} src={item.image} alt={item.alt} className="w-10/12 rounded-xl lg:w-screen" />
               </CarouselItem>
             ))}
           </CarouselContent>

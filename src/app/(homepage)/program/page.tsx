@@ -1,40 +1,35 @@
-import Image, { StaticImageData } from "next/image";
+import Image from "next/image";
 import React from "react";
 
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
-import brosur1 from "@/public/images/brosur1.jpeg";
-import brosur2 from "@/public/images/brosur2.jpeg";
-import brosur3 from "@/public/images/brosur3.jpeg";
-import brosur4 from "@/public/images/brosur4.jpeg";
-import brosur5 from "@/public/images/brosur5.jpeg";
 
 interface CarouselItemData {
   id: number;
-  image: StaticImageData;
+  image: string;
   alt: string;
 }
 
 const carouselData: CarouselItemData[] = [
-  { id: 1, image: brosur1, alt: "picture" },
-  { id: 2, image: brosur2, alt: "picture" },
-  { id: 3, image: brosur3, alt: "picture" },
-  { id: 4, image: brosur4, alt: "picture" },
-  { id: 5, image: brosur5, alt: "picture" },
+  { id: 1, image: "/images/brosur1.jpeg", alt: "picture" },
+  { id: 2, image: "/images/brosur2.jpeg", alt: "picture" },
+  { id: 3, image: "/images/brosur3.jpeg", alt: "picture" },
+  { id: 4, image: "/images/brosur4.jpeg", alt: "picture" },
+  { id: 5, image: "/images/brosur5.jpeg", alt: "picture" },
 ];
 
 export default function Page() {
   return (
-    <div className="py-16">
-      <div className="relative px-12">
+    <div className="py-24">
+      <div className="relative px-10">
         {/* Added horizontal padding */}
-        <Carousel className="space-y-20">
+        <Carousel className="space-y-14">
           <h1 className="text-center text-4xl text-green-600 lg:text-5xl">
             <span className="rounded-lg border-b-2 bg-green-100 px-5 shadow-sm">Program Kami</span>
           </h1>
           <CarouselContent>
             {carouselData.map((item) => (
               <CarouselItem key={item.id} className="flex items-center justify-center">
-                <Image width={500} height={500} src={item.image.src} alt={item.alt} className="w-9/12 rounded-xl lg:w-1/3" />
+                <Image width={500} height={500} src={item.image} alt={item.alt} className="w-9/12 rounded-xl lg:w-1/3" />
               </CarouselItem>
             ))}
           </CarouselContent>
