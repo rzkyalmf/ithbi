@@ -27,8 +27,8 @@ export default function Page() {
     <div className="py-16">
       <div className="relative px-12">
         {/* Added horizontal padding */}
-        <Carousel className="space-y-10">
-          <h1 className="text-center text-5xl text-green-600">
+        <Carousel className="space-y-20">
+          <h1 className="text-center text-4xl text-green-600 lg:text-5xl">
             <span className="rounded-lg border-b-2 bg-green-100 px-5 shadow-sm">Program Kami</span>
           </h1>
           <CarouselContent>
@@ -38,8 +38,8 @@ export default function Page() {
               </CarouselItem>
             ))}
           </CarouselContent>
-          <CarouselPrevious className="absolute left-1/4 top-1/2 -translate-y-1/2 bg-green-700 text-white" />
-          <CarouselNext className="absolute right-1/4 top-1/2 -translate-y-1/2 bg-green-700 text-white" />
+          <CarouselPrevious className="absolute left-1/2 top-1/2 -translate-y-1/2 bg-green-700 text-white lg:left-1/4" />
+          <CarouselNext className="absolute right-1/2 top-1/2 -translate-y-1/2 bg-green-700 text-white lg:right-1/4" />
         </Carousel>
       </div>
     </div>
