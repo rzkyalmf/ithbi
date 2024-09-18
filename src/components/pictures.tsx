@@ -11,58 +11,51 @@ interface CarouselItemData {
 }
 
 // Data contoh untuk carousel
-const carouselData1: CarouselItemData[] = [
-  { id: 1, image: "/images/konten.jpg", alt: "picture" },
-  { id: 2, image: "/images/konten.jpg", alt: "picture" },
-  { id: 3, image: "/images/konten.jpg", alt: "picture" },
-  { id: 4, image: "/images/konten.jpg", alt: "picture" },
-  { id: 5, image: "/images/konten.jpg", alt: "picture" },
-  { id: 6, image: "/images/konten.jpg", alt: "picture" },
-  { id: 7, image: "/images/konten.jpg", alt: "picture" },
-  { id: 8, image: "/images/konten.jpg", alt: "picture" },
-];
+const carouselData1: CarouselItemData[] = [{ id: 1, image: "/images/persyaratan/aplikasi-ithbi.jpg", alt: "picture" }];
 
 const carouselData2: CarouselItemData[] = [
-  { id: 1, image: "/images/konten.jpg", alt: "picture" },
-  { id: 2, image: "/images/konten.jpg", alt: "picture" },
-  { id: 3, image: "/images/konten.jpg", alt: "picture" },
-  { id: 4, image: "/images/konten.jpg", alt: "picture" },
-  { id: 5, image: "/images/konten.jpg", alt: "picture" },
-  { id: 6, image: "/images/konten.jpg", alt: "picture" },
-  { id: 7, image: "/images/konten.jpg", alt: "picture" },
-  { id: 8, image: "/images/konten.jpg", alt: "picture" },
+  { id: 1, image: "/images/cara-menggunakan/cara-1.png", alt: "picture" },
+  { id: 2, image: "/images/cara-menggunakan/cara-2.png", alt: "picture" },
+  { id: 3, image: "/images/cara-menggunakan/cara-3.png", alt: "picture" },
+  { id: 4, image: "/images/cara-menggunakan/cara-4.png", alt: "picture" },
+  { id: 5, image: "/images/cara-menggunakan/cara-5.png", alt: "picture" },
+  { id: 6, image: "/images/cara-menggunakan/cara-6.png", alt: "picture" },
+  { id: 7, image: "/images/cara-menggunakan/cara-7.png", alt: "picture" },
+  { id: 8, image: "/images/cara-menggunakan/cara-8.png", alt: "picture" },
+  { id: 9, image: "/images/cara-menggunakan/cara-9.png", alt: "picture" },
+  { id: 10, image: "/images/cara-menggunakan/cara-10.png", alt: "picture" },
+  { id: 11, image: "/images/cara-menggunakan/cara-11.png", alt: "picture" },
+  { id: 12, image: "/images/cara-menggunakan/cara-12.png", alt: "picture" },
 ];
 
 const carouselData3: CarouselItemData[] = [
-  { id: 1, image: "/images/konten.jpg", alt: "picture" },
-  { id: 2, image: "/images/konten.jpg", alt: "picture" },
-  { id: 3, image: "/images/konten.jpg", alt: "picture" },
-  { id: 4, image: "/images/konten.jpg", alt: "picture" },
-  { id: 5, image: "/images/konten.jpg", alt: "picture" },
-  { id: 6, image: "/images/konten.jpg", alt: "picture" },
-  { id: 7, image: "/images/konten.jpg", alt: "picture" },
-  { id: 8, image: "/images/konten.jpg", alt: "picture" },
+  { id: 1, image: "/images/cara-install/install-1.png", alt: "picture" },
+  { id: 2, image: "/images/cara-install/install-2.png", alt: "picture" },
+  { id: 3, image: "/images/cara-install/install-3.png", alt: "picture" },
+  { id: 4, image: "/images/cara-install/install-4.png", alt: "picture" },
+  { id: 5, image: "/images/cara-install/install-5.png", alt: "picture" },
+  { id: 6, image: "/images/cara-install/install-6.png", alt: "picture" },
 ];
 
 export const Pictures: React.FC = () => {
   return (
     <div className="py-16">
-      <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-36 px-10 lg:flex-row lg:gap-16 lg:px-5">
+      <div className="mx-auto flex max-w-7xl flex-col items-start justify-between gap-36 px-10 lg:flex-row lg:gap-16 lg:px-5">
         {/* Cara Download */}
-        <Carousel>
+        <Carousel className="lg:w-1/3">
           <div className="flex flex-col items-center space-y-2 pb-8 text-center">
             <h4 className="relative inline-block">
               <span className="absolute -bottom-1 left-1/2 -translate-x-1/2 -rotate-3 whitespace-nowrap rounded-sm bg-yellow-100 px-2 py-1 font-medium text-yellow-600 shadow-sm">
-                Panduan
+                Persyaratan
               </span>
             </h4>
-            <h3 className="text-green-600">Cara Download Aplikasi</h3>
+            <h3 className="text-green-600">Download Aplikasi</h3>
           </div>
 
           <CarouselContent>
             {carouselData1.map((item) => (
               <CarouselItem key={item.id} className="flex justify-center">
-                <Image width={1000} height={1000} src={item.image} alt={item.alt} className="w-10/12 rounded-xl lg:w-screen" />
+                <Image width={500} height={500} src={item.image} alt={item.alt} className="w-10/12 rounded-xl" />
               </CarouselItem>
             ))}
           </CarouselContent>
@@ -88,7 +81,7 @@ export const Pictures: React.FC = () => {
         </Carousel>
 
         {/* Cara Menggunakan Aplikasi */}
-        <Carousel>
+        <Carousel className="lg:w-1/3">
           <div className="flex flex-col items-center space-y-2 pb-8 text-center">
             <h4 className="relative inline-block">
               <span className="absolute -bottom-1 left-1/2 -translate-x-1/2 -rotate-3 whitespace-nowrap rounded-sm bg-yellow-100 px-2 py-1 font-medium text-yellow-600 shadow-sm">
@@ -100,8 +93,8 @@ export const Pictures: React.FC = () => {
 
           <CarouselContent>
             {carouselData2.map((item) => (
-              <CarouselItem key={item.id} className="flex justify-center">
-                <Image width={1000} height={1000} src={item.image} alt={item.alt} className="w-10/12 rounded-xl lg:w-screen" />
+              <CarouselItem key={item.id} className="flex items-center justify-center">
+                <Image width={500} height={500} src={item.image} alt={item.alt} className="w-10/12 rounded-xl" />
               </CarouselItem>
             ))}
           </CarouselContent>
@@ -127,7 +120,7 @@ export const Pictures: React.FC = () => {
         </Carousel>
 
         {/* Cara Update Aplikasi  */}
-        <Carousel>
+        <Carousel className="lg:w-1/3">
           <div className="flex flex-col items-center space-y-2 pb-8 text-center">
             <h4 className="relative inline-block">
               <span className="absolute -bottom-1 left-1/2 -translate-x-1/2 -rotate-3 whitespace-nowrap rounded-sm bg-yellow-100 px-2 py-1 font-medium text-yellow-600 shadow-sm">
@@ -140,7 +133,7 @@ export const Pictures: React.FC = () => {
           <CarouselContent>
             {carouselData3.map((item) => (
               <CarouselItem key={item.id} className="flex justify-center">
-                <Image width={1000} height={1000} src={item.image} alt={item.alt} className="w-10/12 rounded-xl lg:w-screen" />
+                <Image width={500} height={500} src={item.image} alt={item.alt} className="w-10/12 rounded-xl" />
               </CarouselItem>
             ))}
           </CarouselContent>

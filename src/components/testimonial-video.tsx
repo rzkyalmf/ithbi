@@ -15,66 +15,66 @@ interface TestimonialData {
 const testimonialData: TestimonialData[] = [
   {
     id: 1,
-    videoId: "HGBHAa1GZCs", // Ini adalah ID video untuk "Rick Astley - Never Gonna Give You Up"
-    name: "Ustadz Abdurahman Dani",
-    account: "@rzkyalmf",
+    videoId: "HGBHAa1GZCs",
+    name: "Testimoni Pasien 1",
+    account: "@pasien1",
     avatar: "/images/ustdani.png",
   },
   {
     id: 2,
-    videoId: "6y6-p85aw5k", // Ini adalah ID video untuk "PSY - GANGNAM STYLE(강남스타일)"
-    name: "Pasien Contoh 2",
+    videoId: "49cUGUjcCOA",
+    name: "Testimoni Pasien 2",
     account: "@pasien2",
-    avatar: "/images/ustdani.png", // Gunakan avatar yang sesuai
+    avatar: "/images/ustdani.png",
   },
   {
     id: 3,
-    videoId: "49cUGUjcCOA", // Ini adalah ID video untuk "Luis Fonsi - Despacito ft. Daddy Yankee"
-    name: "Pasien Contoh 3",
+    videoId: "85LtR6_JocM",
+    name: "Testimoni Pasien 3",
     account: "@pasien3",
-    avatar: "/images/ustdani.png", // Gunakan avatar yang sesuai
+    avatar: "/images/ustdani.png",
   },
   {
-    id: 3,
-    videoId: "49cUGUjcCOA", // Ini adalah ID video untuk "Luis Fonsi - Despacito ft. Daddy Yankee"
-    name: "Pasien Contoh 3",
-    account: "@pasien3",
-    avatar: "/images/ustdani.png", // Gunakan avatar yang sesuai
+    id: 4,
+    videoId: "ZcExDOIo62s",
+    name: "Testimoni Pasien 4",
+    account: "@pasien4",
+    avatar: "/images/ustdani.png",
   },
   {
-    id: 3,
-    videoId: "49cUGUjcCOA", // Ini adalah ID video untuk "Luis Fonsi - Despacito ft. Daddy Yankee"
-    name: "Pasien Contoh 3",
-    account: "@pasien3",
-    avatar: "/images/ustdani.png", // Gunakan avatar yang sesuai
+    id: 5,
+    videoId: "_R3-8UTynOM",
+    name: "Testimoni Pasien 5",
+    account: "@pasien5",
+    avatar: "/images/ustdani.png",
   },
   {
-    id: 3,
-    videoId: "49cUGUjcCOA", // Ini adalah ID video untuk "Luis Fonsi - Despacito ft. Daddy Yankee"
-    name: "Pasien Contoh 3",
-    account: "@pasien3",
-    avatar: "/images/ustdani.png", // Gunakan avatar yang sesuai
+    id: 6,
+    videoId: "Ltt1DzkQaAI",
+    name: "Testimoni Pasien 6",
+    account: "@pasien6",
+    avatar: "/images/ustdani.png",
   },
   {
-    id: 3,
-    videoId: "49cUGUjcCOA", // Ini adalah ID video untuk "Luis Fonsi - Despacito ft. Daddy Yankee"
-    name: "Pasien Contoh 3",
-    account: "@pasien3",
-    avatar: "/images/ustdani.png", // Gunakan avatar yang sesuai
+    id: 7,
+    videoId: "t19aXFDBvf0",
+    name: "Testimoni Pasien 7",
+    account: "@pasien7",
+    avatar: "/images/ustdani.png",
   },
   {
-    id: 3,
-    videoId: "49cUGUjcCOA", // Ini adalah ID video untuk "Luis Fonsi - Despacito ft. Daddy Yankee"
-    name: "Pasien Contoh 3",
-    account: "@pasien3",
-    avatar: "/images/ustdani.png", // Gunakan avatar yang sesuai
+    id: 8,
+    videoId: "49cUGUjcCOA",
+    name: "Testimoni Pasien 8",
+    account: "@pasien8",
+    avatar: "/images/ustdani.png",
   },
   {
-    id: 3,
-    videoId: "49cUGUjcCOA", // Ini adalah ID video untuk "Luis Fonsi - Despacito ft. Daddy Yankee"
-    name: "Pasien Contoh 3",
-    account: "@pasien3",
-    avatar: "/images/ustdani.png", // Gunakan avatar yang sesuai
+    id: 9,
+    videoId: "u5q100TDNTA",
+    name: "Testimoni Pasien 9",
+    account: "@pasien9",
+    avatar: "/images/ustdani.png",
   },
 ];
 

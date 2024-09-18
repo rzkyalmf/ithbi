@@ -35,7 +35,7 @@ export const Header: React.FC = () => {
           <NavLink href="/" text="Home" />
           <NavLink href="/program" text="Program Kami" />
           <NavLink href="/" text="Tentang Kami" />
-          <NavLink href="/" text="Pendaftaran" />
+          <NavLink href="/pendaftaran" text="Pendaftaran" />
         </div>
 
         {/* Tombol Menu Mobile */}
@@ -51,7 +51,7 @@ export const Header: React.FC = () => {
             <NavLink href="/" text="Home" />
             <NavLink href="/program" text="Program Kami" />
             <NavLink href="/" text="Tentang Kami" />
-            <NavLink href="/" text="Pendaftaran" />
+            <NavLink href="/pendaftaran" text="Pendaftaran" />
           </div>
         </div>
       )}

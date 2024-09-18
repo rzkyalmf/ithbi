@@ -1,0 +1,30 @@
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url  	    = env("DATABASE_URL")
+}
+
+model Form {
+  id            String @id @default(cuid())
+  name          String 
+  email         String
+  phoneNumber   String
+  images        String[]
+  isVerified    Boolean @default(false)
+  createdAt     DateTime @default(now())
+
+  codeApp CodeApp?
+}
+
+model CodeApp {
+  id            String @id @default(cuid())
+  code          String
+  formId        String @unique
+  form Form     @relation(fields: [formId], references: [id])
+  createdAt     DateTime @default(now())
+  lastSentAt    DateTime @default(now())
+}
