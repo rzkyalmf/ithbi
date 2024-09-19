@@ -10,6 +10,7 @@ export const FormServices = {
           phoneNumber,
           createdAt: new Date(),
           images,
+          isVerified: false,
         },
       });
       return newForm;

@@ -1,11 +1,10 @@
 "use server";
 
-import { isRedirectError } from "next/dist/client/components/redirect";
 import { redirect } from "next/navigation";
 import { z } from "zod";
 
 import { generateVerificationCode } from "@/libs/generate-code";
-import { EmailServices } from "@/services/email.services";
+// import { EmailServices } from "@/services/email.services";
 import { FormServices } from "@/services/form.services";
 
 const pendaftaranSchema = z.object({
@@ -41,31 +40,25 @@ export async function pendaftaranAction(_state: unknown, formData: FormData) {
     };
   }
 
-  try {
-    console.log("Membuat formulir...");
-    const formulir = await FormServices.createForm(
-      name,
-      email,
-      phone,
-      images.map((image) => image.name),
-    );
+  console.log("Membuat formulir...");
+  const formulir = await FormServices.createForm(
+    name,
+    email,
+    phone,
+    images.map((image) => image.name),
+  );
 
-    if (!formulir) {
-      console.log("Gagal membuat formulir");
-      return {
-        status: "error",
-      };
-    }
-
-    const verificationCode = generateVerificationCode();
-
-    await FormServices.createVerificationCode(formulir.id, verificationCode);
-    await EmailServices.sendVerificationCode(formulir.id, verificationCode);
-
-    redirect(`/pendaftaran/verify/${formulir.id}`);
-  } catch (error) {
-    if (isRedirectError(error)) {
-      throw error;
-    }
+  if (!formulir) {
+    console.log("Gagal membuat formulir");
+    return {
+      status: "error",
+    };
   }
+
+  const verificationCode = generateVerificationCode();
+
+  await FormServices.createVerificationCode(formulir.id, verificationCode);
+  // await EmailServices.sendVerificationCode(formulir.id, verificationCode);
+
+  redirect(`/pendaftaran/verify/${formulir.id}`);
 }

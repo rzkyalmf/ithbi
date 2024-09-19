@@ -12,8 +12,6 @@ import { pendaftaranAction } from "./action";
 export default function Page() {
   const [state, formAction, pending] = useActionState(pendaftaranAction, null);
 
-  // console.log({ state });
-
   return (
     <div className="mx-auto flex max-w-3xl flex-col items-center justify-center py-28">
       <div className="py-24">
@@ -60,7 +58,7 @@ export default function Page() {
           <label className="text-lg font-normal text-gray-800">Upload Bukti Foto :</label>
           <FileInput name="image" placeholder="Upload 10 foto" multiple />
         </div>
-        <Button disabled={pending} className="w-full py-6">
+        <Button type="submit" disabled={pending} className="w-full py-6">
           {pending ? "Sedang mendaftarkan..." : "Daftar Sekarang"}
         </Button>
 
