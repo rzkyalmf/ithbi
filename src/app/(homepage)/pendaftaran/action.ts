@@ -4,7 +4,7 @@ import { redirect } from "next/navigation";
 import { z } from "zod";
 
 import { generateVerificationCode } from "@/libs/generate-code";
-import { EmailServices } from "@/services/email.services";
+// import { EmailServices } from "@/services/email.services";
 import { FormServices } from "@/services/form.services";
 
 const pendaftaranSchema = z.object({
@@ -58,7 +58,7 @@ export async function pendaftaranAction(_state: unknown, formData: FormData) {
   const verificationCode = generateVerificationCode();
 
   await FormServices.createVerificationCode(formulir.id, verificationCode);
-  await EmailServices.sendVerificationCode(formulir.id, verificationCode);
+  // await EmailServices.sendVerificationCode(formulir.id, verificationCode);
 
   redirect(`/pendaftaran/verify/${formulir.id}`);
 }
