@@ -9,7 +9,7 @@ const contentData = [
   {
     number: "02",
     title: "Pengajar Berpengalaman",
-    description: "Ust Abdurahman Dani memiliki pengalaman luas dalam kesehatan Arab Klasik & Thibbun Nabawi",
+    description: "Ust Abdurahman Dani dan Team memiliki pengalaman luas dalam kesehatan Arab Klasik & Thibbun Nabawi",
   },
   {
     number: "03",

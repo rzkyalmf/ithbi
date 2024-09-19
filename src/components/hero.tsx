@@ -23,7 +23,7 @@ export const Hero: React.FC = () => {
 
           <Link href="/pendaftaran">
             <Button size={"lg"} className="text-md bg-yellow-400 px-12 py-7 text-black hover:text-white">
-              Daftar Sekarang
+              Download Sekarang
             </Button>
           </Link>
         </div>
