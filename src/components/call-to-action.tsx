@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React from "react";
 
 import { Button } from "./ui/button";
@@ -15,9 +16,11 @@ export const CallToAction = () => {
           <h1 className="text-5xl text-emerald-600 lg:text-7xl">
             Download Sekarang juga Aplikasi Kuliah Kesehatan di Akademi Ath Thibbul Badil
           </h1>
-          <Button size="lg" className="text-md bg-yellow-400 px-12 py-7 text-black hover:text-white">
-            Download Sekarang
-          </Button>
+          <Link href="/pendaftaran">
+            <Button size="lg" className="text-md bg-yellow-400 px-12 py-7 text-black hover:text-white">
+              Download Sekarang
+            </Button>
+          </Link>
         </div>
       </div>
     </>

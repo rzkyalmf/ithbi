@@ -18,63 +18,63 @@ const testimonialData: TestimonialData[] = [
     videoId: "HGBHAa1GZCs",
     name: "Testimoni Pasien 1",
     account: "@pasien1",
-    avatar: "/images/ustdani.png",
+    avatar: "/images/ithbi1.png",
   },
   {
     id: 2,
     videoId: "49cUGUjcCOA",
     name: "Testimoni Pasien 2",
     account: "@pasien2",
-    avatar: "/images/ustdani.png",
+    avatar: "/images/ithbi1.png",
   },
   {
     id: 3,
     videoId: "85LtR6_JocM",
     name: "Testimoni Pasien 3",
     account: "@pasien3",
-    avatar: "/images/ustdani.png",
+    avatar: "/images/ithbi1.png",
   },
   {
     id: 4,
     videoId: "ZcExDOIo62s",
     name: "Testimoni Pasien 4",
     account: "@pasien4",
-    avatar: "/images/ustdani.png",
+    avatar: "/images/ithbi1.png",
   },
   {
     id: 5,
     videoId: "_R3-8UTynOM",
     name: "Testimoni Pasien 5",
     account: "@pasien5",
-    avatar: "/images/ustdani.png",
+    avatar: "/images/ithbi1.png",
   },
   {
     id: 6,
     videoId: "Ltt1DzkQaAI",
     name: "Testimoni Pasien 6",
     account: "@pasien6",
-    avatar: "/images/ustdani.png",
+    avatar: "/images/ithbi1.png",
   },
   {
     id: 7,
     videoId: "t19aXFDBvf0",
     name: "Testimoni Pasien 7",
     account: "@pasien7",
-    avatar: "/images/ustdani.png",
+    avatar: "/images/ithbi1.png",
   },
   {
     id: 8,
     videoId: "49cUGUjcCOA",
     name: "Testimoni Pasien 8",
     account: "@pasien8",
-    avatar: "/images/ustdani.png",
+    avatar: "/images/ithbi1.png",
   },
   {
     id: 9,
     videoId: "u5q100TDNTA",
     name: "Testimoni Pasien 9",
     account: "@pasien9",
-    avatar: "/images/ustdani.png",
+    avatar: "/images/ithbi1.png",
   },
 ];
 
@@ -103,8 +103,8 @@ export const TestimonialVideo: React.FC = () => {
                 <YouTube videoId={item.videoId} opts={web} />
               </div>
               <div className="flex items-center">
-                <div className="mr-4 h-12 w-12 overflow-hidden rounded-full">
-                  <Image src={item.avatar} alt={item.name} width={48} height={48} className="h-full w-full object-cover" />
+                <div className="mr-4 h-12 w-12 overflow-hidden rounded-xl">
+                  <Image src={item.avatar} alt={item.name} width={48} height={48} className="h-full w-full object-contain" />
                 </div>
                 <div>
                   <p className="font-semibold">{item.name}</p>

@@ -17,17 +17,9 @@ const testimonialData: TestimonialData[] = [
     id: 1,
     content:
       "Sangat bersyukur bisa belajar disini, banyak sekali ilmu yang di dapat, dan juga sangat berpengalaman sekali guru guru didalamnya, alhamdulillah selesai dari sini saya sudah banyak melakukan terapi dan banyak juga yang merasakan manfaatnya setelah saya lakukan terapi",
-    name: "Ustadz Abdurahman Dani",
+    name: "Alumni",
     followers: "Alumni Darul Hadist Yaman",
-    avatar: "/images/ustdani.png",
-  },
-  {
-    id: 1,
-    content:
-      "Sangat bersyukur bisa belajar disini, banyak sekali ilmu yang di dapat, dan juga sangat berpengalaman sekali guru guru didalamnya, alhamdulillah selesai dari sini saya sudah banyak melakukan terapi dan banyak juga yang merasakan manfaatnya setelah saya lakukan terapi",
-    name: "Ustadz Abdurahman Dani",
-    followers: "Alumni Darul Hadist Yaman",
-    avatar: "/images/ustdani.png",
+    avatar: "/images/ithbi1.png",
   },
 ];
 
@@ -54,8 +46,8 @@ export const TestimonialStudent: React.FC = () => {
                     <h4 className="mb-10 text-center">&quot;{item.content}&quot;</h4>
 
                     <div className="flex items-center">
-                      <div className="mr-4 h-16 w-16 overflow-hidden rounded-full">
-                        <Image src={item.avatar} alt={item.name} width={48} height={48} className="h-full w-full object-cover" />
+                      <div className="mr-4 h-16 w-16 overflow-hidden rounded-xl">
+                        <Image src={item.avatar} alt={item.name} width={48} height={48} className="h-full w-full object-contain" />
                       </div>
                       <div className="mr-8 text-left">
                         <p className="font-semibold">{item.name}</p>

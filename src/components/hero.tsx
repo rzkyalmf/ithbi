@@ -1,5 +1,5 @@
 import Image from "next/image";
-// import Link from "next/link";
+import Link from "next/link";
 import React from "react";
 
 import { Button } from "@/components/ui/button";
@@ -21,11 +21,11 @@ export const Hero: React.FC = () => {
             Download Sekarang Juga Aplikasi Diklat Kuliah Kesehatan Akademi Ath Thibbul Badil Indonesia!
           </h4>
 
-          <a href="/app-release.apk" download="aplikasi-ithbi.apk">
+          <Link href="/pendaftaran">
             <Button size={"lg"} className="text-md bg-yellow-400 px-12 py-7 text-black hover:text-white">
-              Download Sekarang
+              Daftar Sekarang
             </Button>
-          </a>
+          </Link>
         </div>
 
         <div className="flex h-[600px] w-1/2 items-center justify-end">

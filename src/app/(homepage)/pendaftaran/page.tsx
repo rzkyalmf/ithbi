@@ -10,7 +10,9 @@ import { Input } from "@/components/ui/input";
 import { pendaftaranAction } from "./action";
 
 export default function Page() {
-  const [_state, formAction] = useActionState(pendaftaranAction, null);
+  const [state, formAction] = useActionState(pendaftaranAction, null);
+
+  console.log({ state });
 
   return (
     <div className="mx-auto flex max-w-3xl flex-col items-center justify-center py-28">
@@ -50,6 +52,11 @@ export default function Page() {
         <Button type="submit" className="w-full py-6">
           Daftar Sekarang
         </Button>
+
+        {state?.status === "error" && <p className="text-red-500">{state.errors?.name}</p>}
+        {state?.status === "error" && <p className="text-red-500">{state.errors?.email}</p>}
+        {state?.status === "error" && <p className="text-red-500">{state.errors?.phone}</p>}
+        {state?.status === "error" && <p className="text-red-500">{state.errors?.images}</p>}
       </form>
     </div>
   );
