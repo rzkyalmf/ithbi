@@ -10,7 +10,7 @@ import { Input } from "@/components/ui/input";
 import { pendaftaranAction } from "./action";
 
 export default function Page() {
-  const [state, formAction] = useActionState(pendaftaranAction, null);
+  const [state, formAction, pending] = useActionState(pendaftaranAction, null);
 
   console.log({ state });
 
@@ -27,7 +27,12 @@ export default function Page() {
       <form action={formAction} className="flex w-full flex-col gap-5 px-16 py-10 lg:px-36">
         <div className="space-y-2">
           <label className="text-lg font-normal text-gray-800">Nama :</label>
-          <Input className="py-6 text-lg font-normal text-gray-500 placeholder:text-gray-300" placeholder="nama" name="name" />
+          <Input
+            className="py-6 text-lg font-normal text-gray-500 placeholder:text-gray-300"
+            placeholder="nama"
+            name="name"
+            defaultValue={state?.data?.name}
+          />
         </div>
 
         <div className="space-y-2">
@@ -37,20 +42,26 @@ export default function Page() {
             placeholder="email"
             name="email"
             type="email"
+            defaultValue={state?.data?.email}
           />
         </div>
 
         <div className="space-y-2">
           <label className="text-lg font-normal text-gray-800">Nomor Whatsapp :</label>
-          <Input className="py-6 text-lg font-normal text-gray-500 placeholder:text-gray-300" placeholder="+62" name="phone" />
+          <Input
+            className="py-6 text-lg font-normal text-gray-500 placeholder:text-gray-300"
+            placeholder="+62"
+            name="phone"
+            defaultValue={state?.data?.phone}
+          />
         </div>
 
         <div>
           <label className="text-lg font-normal text-gray-800">Upload Bukti Foto :</label>
           <FileInput name="image" placeholder="Upload 10 foto" multiple />
         </div>
-        <Button type="submit" className="w-full py-6">
-          Daftar Sekarang
+        <Button disabled={pending} type="submit" className="w-full py-6">
+          {pending ? "Sedang mendaftarkan..." : "Daftar Sekarang"}
         </Button>
 
         {state?.status === "error" && <p className="text-red-500">{state.errors?.name}</p>}
