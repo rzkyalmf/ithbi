@@ -12,7 +12,7 @@ import { pendaftaranAction } from "./action";
 export default function Page() {
   const [state, formAction, pending] = useActionState(pendaftaranAction, null);
 
-  console.log({ state });
+  // console.log({ state });
 
   return (
     <div className="mx-auto flex max-w-3xl flex-col items-center justify-center py-28">

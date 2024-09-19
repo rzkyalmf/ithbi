@@ -42,23 +42,30 @@ export async function pendaftaranAction(_state: unknown, formData: FormData) {
     };
   }
 
-  const formulir = await FormServices.createForm(
-    name,
-    email,
-    phone,
-    images.map((image) => image.name),
-  );
+  try {
+    const formulir = await FormServices.createForm(
+      name,
+      email,
+      phone,
+      images.map((image) => image.name),
+    );
 
-  if (!formulir) {
+    if (!formulir) {
+      return {
+        status: "error",
+      };
+    }
+
+    const verificationCode = generateVerificationCode();
+
+    await FormServices.createVerificationCode(formulir.id, verificationCode);
+    // await EmailServices.sendVerificationCode(formulir.id, verificationCode);
+
+    redirect(`/pendaftaran/verify/${formulir.id}`);
+  } catch (error) {
+    console.log({ error });
     return {
       status: "error",
     };
   }
-
-  const verificationCode = generateVerificationCode();
-
-  await FormServices.createVerificationCode(formulir.id, verificationCode);
-  // await EmailServices.sendVerificationCode(formulir.id, verificationCode);
-
-  redirect(`/pendaftaran/verify/${formulir.id}`);
 }
