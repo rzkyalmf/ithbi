@@ -11,20 +11,20 @@ const pendaftaranSchema = z.object({
   name: z.string().min(1, { message: "Nama tidak boleh kosong" }).max(18, { message: "Nama terlalu panjang" }),
   email: z.string().email({ message: "Email tidak boleh kosong" }),
   phone: z.string().min(1, { message: "No HP tidak sesuai" }).max(18),
-  images: z.array(z.instanceof(File)).min(10, { message: "Silahkan lengkapi 10 gambar" }).max(10, { message: "Maksimal 10 gambar" }),
+  // images: z.array(z.instanceof(File)).min(10, { message: "Silahkan lengkapi 10 gambar" }).max(10, { message: "Maksimal 10 gambar" }),
 });
 
 export async function pendaftaranAction(_state: unknown, formData: FormData) {
   const name = formData.get("name") as string;
   const email = formData.get("email") as string;
   const phone = formData.get("phone") as string;
-  const images = formData.getAll("image") as File[];
+  // const images = formData.getAll("image") as File[];
 
   const validation = pendaftaranSchema.safeParse({
     name,
     email,
     phone,
-    images,
+    // images,
   });
 
   if (!validation.success) {
@@ -35,7 +35,7 @@ export async function pendaftaranAction(_state: unknown, formData: FormData) {
         name,
         email,
         phone,
-        images,
+        // images,
       },
     };
   }
@@ -45,7 +45,7 @@ export async function pendaftaranAction(_state: unknown, formData: FormData) {
     name,
     email,
     phone,
-    images.map((image) => image.name),
+    // images.map((image) => image.name),
   );
 
   if (!formulir) {

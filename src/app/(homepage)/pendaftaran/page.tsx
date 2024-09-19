@@ -65,7 +65,7 @@ export default function Page() {
         {state?.status === "error" && <p className="text-red-500">{state.errors?.name}</p>}
         {state?.status === "error" && <p className="text-red-500">{state.errors?.email}</p>}
         {state?.status === "error" && <p className="text-red-500">{state.errors?.phone}</p>}
-        {state?.status === "error" && <p className="text-red-500">{state.errors?.images}</p>}
+        {/* {state?.status === "error" && <p className="text-red-500">{state.errors?.images}</p>} */}
       </form>
     </div>
   );
