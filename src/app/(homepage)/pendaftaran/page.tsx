@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useActionState } from "react";
+import { ChangeEvent, useActionState, useState } from "react";
 
 import { FileInput } from "@/components/isomorphic/file-input";
 import { Button } from "@/components/ui/button";
@@ -9,8 +9,36 @@ import { Input } from "@/components/ui/input";
 
 import { pendaftaranAction } from "./action";
 
+const MAX_FILE_SIZE = 4 * 1024 * 1024;
+
 export default function Page() {
+  const [fileError, setFileError] = useState<string | null>(null);
   const [state, formAction, pending] = useActionState(pendaftaranAction, null);
+
+  function handleCreatePreview(event: ChangeEvent<HTMLInputElement>) {
+    const file = event.target.files?.[0];
+    if (!file) return;
+
+    if (file.size > MAX_FILE_SIZE) {
+      setFileError("Ukuran file tidak boleh lebih dari 4MB!");
+
+      event.target.value = ""; // Reset input file
+    } else {
+      setFileError(null);
+    }
+  }
+
+  const getErrorMessage = () => {
+    if (state?.status === "error") {
+      if (state.errors?.name) return state.errors.name;
+      if (state.errors?.email) return state.errors.email;
+      if (state.errors?.phone) return state.errors.phone;
+      if (state.errors?.images) return state.errors.images;
+    }
+    return null;
+  };
+
+  const errorMessage = getErrorMessage();
 
   return (
     <div className="mx-auto flex max-w-3xl flex-col items-center justify-center py-28">
@@ -56,16 +84,19 @@ export default function Page() {
 
         <div>
           <label className="text-lg font-normal text-gray-800">Upload Bukti Foto :</label>
-          <FileInput name="image" placeholder="Upload 10 foto" multiple />
+          <FileInput onChange={handleCreatePreview} name="image" placeholder="Upload 10 foto" multiple />
         </div>
         <Button type="submit" disabled={pending} className="w-full py-6">
           {pending ? "Sedang mendaftarkan..." : "Daftar Sekarang"}
         </Button>
 
-        {state?.status === "error" && <p className="text-red-500">{state.errors?.name}</p>}
-        {state?.status === "error" && <p className="text-red-500">{state.errors?.email}</p>}
-        {state?.status === "error" && <p className="text-red-500">{state.errors?.phone}</p>}
-        {/* {state?.status === "error" && <p className="text-red-500">{state.errors?.images}</p>} */}
+        {errorMessage && (
+          <div className="mt-4 text-red-600" role="alert">
+            <p>{errorMessage}</p>
+          </div>
+        )}
+
+        {fileError && <p className="text-red-500">{fileError}</p>}
       </form>
     </div>
   );
