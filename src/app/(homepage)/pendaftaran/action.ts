@@ -1,12 +1,12 @@
 "use server";
 
+import { isRedirectError } from "next/dist/client/components/redirect";
 import { redirect } from "next/navigation";
 import { z } from "zod";
 
 import { generateVerificationCode } from "@/libs/generate-code";
 import { EmailServices } from "@/services/email.services";
 import { FormServices } from "@/services/form.services";
-import { isRedirectError } from "next/dist/client/components/redirect";
 
 const pendaftaranSchema = z.object({
   name: z.string().min(1, { message: "Nama tidak boleh kosong" }).max(18, { message: "Nama terlalu panjang" }),
