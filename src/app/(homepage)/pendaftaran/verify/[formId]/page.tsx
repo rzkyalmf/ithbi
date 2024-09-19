@@ -27,7 +27,7 @@ export default function Page({ params }: Props) {
       </p>
 
       <form action={formAction} className="flex w-full flex-col gap-5 px-16 py-10 lg:px-36">
-        <input hidden defaultValue={formId} name="id" />
+        <input hidden value={formId} name="id" />
 
         <div className="space-y-2">
           <label className="text-lg font-normal text-gray-800">Kode :</label>

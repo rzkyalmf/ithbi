@@ -4,14 +4,15 @@ import { redirect } from "next/navigation";
 import { z } from "zod";
 
 import { generateVerificationCode } from "@/libs/generate-code";
-// import { EmailServices } from "@/services/email.services";
+import { EmailServices } from "@/services/email.services";
 import { FormServices } from "@/services/form.services";
+import { isRedirectError } from "next/dist/client/components/redirect";
 
 const pendaftaranSchema = z.object({
   name: z.string().min(1, { message: "Nama tidak boleh kosong" }).max(18, { message: "Nama terlalu panjang" }),
   email: z.string().email({ message: "Email tidak boleh kosong" }),
   phone: z.string().min(1, { message: "No HP tidak sesuai" }).max(18),
-  images: z.array(z.instanceof(File)).min(1, { message: "Silahkan lengkapi 10 gambar" }).max(10, { message: "Maksimal 10 gambar" }),
+  images: z.array(z.instanceof(File)).min(10, { message: "Silahkan lengkapi 10 gambar" }).max(10, { message: "Maksimal 10 gambar" }),
 });
 
 export async function pendaftaranAction(_state: unknown, formData: FormData) {
@@ -27,8 +28,6 @@ export async function pendaftaranAction(_state: unknown, formData: FormData) {
     images,
   });
 
-  console.log({ validation });
-
   if (!validation.success) {
     return {
       status: "error",
@@ -43,6 +42,7 @@ export async function pendaftaranAction(_state: unknown, formData: FormData) {
   }
 
   try {
+    console.log("Membuat formulir...");
     const formulir = await FormServices.createForm(
       name,
       email,
@@ -51,6 +51,7 @@ export async function pendaftaranAction(_state: unknown, formData: FormData) {
     );
 
     if (!formulir) {
+      console.log("Gagal membuat formulir");
       return {
         status: "error",
       };
@@ -59,13 +60,12 @@ export async function pendaftaranAction(_state: unknown, formData: FormData) {
     const verificationCode = generateVerificationCode();
 
     await FormServices.createVerificationCode(formulir.id, verificationCode);
-    // await EmailServices.sendVerificationCode(formulir.id, verificationCode);
+    await EmailServices.sendVerificationCode(formulir.id, verificationCode);
 
     redirect(`/pendaftaran/verify/${formulir.id}`);
   } catch (error) {
-    console.log({ error });
-    return {
-      status: "error",
-    };
+    if (isRedirectError(error)) {
+      throw error;
+    }
   }
 }

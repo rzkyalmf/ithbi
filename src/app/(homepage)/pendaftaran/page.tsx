@@ -60,7 +60,7 @@ export default function Page() {
           <label className="text-lg font-normal text-gray-800">Upload Bukti Foto :</label>
           <FileInput name="image" placeholder="Upload 10 foto" multiple />
         </div>
-        <Button disabled={pending} type="submit" className="w-full py-6">
+        <Button disabled={pending} className="w-full py-6">
           {pending ? "Sedang mendaftarkan..." : "Daftar Sekarang"}
         </Button>
 
