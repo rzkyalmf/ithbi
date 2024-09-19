@@ -22,7 +22,7 @@ export default function Page() {
         <span className="rounded-lg border-b-2 bg-green-100 px-5 shadow-sm">Pendaftaran</span>
       </h1>
 
-      <form action={formAction} className="flex w-full flex-col gap-5 border px-16 py-10 lg:px-36">
+      <form action={formAction} className="flex w-full flex-col gap-5 px-16 py-10 lg:px-36">
         <div className="space-y-2">
           <label className="text-lg font-normal text-gray-800">Nama :</label>
           <Input className="py-6 text-lg font-normal text-gray-500 placeholder:text-gray-300" placeholder="nama" name="name" />
