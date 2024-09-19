@@ -48,4 +48,14 @@ export const FormServices = {
 
     return user;
   },
+
+  findCode: async (formId: string) => {
+    const codeApp = await prisma.codeApp.findFirst({
+      where: {
+        formId,
+      },
+    });
+
+    return codeApp;
+  },
 };

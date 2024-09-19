@@ -26,10 +26,6 @@ export const Hero: React.FC = () => {
               Download Sekarang
             </Button>
           </a>
-
-          {/* <a href="/images/brosur1.jpeg" download="my-image.png">
-            download
-          </a> */}
         </div>
 
         <div className="flex h-[600px] w-1/2 items-center justify-end">

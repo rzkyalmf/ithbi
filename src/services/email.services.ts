@@ -13,7 +13,7 @@ export const EmailServices = {
         subject: "Verifikasi Code ITHBI!",
         html: `
           <p>Kode OTP : <b>${code}</b></p>
-          <p>Link Verifikasi Code : <a href="http://localhost:3000/pendaftaran/verify/${formulirId}">Klik Disini!</a></p>
+          <p>Link Verifikasi Code Untuk Download Aplikasi : <a href="http://localhost:3000/pendaftaran/verify/${formulirId}">Klik Disini!</a></p>
           `,
       });
 
