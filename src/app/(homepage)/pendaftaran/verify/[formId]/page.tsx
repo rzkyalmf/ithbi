@@ -26,7 +26,7 @@ export default function Page({ params }: Props) {
         Silahkan periksa email anda untuk melihat kode downloadnya
       </p>
 
-      <form action={formAction} className="flex w-full flex-col gap-5 px-36 py-10">
+      <form action={formAction} className="flex w-full flex-col gap-5 px-16 py-10 lg:px-36">
         <input hidden defaultValue={formId} name="id" />
 
         <div className="space-y-2">
