@@ -9,7 +9,7 @@ import { Input } from "@/components/ui/input";
 
 import { pendaftaranAction } from "./action";
 
-const MAX_FILE_SIZE = 10 * 1024 * 1024;
+const MAX_FILE_SIZE = 15 * 1024 * 1024;
 
 export default function Page() {
   const [fileError, setFileError] = useState<string | null>(null);
@@ -20,7 +20,7 @@ export default function Page() {
     if (!file) return;
 
     if (file.size > MAX_FILE_SIZE) {
-      setFileError("Ukuran file tidak boleh lebih dari 10MB!");
+      setFileError("Ukuran file tidak boleh lebih dari 15MB!");
 
       event.target.value = ""; // Reset input file
     } else {
@@ -43,7 +43,13 @@ export default function Page() {
   return (
     <div className="mx-auto flex max-w-3xl flex-col items-center justify-center py-28">
       <div className="py-24">
-        <Image src="/images/persyaratan/aplikasi-ithbi.jpg" alt="logo" width={500} height={500} className="rounded-xl border-b-2" />
+        <Image
+          src="https://pub-b3bbd8acb34f4f18b3140380b48ae46d.r2.dev/aplikasi-ithbi.jpeg"
+          alt="logo"
+          width={500}
+          height={500}
+          className="rounded-xl border-b-2"
+        />
       </div>
 
       <h1 className="text-center text-4xl text-green-600 lg:text-5xl">
