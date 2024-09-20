@@ -8,7 +8,7 @@ export const EmailServices = {
 
     if (formulir) {
       const { data, error } = await resend.emails.send({
-        from: "ITHBI <admission@nukilansalaf.com>",
+        from: "ITHBI <admission@ithbi.id>",
         to: [formulir.email],
         subject: "Verifikasi Code ITHBI!",
         html: `
