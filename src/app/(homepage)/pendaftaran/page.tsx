@@ -9,7 +9,7 @@ import { Input } from "@/components/ui/input";
 
 import { pendaftaranAction } from "./action";
 
-const MAX_FILE_SIZE = 4 * 1024 * 1024;
+const MAX_FILE_SIZE = 20 * 1024 * 1024;
 
 export default function Page() {
   const [fileError, setFileError] = useState<string | null>(null);
@@ -83,7 +83,7 @@ export default function Page() {
         </div>
 
         <div>
-          <label className="text-lg font-normal text-gray-800">Upload Bukti Foto :</label>
+          <label className="text-lg font-normal text-gray-800">Upload Bukti Screenshot :</label>
           <FileInput onChange={handleCreatePreview} name="image" placeholder="Upload 10 foto" multiple />
         </div>
         <Button type="submit" disabled={pending} className="w-full py-6">

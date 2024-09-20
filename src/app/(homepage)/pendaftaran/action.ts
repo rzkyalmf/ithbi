@@ -11,7 +11,7 @@ const pendaftaranSchema = z.object({
   name: z.string().min(1, { message: "Nama tidak boleh kosong" }).max(18, { message: "Nama terlalu panjang" }),
   email: z.string().email({ message: "Email tidak boleh kosong" }),
   phone: z.string().min(1, { message: "No HP tidak sesuai" }).max(18),
-  images: z.array(z.instanceof(File)).min(2, { message: "Masukan minimal 2 gambar" }).max(10, { message: "Maksimal 10 gambar" }),
+  images: z.array(z.instanceof(File)).min(10, { message: "Masukan minimal 10 gambar" }).max(11, { message: "Maksimal 10 gambar" }),
 });
 
 export async function pendaftaranAction(_state: unknown, formData: FormData) {
