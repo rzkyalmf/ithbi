@@ -29,15 +29,21 @@ export const Hero: React.FC = () => {
         </div>
 
         <div className="flex h-[600px] w-1/2 items-center justify-end">
-          <Image src="/images/ustdani.png" alt="hero" width={400} height={400} />
+          <Image src="https://pub-b3bbd8acb34f4f18b3140380b48ae46d.r2.dev/ustdani.png" alt="hero" width={400} height={400} />
         </div>
       </div>
 
       <div className="w-full rounded-sm px-5 py-4">
         <div className="flex items-center justify-center gap-8">
           <p className="text-sm font-medium tracking-normal text-gray-400">Supported :</p>
-          <Image src="/images/ithbi1.png" alt="logo" className="" width={35} height={35} />
-          <Image src="/images/logoustdani.jpg" alt="logo" className="" width={45} height={45} />
+          <Image src="https://pub-b3bbd8acb34f4f18b3140380b48ae46d.r2.dev/ithbi1.png" alt="logo" className="" width={35} height={35} />
+          <Image
+            src="https://pub-b3bbd8acb34f4f18b3140380b48ae46d.r2.dev/logoustdani.jpg"
+            alt="logo"
+            className=""
+            width={45}
+            height={45}
+          />
         </div>
       </div>
     </div>

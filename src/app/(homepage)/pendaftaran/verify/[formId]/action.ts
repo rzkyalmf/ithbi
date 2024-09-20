@@ -52,6 +52,6 @@ export async function verifyAction(_state: unknown, formData: FormData) {
   return {
     status: "success",
     message: "KODE BENAR",
-    downloadUrl: "/app-release.apk",
+    downloadUrl: "https://pub-b3bbd8acb34f4f18b3140380b48ae46d.r2.dev/aplikasi-ithbi.apk",
   };
 }

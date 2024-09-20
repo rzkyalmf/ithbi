@@ -11,30 +11,32 @@ interface CarouselItemData {
 }
 
 // Data contoh untuk carousel
-const carouselData1: CarouselItemData[] = [{ id: 1, image: "/images/persyaratan/aplikasi-ithbi.jpg", alt: "picture" }];
+const carouselData1: CarouselItemData[] = [
+  { id: 1, image: "https://pub-b3bbd8acb34f4f18b3140380b48ae46d.r2.dev/persyaratan/aplikasi-ithbi.jpg", alt: "picture" },
+];
 
 const carouselData2: CarouselItemData[] = [
-  { id: 1, image: "/images/cara-menggunakan/cara-1.png", alt: "picture" },
-  { id: 2, image: "/images/cara-menggunakan/cara-2.png", alt: "picture" },
-  { id: 3, image: "/images/cara-menggunakan/cara-3.png", alt: "picture" },
-  { id: 4, image: "/images/cara-menggunakan/cara-4.png", alt: "picture" },
-  { id: 5, image: "/images/cara-menggunakan/cara-5.png", alt: "picture" },
-  { id: 6, image: "/images/cara-menggunakan/cara-6.png", alt: "picture" },
-  { id: 7, image: "/images/cara-menggunakan/cara-7.png", alt: "picture" },
-  { id: 8, image: "/images/cara-menggunakan/cara-8.png", alt: "picture" },
-  { id: 9, image: "/images/cara-menggunakan/cara-9.png", alt: "picture" },
-  { id: 10, image: "/images/cara-menggunakan/cara-10.png", alt: "picture" },
-  { id: 11, image: "/images/cara-menggunakan/cara-11.png", alt: "picture" },
-  { id: 12, image: "/images/cara-menggunakan/cara-12.png", alt: "picture" },
+  { id: 1, image: "https://pub-b3bbd8acb34f4f18b3140380b48ae46d.r2.dev/cara-menggunakan/cara-1.png", alt: "picture" },
+  { id: 2, image: "https://pub-b3bbd8acb34f4f18b3140380b48ae46d.r2.dev/cara-menggunakan/cara-2.png", alt: "picture" },
+  { id: 3, image: "https://pub-b3bbd8acb34f4f18b3140380b48ae46d.r2.dev/cara-menggunakan/cara-3.png", alt: "picture" },
+  { id: 4, image: "https://pub-b3bbd8acb34f4f18b3140380b48ae46d.r2.dev/cara-menggunakan/cara-4.png", alt: "picture" },
+  { id: 5, image: "https://pub-b3bbd8acb34f4f18b3140380b48ae46d.r2.dev/cara-menggunakan/cara-5.png", alt: "picture" },
+  { id: 6, image: "https://pub-b3bbd8acb34f4f18b3140380b48ae46d.r2.dev/cara-menggunakan/cara-6.png", alt: "picture" },
+  { id: 7, image: "https://pub-b3bbd8acb34f4f18b3140380b48ae46d.r2.dev/cara-menggunakan/cara-7.png", alt: "picture" },
+  { id: 8, image: "https://pub-b3bbd8acb34f4f18b3140380b48ae46d.r2.dev/cara-menggunakan/cara-8.png", alt: "picture" },
+  { id: 9, image: "https://pub-b3bbd8acb34f4f18b3140380b48ae46d.r2.dev/cara-menggunakan/cara-9.png", alt: "picture" },
+  { id: 10, image: "https://pub-b3bbd8acb34f4f18b3140380b48ae46d.r2.dev/cara-menggunakan/cara-10.png", alt: "picture" },
+  { id: 11, image: "https://pub-b3bbd8acb34f4f18b3140380b48ae46d.r2.dev/cara-menggunakan/cara-11.png", alt: "picture" },
+  { id: 12, image: "https://pub-b3bbd8acb34f4f18b3140380b48ae46d.r2.dev/cara-menggunakan/cara-12.png", alt: "picture" },
 ];
 
 const carouselData3: CarouselItemData[] = [
-  { id: 1, image: "/images/cara-install/install-1.png", alt: "picture" },
-  { id: 2, image: "/images/cara-install/install-2.png", alt: "picture" },
-  { id: 3, image: "/images/cara-install/install-3.png", alt: "picture" },
-  { id: 4, image: "/images/cara-install/install-4.png", alt: "picture" },
-  { id: 5, image: "/images/cara-install/install-5.png", alt: "picture" },
-  { id: 6, image: "/images/cara-install/install-6.png", alt: "picture" },
+  { id: 1, image: "https://pub-b3bbd8acb34f4f18b3140380b48ae46d.r2.dev/cara-install/install-1.png", alt: "picture" },
+  { id: 2, image: "https://pub-b3bbd8acb34f4f18b3140380b48ae46d.r2.dev/cara-install/install-2.png", alt: "picture" },
+  { id: 3, image: "https://pub-b3bbd8acb34f4f18b3140380b48ae46d.r2.dev/cara-install/install-3.png", alt: "picture" },
+  { id: 4, image: "https://pub-b3bbd8acb34f4f18b3140380b48ae46d.r2.dev/cara-install/install-4.png", alt: "picture" },
+  { id: 5, image: "https://pub-b3bbd8acb34f4f18b3140380b48ae46d.r2.dev/cara-install/install-5.png", alt: "picture" },
+  { id: 6, image: "https://pub-b3bbd8acb34f4f18b3140380b48ae46d.r2.dev/cara-install/install-6.png", alt: "picture" },
 ];
 
 export const Pictures: React.FC = () => {
