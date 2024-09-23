@@ -10,8 +10,14 @@ import { FormServices } from "@/services/form.services";
 const pendaftaranSchema = z.object({
   name: z.string().min(1, { message: "Nama tidak boleh kosong" }).max(18, { message: "Nama terlalu panjang" }),
   email: z.string().email({ message: "Email tidak boleh kosong" }),
-  phone: z.string().min(1, { message: "No HP tidak sesuai" }).max(18),
-  images: z.array(z.instanceof(File)).min(2, { message: "Masukan minimal 2 gambar" }).max(11, { message: "Maksimal 10 gambar" }),
+  phone: z
+    .string({ message: "Masukan nomor HP" })
+    .min(8, { message: "No HP tidak sesuai" })
+    .max(18, { message: "No HP terlalu panjang" }),
+  images: z
+    .array(z.instanceof(File), { message: "Silakan upload kembali" })
+    .min(10, { message: "Masukan minimal 10 gambar" })
+    .max(12, { message: "Gambar terlalu banyak" }),
 });
 
 export async function pendaftaranAction(_state: unknown, formData: FormData) {
@@ -27,6 +33,9 @@ export async function pendaftaranAction(_state: unknown, formData: FormData) {
     images,
   });
 
+  // console.log({ name, email, phone, images });
+  // console.log({ validation });
+
   if (!validation.success) {
     return {
       status: "error",
@@ -35,7 +44,7 @@ export async function pendaftaranAction(_state: unknown, formData: FormData) {
         name,
         email,
         phone,
-        images,
+        images: images.map((image) => image.name),
       },
     };
   }

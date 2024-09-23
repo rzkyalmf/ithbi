@@ -9,7 +9,7 @@ import { Input } from "@/components/ui/input";
 
 import { pendaftaranAction } from "./action";
 
-const MAX_FILE_SIZE = 15 * 1024 * 1024;
+const MAX_FILE_SIZE = 20 * 1024 * 1024;
 
 export default function Page() {
   const [fileError, setFileError] = useState<string | null>(null);
@@ -20,7 +20,7 @@ export default function Page() {
     if (!file) return;
 
     if (file.size > MAX_FILE_SIZE) {
-      setFileError("Ukuran file tidak boleh lebih dari 15MB!");
+      setFileError("Ukuran file tidak boleh lebih dari 20MB!");
 
       event.target.value = ""; // Reset input file
     } else {
@@ -84,6 +84,7 @@ export default function Page() {
             className="py-6 text-lg font-normal text-gray-500 placeholder:text-gray-300"
             placeholder="+62"
             name="phone"
+            type="number"
             defaultValue={state?.data?.phone}
           />
         </div>
