@@ -33,7 +33,11 @@ export const Footer = () => {
           <Link href={"https://www.instagram.com/ith.bi/"} target="_blank" rel="noopener noreferrer">
             <Instagram className="h-6 w-6 text-white hover:text-pink-600" />
           </Link>
-          <Link href={"wa.me/628996514008"} target="_blank" rel="noopener noreferrer">
+          <Link
+            href={"https://api.whatsapp.com/send/?phone=628996514008&text&type=phone_number&app_absent=0"}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <Twitter className="h-6 w-6 text-white hover:text-blue-400" />
           </Link>
           <Link href={"https://www.youtube.com/@ithbi"} target="_blank" rel="noopener noreferrer">

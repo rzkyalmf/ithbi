@@ -16,15 +16,28 @@ export default function Page() {
   const [state, formAction, pending] = useActionState(pendaftaranAction, null);
 
   function handleCreatePreview(event: ChangeEvent<HTMLInputElement>) {
-    const file = event.target.files?.[0];
-    if (!file) return;
+    const files = event.target.files;
+    if (!files || files.length === 0) return;
 
-    if (file.size > MAX_FILE_SIZE) {
-      setFileError("Ukuran file tidak boleh lebih dari 15MB!");
+    let hasError = false;
 
+    for (const file of files) {
+      if (file.size > MAX_FILE_SIZE) {
+        setFileError("Ukuran file tidak boleh lebih dari 15MB!");
+        hasError = true;
+        break;
+      } else if (file.type !== "image/jpeg" && file.type !== "image/png") {
+        setFileError("Hanya file JPEG atau PNG yang diperbolehkan!");
+        hasError = true;
+        break;
+      }
+    }
+
+    if (hasError) {
       event.target.value = ""; // Reset input file
     } else {
       setFileError(null);
+      // Proses upload file di sini
     }
   }
 

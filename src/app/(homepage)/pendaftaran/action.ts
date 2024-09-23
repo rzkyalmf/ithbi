@@ -20,6 +20,8 @@ const pendaftaranSchema = z.object({
     .max(12, { message: "Gambar terlalu banyak" }),
 });
 
+const MAX_FILE_SIZE = 15 * 1024 * 1024;
+
 export async function pendaftaranAction(_state: unknown, formData: FormData) {
   const name = formData.get("name") as string;
   const email = formData.get("email") as string;
@@ -61,8 +63,6 @@ export async function pendaftaranAction(_state: unknown, formData: FormData) {
       },
     };
   }
-
-  const MAX_FILE_SIZE = 15 * 1024 * 1024;
 
   if (validation.data.images.some((image) => image.size > MAX_FILE_SIZE)) {
     return {
