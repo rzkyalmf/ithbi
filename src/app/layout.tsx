@@ -8,7 +8,7 @@ import { Header } from "@/components/header";
 
 const inter = Inter({ subsets: ["latin"] });
 
-// export const dynamic = "force-dynamic";
+export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
   title: "Create Next App",
