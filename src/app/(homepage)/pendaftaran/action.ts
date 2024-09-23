@@ -62,12 +62,12 @@ export async function pendaftaranAction(_state: unknown, formData: FormData) {
     };
   }
 
-  const MAX_FILE_SIZE = 20 * 1024 * 1024;
+  const MAX_FILE_SIZE = 15 * 1024 * 1024;
 
   if (validation.data.images.some((image) => image.size > MAX_FILE_SIZE)) {
     return {
       status: "error",
-      message: "Ukuran file tidak boleh lebih dari 20MB!!",
+      message: "Ukuran file tidak boleh lebih dari 15MB!!",
       data: {
         name,
         email,
