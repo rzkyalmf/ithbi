@@ -30,6 +30,7 @@ export default function Page() {
 
   const getErrorMessage = () => {
     if (state?.status === "error") {
+      if (state.message) return state.message;
       if (state.errors?.name) return state.errors.name;
       if (state.errors?.email) return state.errors.email;
       if (state.errors?.phone) return state.errors.phone;
@@ -42,7 +43,7 @@ export default function Page() {
 
   return (
     <div className="mx-auto flex max-w-3xl flex-col items-center justify-center py-28">
-      <div className="py-24">
+      <div className="px-10 py-24">
         <Image
           src="https://pub-b3bbd8acb34f4f18b3140380b48ae46d.r2.dev/aplikasi-ithbi.jpeg"
           alt="logo"

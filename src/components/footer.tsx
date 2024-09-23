@@ -14,29 +14,29 @@ export const Footer = () => {
           <Link href={"/"}>
             <h5 className="text-sm text-white hover:text-yellow-500 lg:text-lg">Home</h5>
           </Link>
-          <Link href={"/"}>
+          <Link href={"/program"}>
             <h5 className="text-sm text-white hover:text-yellow-500 lg:text-lg">Program Kami</h5>
           </Link>
           <Link href={"/"}>
             <h5 className="text-sm text-white hover:text-yellow-500 lg:text-lg">Tentang Kami</h5>
           </Link>
-          <Link href={"/"}>
+          <Link href={"/pendaftaran"}>
             <h5 className="text-sm text-white hover:text-yellow-500 lg:text-lg">Pendaftaran</h5>
           </Link>
         </div>
 
         {/* Ikon media sosial dari Lucide */}
         <div className="flex gap-8">
-          <Link href={"https://facebook.com"} target="_blank" rel="noopener noreferrer">
+          <Link href={"https://www.facebook.com/profile.php?id=100087710929348"} target="_blank" rel="noopener noreferrer">
             <Facebook className="h-6 w-6 text-white hover:text-blue-600" />
           </Link>
-          <Link href={"https://instagram.com"} target="_blank" rel="noopener noreferrer">
+          <Link href={"https://www.instagram.com/ith.bi/"} target="_blank" rel="noopener noreferrer">
             <Instagram className="h-6 w-6 text-white hover:text-pink-600" />
           </Link>
-          <Link href={"https://twitter.com"} target="_blank" rel="noopener noreferrer">
+          <Link href={"wa.me/628996514008"} target="_blank" rel="noopener noreferrer">
             <Twitter className="h-6 w-6 text-white hover:text-blue-400" />
           </Link>
-          <Link href={"https://youtube.com"} target="_blank" rel="noopener noreferrer">
+          <Link href={"https://www.youtube.com/@ithbi"} target="_blank" rel="noopener noreferrer">
             <Youtube className="h-6 w-6 text-white hover:text-red-600" />
           </Link>
         </div>

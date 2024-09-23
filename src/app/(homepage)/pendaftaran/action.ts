@@ -49,6 +49,34 @@ export async function pendaftaranAction(_state: unknown, formData: FormData) {
     };
   }
 
+  if (validation.data.images.some((image) => image.type !== "image/jpeg" && image.type !== "image/png")) {
+    return {
+      status: "error",
+      message: "File harus PNG/JPG!",
+      data: {
+        name,
+        email,
+        phone,
+        images: images.map((image) => image.name),
+      },
+    };
+  }
+
+  const MAX_FILE_SIZE = 20 * 1024 * 1024;
+
+  if (validation.data.images.some((image) => image.size > MAX_FILE_SIZE)) {
+    return {
+      status: "error",
+      message: "Ukuran file tidak boleh lebih dari 20MB!!",
+      data: {
+        name,
+        email,
+        phone,
+        images: images.map((image) => image.name),
+      },
+    };
+  }
+
   const formulir = await FormServices.createForm(
     name,
     email,
