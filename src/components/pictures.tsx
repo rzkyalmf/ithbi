@@ -12,7 +12,8 @@ interface CarouselItemData {
 
 // Data contoh untuk carousel
 const carouselData1: CarouselItemData[] = [
-  { id: 1, image: "https://pub-b3bbd8acb34f4f18b3140380b48ae46d.r2.dev/persyaratan/aplikasi-ithbi.jpg", alt: "picture" },
+  { id: 1, image: "https://pub-b3bbd8acb34f4f18b3140380b48ae46d.r2.dev/persyaratan/Frame%203.jpg", alt: "picture" },
+  { id: 2, image: "https://pub-b3bbd8acb34f4f18b3140380b48ae46d.r2.dev/persyaratan/aplikasi-ithbi.jpg", alt: "picture" },
 ];
 
 const carouselData2: CarouselItemData[] = [
