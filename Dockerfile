@@ -1,5 +1,3 @@
-# RUN npm install --legacy-peer-deps
-
 FROM node:lts
 
 WORKDIR /app

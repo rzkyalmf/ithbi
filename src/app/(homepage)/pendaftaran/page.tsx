@@ -56,7 +56,14 @@ export default function Page() {
 
   return (
     <div className="mx-auto flex max-w-3xl flex-col items-center justify-center py-28">
-      <div className="px-10 py-24">
+      <div className="flex flex-row items-center justify-center gap-10 px-10 py-24">
+        <Image
+          src="https://pub-b3bbd8acb34f4f18b3140380b48ae46d.r2.dev/persyaratan/Frame%203.jpg"
+          alt="logo"
+          width={500}
+          height={500}
+          className="rounded-xl border-b-2"
+        />
         <Image
           src="https://pub-b3bbd8acb34f4f18b3140380b48ae46d.r2.dev/aplikasi-ithbi.jpeg"
           alt="logo"
