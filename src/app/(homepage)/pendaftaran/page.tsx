@@ -56,7 +56,7 @@ export default function Page() {
 
   return (
     <div className="mx-auto flex max-w-3xl flex-col items-center justify-center py-28">
-      <div className="flex flex-row items-center justify-center gap-10 px-10 py-24">
+      <div className="flex flex-col items-center justify-center gap-10 px-10 py-24 lg:flex-row">
         <Image
           src="https://pub-b3bbd8acb34f4f18b3140380b48ae46d.r2.dev/persyaratan/Frame%203.jpg"
           alt="logo"
