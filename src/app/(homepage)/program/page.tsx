@@ -10,11 +10,11 @@ interface CarouselItemData {
 }
 
 const carouselData: CarouselItemData[] = [
-  { id: 1, image: "https://pub-b3bbd8acb34f4f18b3140380b48ae46d.r2.dev/program/brosur1.jpeg", alt: "picture" },
-  { id: 2, image: "https://pub-b3bbd8acb34f4f18b3140380b48ae46d.r2.dev/program/brosur2.jpeg", alt: "picture" },
-  { id: 3, image: "https://pub-b3bbd8acb34f4f18b3140380b48ae46d.r2.dev/program/brosur3.jpeg", alt: "picture" },
-  { id: 4, image: "https://pub-b3bbd8acb34f4f18b3140380b48ae46d.r2.dev/program/brosur4.jpeg", alt: "picture" },
-  { id: 5, image: "https://pub-b3bbd8acb34f4f18b3140380b48ae46d.r2.dev/program/brosur5.jpeg", alt: "picture" },
+  { id: 1, image: "https://pub-b3bbd8acb34f4f18b3140380b48ae46d.r2.dev/program/brosur1.png", alt: "picture" },
+  { id: 2, image: "https://pub-b3bbd8acb34f4f18b3140380b48ae46d.r2.dev/program/brosur2.png", alt: "picture" },
+  { id: 3, image: "https://pub-b3bbd8acb34f4f18b3140380b48ae46d.r2.dev/program/brosur3.png", alt: "picture" },
+  { id: 4, image: "https://pub-b3bbd8acb34f4f18b3140380b48ae46d.r2.dev/program/brosur4.jpg", alt: "picture" },
+  { id: 5, image: "https://pub-b3bbd8acb34f4f18b3140380b48ae46d.r2.dev/program/brosur5.png", alt: "picture" },
 ];
 
 export default function Page() {
@@ -38,15 +38,15 @@ export default function Page() {
             tidak di mengerti atau belum bisa di terapkan ilmunya Gratis Kelas Offline di Kantor ITHBI menyesuaikan waktu pengajar
             Daftar kan diri anda sekarang juga, Kuota Terbatas.&quot;
           </h5>
-          <h5 className="text-justify">
+          <h5 className="lg:text-justify">
             <ul className="list-disc space-y-5 pl-6">
               <li>
-                <b>Pembelajaran Bulan Pertama</b> Via Zoom Online, Fokus Bimbingan dan Mentoring Kepada Memahami Diagnosa, Teori dan
-                Cara Kerja.
+                <b>Pembelajaran Bulan Pertama</b> Via Zoom Online, Fokus Bimbingan dan Pendampingan Materi untuk Memahami Diagnosa,
+                Teori serta Cara Kerja.
               </li>
               <li>
                 <b>Pembelajaran Bulan ke Dua</b> Via Zoom Online Private Bimbingan dan Mentoring Per Kelas zoom dibagi hanya 10 Orang
-                Penjelasan Singkat Rangkuman Materi di bulan sebelumnya dan tanya Jawab khusus sampai benar2 memahami materinya.
+                Penjelasan Singkat Rangkuman Materi di bulan sebelumnya dan tanya Jawab khusus sampai benar-benar memahami materinya.
               </li>
               <li>
                 <b>Menyelenggarakan Riset Kesehatan</b> yang berlandaskan As-Sunnah dan inovatif.
@@ -87,3 +87,5 @@ export default function Page() {
     </div>
   );
 }
+
+// 31 november

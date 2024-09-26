@@ -19,7 +19,7 @@ const testimonialData: TestimonialData[] = [
       "Sangat bersyukur bisa belajar disini, banyak sekali ilmu yang di dapat, dan juga sangat berpengalaman sekali guru guru didalamnya, alhamdulillah selesai dari sini saya sudah banyak melakukan terapi dan banyak juga yang merasakan manfaatnya setelah saya lakukan terapi",
     name: "Alumni",
     followers: "Alumni Darul Hadist Yaman",
-    avatar: "https://pub-b3bbd8acb34f4f18b3140380b48ae46d.r2.dev/ithbi1.png",
+    avatar: "https://pub-b3bbd8acb34f4f18b3140380b48ae46d.r2.dev/ithbi%201.png",
   },
 ];
 

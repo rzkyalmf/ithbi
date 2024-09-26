@@ -36,7 +36,13 @@ export const Hero: React.FC = () => {
       <div className="w-full rounded-sm px-5 py-4">
         <div className="flex items-center justify-center gap-8">
           <p className="text-sm font-medium tracking-normal text-gray-400">Supported :</p>
-          <Image src="https://pub-b3bbd8acb34f4f18b3140380b48ae46d.r2.dev/ithbi1.png" alt="logo" className="" width={35} height={35} />
+          <Image
+            src="https://pub-b3bbd8acb34f4f18b3140380b48ae46d.r2.dev/ithbi%201.png"
+            alt="logo"
+            className=""
+            width={35}
+            height={35}
+          />
           <Image
             src="https://pub-b3bbd8acb34f4f18b3140380b48ae46d.r2.dev/logoustdani.jpg"
             alt="logo"

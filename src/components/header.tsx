@@ -27,7 +27,7 @@ export const Header: React.FC = () => {
     <div className="mx-auto mt-6 max-w-7xl px-10 sm:px-10 lg:px-10 xl:px-0">
       <div className="flex items-center justify-between py-6">
         <Link href="/">
-          <Image src="https://pub-b3bbd8acb34f4f18b3140380b48ae46d.r2.dev/ithbi1.png" alt="logo" width={60} height={60} />
+          <Image src="https://pub-b3bbd8acb34f4f18b3140380b48ae46d.r2.dev/ithbi%201.png" alt="logo" width={60} height={60} />
         </Link>
 
         {/* Menu Desktop */}

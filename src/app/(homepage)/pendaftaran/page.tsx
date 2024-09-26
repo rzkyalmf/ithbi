@@ -55,20 +55,20 @@ export default function Page() {
   const errorMessage = getErrorMessage();
 
   return (
-    <div className="mx-auto flex max-w-3xl flex-col items-center justify-center py-28">
+    <div className="mx-auto flex max-w-5xl flex-col items-center justify-center py-28">
       <div className="flex flex-col items-center justify-center gap-10 px-10 py-24 lg:flex-row">
         <Image
-          src="https://pub-b3bbd8acb34f4f18b3140380b48ae46d.r2.dev/persyaratan/Frame%203.jpg"
+          src="https://pub-b3bbd8acb34f4f18b3140380b48ae46d.r2.dev/persyaratan/syarat1.jpg"
           alt="logo"
-          width={500}
-          height={500}
+          width={1000}
+          height={1000}
           className="rounded-xl border-b-2"
         />
         <Image
-          src="https://pub-b3bbd8acb34f4f18b3140380b48ae46d.r2.dev/aplikasi-ithbi.jpeg"
+          src="https://pub-b3bbd8acb34f4f18b3140380b48ae46d.r2.dev/persyaratan/syarat2.jpg"
           alt="logo"
-          width={500}
-          height={500}
+          width={1000}
+          height={1000}
           className="rounded-xl border-b-2"
         />
       </div>
@@ -77,7 +77,7 @@ export default function Page() {
         <span className="rounded-lg border-b-2 bg-green-100 px-5 shadow-sm">Pendaftaran</span>
       </h1>
 
-      <form action={formAction} className="flex w-full flex-col gap-5 px-16 py-10 lg:px-36">
+      <form action={formAction} className="flex w-full flex-col gap-5 px-10 py-10 lg:px-64">
         <div className="space-y-2">
           <label className="text-lg font-normal text-gray-800">Nama :</label>
           <Input
