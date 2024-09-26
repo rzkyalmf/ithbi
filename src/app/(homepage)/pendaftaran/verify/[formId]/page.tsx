@@ -18,7 +18,7 @@ export default function Page({ params }: Props) {
   const [state, formAction] = useActionState(verifyAction, null);
 
   return (
-    <div className="mx-auto flex max-w-3xl flex-col items-center justify-center py-96">
+    <div className="mx-auto flex max-w-3xl flex-col items-center justify-center py-64">
       <h1 className="text-center text-4xl text-green-600 lg:text-5xl">
         <span className="rounded-lg border-b-2 bg-green-100 px-5 shadow-sm">Masukan Kode</span>
       </h1>

@@ -31,7 +31,7 @@ const missions: MissionItem[] = [
 
 export default function Page() {
   return (
-    <div className="mx-auto my-12 flex max-w-7xl flex-col items-center px-10 sm:px-10 lg:flex-row lg:px-10 xl:px-0">
+    <div className="mx-auto my-12 flex max-w-7xl flex-col items-center px-10 py-64 sm:px-10 lg:flex-row lg:px-10 xl:px-0">
       <div className="flex flex-col items-center space-y-4 py-10 lg:w-1/2 lg:items-start lg:py-0">
         <p className="text-green-400">TENTANG KAMI :</p>
         <h2 className="font-bold text-emerald-600">Visi & Misi ITHBI</h2>
