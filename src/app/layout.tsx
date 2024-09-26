@@ -13,6 +13,9 @@ export const dynamic = "force-dynamic";
 export const metadata: Metadata = {
   title: "Akademi Ath Thibbul Badil Indonesia",
   description: "Sehat itu murah, Sehat itu mudah",
+  icons: {
+    icon: "/favicon.ico",
+  },
 };
 
 export default function RootLayout({
