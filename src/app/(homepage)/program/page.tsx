@@ -25,7 +25,7 @@ export default function Page() {
       </h1>
 
       <div className="mx-auto my-12 flex flex-col items-center gap-36 px-10 sm:px-10 lg:flex-row lg:gap-10 lg:px-10 xl:px-0">
-        <div className="items-center justify-start space-y-8 pr-8 lg:w-1/2">
+        <div className="items-center justify-start space-y-8 lg:w-1/2 lg:pr-8">
           <h2 className="font-medium leading-tight tracking-tight text-emerald-900">
             Solusi tepat sehatkan sakitmu, sayangi anak dan keluarga di masa sekarang maupun yang akan datang
           </h2>
