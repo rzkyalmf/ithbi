@@ -110,17 +110,6 @@ export default function Page() {
           />
         </div>
 
-        <div className="space-y-2">
-          <label className="text-lg font-normal text-gray-800">Masukan Kode Referall : (Optional)</label>
-          <Input
-            className="py-6 text-lg font-normal text-gray-500 placeholder:text-gray-300"
-            placeholder="+62"
-            name="phone"
-            type="number"
-            defaultValue={state?.data?.phone}
-          />
-        </div>
-
         <div>
           <label className="text-lg font-normal text-gray-800">Upload Bukti Screenshot :</label>
           <FileInput onChange={handleCreatePreview} name="image" placeholder="Upload 10 foto" multiple />
