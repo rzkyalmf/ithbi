@@ -8,16 +8,14 @@ import { TestimonialVideo } from "@/components/testimonial-video";
 
 export default function Home() {
   return (
-    <>
-      <main className="flex flex-col gap-40">
-        <Hero />
-        <Features />
-        <Quotes />
-        <CallToAction />
-        <Pictures />
-        <TestimonialStudent />
-        <TestimonialVideo />
-      </main>
-    </>
+    <main className="flex flex-col gap-40">
+      <Hero />
+      <Features />
+      <Quotes />
+      <CallToAction />
+      <Pictures />
+      <TestimonialStudent />
+      <TestimonialVideo />
+    </main>
   );
 }
