@@ -1,7 +1,9 @@
 "use client";
 
 import Image from "next/image";
-import { ChangeEvent, useActionState, useState } from "react";
+import Link from "next/link";
+import { useActionState, useState } from "react";
+import { z } from "zod";
 
 import { FileInput } from "@/components/isomorphic/file-input";
 import { Button } from "@/components/ui/button";
@@ -9,50 +11,63 @@ import { Input } from "@/components/ui/input";
 
 import { pendaftaranAction } from "./action";
 
-const MAX_FILE_SIZE = 15 * 1024 * 1024;
+const MAX_FILES_SIZE = 50 * 1024 * 1024;
+const ALLOWED_FILE_TYPES = ["image/png", "image/jpeg", "image/jpg"];
+
+const pendaftaranSchema = z.object({
+  name: z.string().min(1, { message: "Nama tidak boleh kosong" }).max(18, { message: "Nama terlalu panjang" }),
+  email: z.string().email({ message: "Email tidak boleh kosong" }),
+  phone: z
+    .string({ message: "Masukan nomor HP" })
+    .min(8, { message: "No HP tidak sesuai" })
+    .max(18, { message: "No HP terlalu panjang" }),
+  images: z
+    .array(z.instanceof(File))
+    .min(10, { message: "Masukan minimal 10 gambar" })
+    .refine((files) => files.length <= 12, {
+      message: "Gambar terlalu banyak",
+    })
+    .refine(
+      (files) => {
+        const totalSize = files.reduce((state, file) => state + file.size, 0);
+        return totalSize <= MAX_FILES_SIZE;
+      },
+      {
+        message: "Ukuran total gambar tidak boleh lebih dari 25MB",
+      },
+    )
+    .refine((files) => files.every((file) => ALLOWED_FILE_TYPES.includes(file.type)), {
+      message: "Hanya file PNG dan JPG/JPEG yang diperbolehkan",
+    }),
+});
 
 export default function Page() {
-  const [fileError, setFileError] = useState<string | null>(null);
-  const [state, formAction, pending] = useActionState(pendaftaranAction, null);
+  const [errors, setErrors] = useState<Record<string, string[]> | null>(null);
+  const [formValue, setFormValue] = useState({ name: "", email: "", phone: "" });
+  const [_, formAction, pending] = useActionState(pendaftaranAction, null);
 
-  function handleCreatePreview(event: ChangeEvent<HTMLInputElement>) {
-    const files = event.target.files;
-    if (!files || files.length === 0) return;
+  async function submitForm(formData: FormData) {
+    const name = formData.get("name") as string;
+    const email = formData.get("email") as string;
+    const phone = formData.get("phone") as string;
+    const images = formData.getAll("images") as File[];
 
-    let hasError = false;
+    setFormValue({ name, email, phone });
 
-    for (const file of files) {
-      if (file.size > MAX_FILE_SIZE) {
-        setFileError("Ukuran file tidak boleh lebih dari 15MB!");
-        hasError = true;
-        break;
-      } else if (file.type !== "image/jpeg" && file.type !== "image/png") {
-        setFileError("Hanya file JPEG atau PNG yang diperbolehkan!");
-        hasError = true;
-        break;
-      }
+    const validation = pendaftaranSchema.safeParse({
+      name,
+      email,
+      phone,
+      images,
+    });
+
+    if (!validation.success) {
+      setErrors(validation.error.flatten().fieldErrors);
+      return;
     }
 
-    if (hasError) {
-      event.target.value = ""; // Reset input file
-    } else {
-      setFileError(null);
-      // Proses upload file di sini
-    }
+    await Promise.resolve(formAction(formData));
   }
-
-  const getErrorMessage = () => {
-    if (state?.status === "error") {
-      if (state.message) return state.message;
-      if (state.errors?.name) return state.errors.name;
-      if (state.errors?.email) return state.errors.email;
-      if (state.errors?.phone) return state.errors.phone;
-      if (state.errors?.images) return state.errors.images;
-    }
-    return null;
-  };
-
-  const errorMessage = getErrorMessage();
 
   return (
     <div className="mx-auto flex max-w-5xl flex-col items-center justify-center py-28">
@@ -77,15 +92,16 @@ export default function Page() {
         <span className="rounded-lg border-b-2 bg-green-100 px-5 shadow-sm">Pendaftaran</span>
       </h1>
 
-      <form action={formAction} className="flex w-full flex-col gap-5 px-10 py-10 lg:px-64">
+      <form action={submitForm} className="flex w-full flex-col gap-5 px-10 py-10 lg:px-64">
         <div className="space-y-2">
           <label className="text-lg font-normal text-gray-800">Nama :</label>
           <Input
             className="py-6 text-lg font-normal text-gray-500 placeholder:text-gray-300"
             placeholder="nama"
             name="name"
-            defaultValue={state?.data?.name}
+            defaultValue={formValue.name}
           />
+          {errors?.name && <p className="text-red-500">{errors.name}</p>}
         </div>
 
         <div className="space-y-2">
@@ -95,8 +111,9 @@ export default function Page() {
             placeholder="email"
             name="email"
             type="email"
-            defaultValue={state?.data?.email}
+            defaultValue={formValue.email}
           />
+          {errors?.email && <p className="text-red-500">{errors.email}</p>}
         </div>
 
         <div className="space-y-2">
@@ -106,26 +123,33 @@ export default function Page() {
             placeholder="+62"
             name="phone"
             type="number"
-            defaultValue={state?.data?.phone}
+            defaultValue={formValue.phone}
           />
+          {errors?.phone && <p className="text-red-500">{errors.phone}</p>}
         </div>
 
         <div>
           <label className="text-lg font-normal text-gray-800">Upload Bukti Screenshot :</label>
-          <FileInput onChange={handleCreatePreview} name="image" placeholder="Upload 10 foto" multiple />
+          <FileInput name="images" placeholder="Upload 10 foto" multiple />
+
+          {errors?.images?.map((error, index) => (
+            <p key={index} className="text-red-500">
+              {error}
+            </p>
+          ))}
         </div>
+
         <Button type="submit" disabled={pending} className="w-full py-6">
           {pending ? "Sedang mendaftarkan..." : "Daftar Sekarang"}
         </Button>
-
-        {errorMessage && (
-          <div className="mt-4 text-red-600" role="alert">
-            <p>{errorMessage}</p>
-          </div>
-        )}
-
-        {fileError && <p className="text-red-500">{fileError}</p>}
       </form>
+
+      <p className="w-[400px] text-center text-lg font-light text-slate-500">
+        Lihat video tutorial cara download aplikasi klik{" "}
+        <Link href="https://www.youtube.com/watch?v=fAeCVsvtH44" className="text-green-600">
+          di sini
+        </Link>
+      </p>
     </div>
   );
 }

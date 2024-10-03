@@ -10,7 +10,7 @@ datasource db {
 
 model Form {
   id            String @id @default(cuid())
-  name          String 
+  name          String
   email         String
   phoneNumber   String
   images        String[]
