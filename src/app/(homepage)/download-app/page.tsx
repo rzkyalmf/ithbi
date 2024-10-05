@@ -89,7 +89,7 @@ export default function Page() {
       </div>
 
       <h1 className="text-center text-4xl text-green-600 lg:text-5xl">
-        <span className="rounded-lg border-b-2 bg-green-100 px-5 shadow-sm">Pendaftaran</span>
+        <span className="rounded-lg border-b-2 bg-green-100 px-5 shadow-sm">Download Aplikasi</span>
       </h1>
 
       <form action={submitForm} className="flex w-full flex-col gap-5 px-10 py-10 lg:px-64">

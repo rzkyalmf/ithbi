@@ -17,7 +17,7 @@ export const CallToAction = () => {
             Download Sekarang juga Aplikasi Kuliah Kesehatan di Akademi Ath Thibbul Badil
           </h1>
           <div>
-            <Link href="/pendaftaran">
+            <Link href="/download-app">
               <Button size="lg" className="text-md bg-yellow-400 px-12 py-7 text-black hover:text-white">
                 Download Sekarang
               </Button>
