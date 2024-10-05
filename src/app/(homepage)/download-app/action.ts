@@ -38,5 +38,5 @@ export async function pendaftaranAction(_state: unknown, formData: FormData) {
   await FormServices.createVerificationCode(formulir.id, verificationCode);
   await EmailServices.sendVerificationCode(formulir.id, verificationCode);
 
-  redirect(`/pendaftaran/verify/${formulir.id}`);
+  redirect(`/download-app/verify/${formulir.id}`);
 }
