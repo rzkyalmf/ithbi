@@ -5,7 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import React, { useState } from "react";
 
-// import { Button } from "./ui/button";
+import { Button } from "./ui/button";
 
 interface NavLinkProps {
   href: string;
@@ -40,18 +40,18 @@ export const Header: React.FC = () => {
           <NavLink href="/download-app" text="Download App" />
         </div>
 
-        {/* <div className="hidden gap-3 md:flex">
-          <Link href={"/"}>
-            <Button size={"lg"} variant={"outline"} className="px-6 py-5">
-              Masuk
-            </Button>
-          </Link>
-          <Link href={"/"}>
-            <Button size={"lg"} variant={"default"} className="px-6 py-5">
-              Daftar
-            </Button>
-          </Link>
-        </div> */}
+        <div className="hidden gap-3 md:flex">
+          {/* <Link href={"/"}> */}
+          <Button size={"lg"} variant={"outline"} className="px-6 py-5">
+            Masuk
+          </Button>
+          {/* </Link> */}
+          {/* <Link href={"/"}> */}
+          <Button size={"lg"} variant={"default"} className="px-6 py-5">
+            Daftar
+          </Button>
+          {/* </Link> */}
+        </div>
 
         {/* Tombol Menu Mobile */}
         <div className="md:hidden">
@@ -67,12 +67,12 @@ export const Header: React.FC = () => {
             <NavLink href="/program" text="Program" />
             <NavLink href="/tentang-kami" text="Tentang Kami" />
             <NavLink href="/download-app" text="Download App" />
-            {/* <Button size={"lg"} variant={"outline"} className="px-6 py-5">
+            <Button size={"lg"} variant={"outline"} className="px-6 py-5">
               Masuk
             </Button>
             <Button size={"lg"} variant={"default"} className="px-6 py-5">
               Daftar
-            </Button> */}
+            </Button>
           </div>
         </div>
       )}

@@ -17,8 +17,8 @@ export default function Home() {
       <Quotes />
       <CallToAction />
       <Pictures />
-      <TestimonialStudent />
       <TestimonialVideo />
+      <TestimonialStudent />
       <Footer />
     </main>
   );

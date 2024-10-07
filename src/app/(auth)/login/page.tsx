@@ -1,6 +1,8 @@
 "use client";
 
+import { ArrowLeft } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -10,7 +12,9 @@ export default function Page() {
     <div className="flex min-h-screen items-center justify-center">
       <div className="w-full max-w-xl p-8 py-20">
         <div className="flex flex-col items-center justify-center gap-8 py-10 text-center">
-          <Image src="https://pub-b3bbd8acb34f4f18b3140380b48ae46d.r2.dev/ithbi%201.png" alt="logo" width={100} height={100} />
+          <Link href={"/"}>
+            <Image src="https://pub-b3bbd8acb34f4f18b3140380b48ae46d.r2.dev/ithbi%201.png" alt="logo" width={100} height={100} />
+          </Link>
 
           <h1 className="text-4xl text-green-600 lg:text-5xl">
             <span className="rounded-lg border-b-2 bg-green-100 px-5 shadow-sm">Login Akun</span>
@@ -43,6 +47,13 @@ export default function Page() {
             Masuk
           </Button>
         </form>
+
+        <section className="py-10">
+          <Link href="/" className="flex flex-row items-center justify-center gap-2">
+            <ArrowLeft size={22} strokeWidth={1.4} />
+            <p className="font-light tracking-normal hover:text-green-600">Kembali Ke Halaman Utama</p>
+          </Link>
+        </section>
       </div>
     </div>
   );

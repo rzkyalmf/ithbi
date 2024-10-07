@@ -1,6 +1,12 @@
 import prisma from "@/utils/prisma";
 
 export const FormServices = {
+  getAllForm: async () => {
+    const Formulir = await prisma.form.findMany();
+
+    return Formulir;
+  },
+
   createForm: async (name: string, email: string, phoneNumber: string, images: string[]) => {
     try {
       const newForm = await prisma.form.create({
