@@ -3,11 +3,29 @@
 import { ArrowLeft } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import { useActionState } from "react";
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 
+import { loginAction } from "./action";
+
 export default function Page() {
+  const [state, formAction] = useActionState(loginAction, null);
+
+  const getErrorMessage = () => {
+    if (state?.status === "error") {
+      if (state.message) return state.message;
+      if (!state.data.email) return "Email tidak boleh kosong";
+      if (!state.data.password) return "Password tidak boleh kosong";
+      if (state.errors?.email) return state.errors.email;
+      if (state.errors?.password) return state.errors.password;
+    }
+    return null;
+  };
+
+  const errorMessage = getErrorMessage();
+
   return (
     <div className="flex min-h-screen items-center justify-center">
       <div className="w-full max-w-xl p-8 py-20">
@@ -22,7 +40,7 @@ export default function Page() {
           <p className="text-md font-normal text-gray-500">&quot;Masukan Id & Password Kamu Atau Masuk Melalui Media Sosial&quot;</p>
         </div>
 
-        <form className="space-y-6">
+        <form action={formAction} className="space-y-6">
           <div className="space-y-2">
             <label className="text-lg font-normal text-gray-800">Email :</label>
             <Input
@@ -30,6 +48,7 @@ export default function Page() {
               placeholder="abdullah@gmail.com"
               name="email"
               type="email"
+              defaultValue={state?.data.email}
             />
           </div>
 
@@ -46,12 +65,18 @@ export default function Page() {
           <Button type="submit" className="w-full py-6">
             Masuk
           </Button>
+
+          {errorMessage && (
+            <div className="mt-4 text-red-600" role="alert">
+              <p>{errorMessage}</p>
+            </div>
+          )}
         </form>
 
         <section className="py-10">
-          <Link href="/" className="flex flex-row items-center justify-center gap-2">
+          <Link href="/" className="flex flex-row items-center justify-center gap-2 hover:text-green-600">
             <ArrowLeft size={22} strokeWidth={1.4} />
-            <p className="font-light tracking-normal hover:text-green-600">Kembali Ke Halaman Utama</p>
+            <p className="font-light tracking-normal">Kembali Ke Halaman Utama</p>
           </Link>
         </section>
       </div>

@@ -41,16 +41,16 @@ export const Header: React.FC = () => {
         </div>
 
         <div className="hidden gap-3 md:flex">
-          {/* <Link href={"/"}> */}
-          <Button size={"lg"} variant={"outline"} className="px-6 py-5">
-            Masuk
-          </Button>
-          {/* </Link> */}
-          {/* <Link href={"/"}> */}
-          <Button size={"lg"} variant={"default"} className="px-6 py-5">
-            Daftar
-          </Button>
-          {/* </Link> */}
+          <Link href={"/login"}>
+            <Button size={"lg"} variant={"outline"} className="px-6 py-5">
+              Masuk
+            </Button>
+          </Link>
+          <Link href={"/register"}>
+            <Button size={"lg"} variant={"default"} className="px-6 py-5">
+              Daftar
+            </Button>
+          </Link>
         </div>
 
         {/* Tombol Menu Mobile */}
@@ -67,12 +67,16 @@ export const Header: React.FC = () => {
             <NavLink href="/program" text="Program" />
             <NavLink href="/tentang-kami" text="Tentang Kami" />
             <NavLink href="/download-app" text="Download App" />
-            <Button size={"lg"} variant={"outline"} className="px-6 py-5">
-              Masuk
-            </Button>
-            <Button size={"lg"} variant={"default"} className="px-6 py-5">
-              Daftar
-            </Button>
+            <Link href={"/login"}>
+              <Button size={"lg"} variant={"outline"} className="px-6 py-5">
+                Masuk
+              </Button>
+            </Link>
+            <Link href={"/register"}>
+              <Button size={"lg"} variant={"default"} className="px-6 py-5">
+                Daftar
+              </Button>
+            </Link>
           </div>
         </div>
       )}

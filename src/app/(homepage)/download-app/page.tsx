@@ -1,18 +1,13 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
 import { useActionState, useState } from "react";
 import { z } from "zod";
 
-import { FileInput } from "@/components/isomorphic/file-input";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 
 import { pendaftaranAction } from "./action";
-
-const MAX_FILES_SIZE = 50 * 1024 * 1024;
-const ALLOWED_FILE_TYPES = ["image/png", "image/jpeg", "image/jpg"];
 
 const pendaftaranSchema = z.object({
   name: z.string().min(1, { message: "Nama tidak boleh kosong" }).max(18, { message: "Nama terlalu panjang" }),
@@ -21,36 +16,17 @@ const pendaftaranSchema = z.object({
     .string({ message: "Masukan nomor HP" })
     .min(8, { message: "No HP tidak sesuai" })
     .max(18, { message: "No HP terlalu panjang" }),
-  images: z
-    .array(z.instanceof(File))
-    .min(10, { message: "Masukan minimal 10 gambar" })
-    .refine((files) => files.length <= 12, {
-      message: "Gambar terlalu banyak",
-    })
-    .refine(
-      (files) => {
-        const totalSize = files.reduce((state, file) => state + file.size, 0);
-        return totalSize <= MAX_FILES_SIZE;
-      },
-      {
-        message: "Ukuran total gambar tidak boleh lebih dari 25MB",
-      },
-    )
-    .refine((files) => files.every((file) => ALLOWED_FILE_TYPES.includes(file.type)), {
-      message: "Hanya file PNG dan JPG/JPEG yang diperbolehkan",
-    }),
 });
 
 export default function Page() {
   const [errors, setErrors] = useState<Record<string, string[]> | null>(null);
   const [formValue, setFormValue] = useState({ name: "", email: "", phone: "" });
-  const [_, formAction, pending] = useActionState(pendaftaranAction, null);
+  const [state, formAction, pending] = useActionState(pendaftaranAction, null);
 
   async function submitForm(formData: FormData) {
     const name = formData.get("name") as string;
     const email = formData.get("email") as string;
     const phone = formData.get("phone") as string;
-    const images = formData.getAll("images") as File[];
 
     setFormValue({ name, email, phone });
 
@@ -58,7 +34,6 @@ export default function Page() {
       name,
       email,
       phone,
-      images,
     });
 
     if (!validation.success) {
@@ -66,6 +41,7 @@ export default function Page() {
       return;
     }
 
+    setErrors(null);
     await Promise.resolve(formAction(formData));
   }
 
@@ -128,28 +104,16 @@ export default function Page() {
           {errors?.phone && <p className="text-red-500">{errors.phone}</p>}
         </div>
 
-        <div>
-          <label className="text-lg font-normal text-gray-800">Upload Bukti Screenshot :</label>
-          <FileInput name="images" placeholder="Upload 10 foto" multiple />
-
-          {errors?.images?.map((error, index) => (
-            <p key={index} className="text-red-500">
-              {error}
-            </p>
-          ))}
-        </div>
-
         <Button type="submit" disabled={pending} className="w-full py-6">
-          {pending ? "Sedang mendaftarkan..." : "Daftar Sekarang"}
+          {pending ? "Sedang proses..." : "Download Sekarang"}
         </Button>
-      </form>
 
-      <p className="w-[400px] text-center text-lg font-light text-slate-500">
-        Lihat video tutorial cara download aplikasi klik{" "}
-        <Link href="https://www.youtube.com/watch?v=fAeCVsvtH44" className="text-green-600">
-          di sini
-        </Link>
-      </p>
+        {state?.downloadUrl && (
+          <a href={state.downloadUrl} download="aplikasi-ithbi.apk" className="mt-4 text-center text-blue-500 hover:underline">
+            Klik di sini untuk mengunduh aplikasi
+          </a>
+        )}
+      </form>
     </div>
   );
 }

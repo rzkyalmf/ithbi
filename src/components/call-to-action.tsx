@@ -14,7 +14,7 @@ export const CallToAction = () => {
             </span>
           </h2>
           <h1 className="text-5xl text-emerald-600 lg:text-7xl">
-            Download Sekarang juga Aplikasi Kuliah Kesehatan di Akademi Ath Thibbul Badil
+            Download Sekarang juga Aplikasi Sekolah Kesehatan di Akademi Ath Thibbul Badil
           </h1>
           <div>
             <Link href="/download-app">

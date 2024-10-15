@@ -8,6 +8,81 @@ datasource db {
   url  	    = env("DATABASE_URL")
 }
 
+
+enum Role {
+  USER
+  ADMIN
+}
+
+model User {
+  id String @id @default(cuid())
+
+  name String
+  email String
+  phoneNumber String?
+  password String?
+  avatarUrl String?
+  isVerified Boolean @default(false)
+  onBanned Boolean @default(false)
+
+  role Role @default(USER)
+
+  createdAt DateTime @default(now())
+  verificationCode VerificationCode?
+}
+
+model VerificationCode {
+  id String @id @default(cuid())
+  code String
+  userId String @unique
+  user User @relation(fields: [userId], references: [id])
+  createdAt DateTime @default(now())
+  lastSentAt DateTime @default(now())
+}
+
+model Course {
+  id String @id @default(cuid())
+  title String
+  slug String
+  description String
+  price Int
+  coverImage String
+  isPublished Boolean @default(false)
+  sections Section[]
+}
+
+model Section {
+  id String @id @default(cuid())
+  title String
+  index Int @default(0)
+  courseId String
+  course Course @relation(fields: [courseId], references: [id])
+  lessons Lesson[]
+}
+
+model Lesson {
+  id String @id @default(cuid())
+  title String
+  slug String
+  videoUrl String
+  index Int @default(0)
+  isPreview Boolean @default(false)
+  sectionId String
+  section Section @relation(fields: [sectionId], references: [id])
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 model Form {
   id            String @id @default(cuid())
   name          String

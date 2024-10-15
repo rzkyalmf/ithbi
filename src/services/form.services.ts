@@ -7,7 +7,7 @@ export const FormServices = {
     return Formulir;
   },
 
-  createForm: async (name: string, email: string, phoneNumber: string, images: string[]) => {
+  createForm: async (name: string, email: string, phoneNumber: string) => {
     try {
       const newForm = await prisma.form.create({
         data: {
@@ -15,7 +15,6 @@ export const FormServices = {
           email,
           phoneNumber,
           createdAt: new Date(),
-          images,
           isVerified: false,
         },
       });

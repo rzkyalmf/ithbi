@@ -3,11 +3,16 @@
 import { ArrowLeft } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import { useActionState } from "react";
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 
+import { registrationAction } from "./action";
+
 export default function Page() {
+  const [state, formAction] = useActionState(registrationAction, null);
+
   return (
     <div className="flex min-h-screen items-center justify-center">
       <div className="w-full max-w-xl p-8 py-20">
@@ -24,10 +29,16 @@ export default function Page() {
           </p>
         </div>
 
-        <form className="space-y-6">
+        <form action={formAction} className="space-y-6">
           <div className="space-y-2">
             <label className="text-lg font-normal text-gray-800">Nama :</label>
-            <Input className="py-6 text-lg font-normal text-gray-500 placeholder:text-gray-300" placeholder="abdullah" name="name" />
+            <Input
+              className="py-6 text-lg font-normal text-gray-500 placeholder:text-gray-300"
+              placeholder="abdullah"
+              name="name"
+              defaultValue={state?.data?.name}
+            />
+            {state?.errors && <p className="text-red-500">{state.errors.name}</p>}
           </div>
 
           <div className="space-y-2">
@@ -37,7 +48,21 @@ export default function Page() {
               placeholder="abdullah@gmail.com"
               name="email"
               type="email"
+              defaultValue={state?.data?.email}
             />
+            {state?.errors && <p className="text-red-500">{state.errors.email}</p>}
+          </div>
+
+          <div className="space-y-2">
+            <label className="text-lg font-normal text-gray-800">No Telephone :</label>
+            <Input
+              className="py-6 text-lg font-normal text-gray-500 placeholder:text-gray-300"
+              placeholder="+62"
+              name="phone"
+              type="number"
+              defaultValue={state?.data?.phoneNumber}
+            />
+            {state?.errors && <p className="text-red-500">{state.errors.phoneNumber}</p>}
           </div>
 
           <div className="space-y-2">
@@ -48,16 +73,17 @@ export default function Page() {
               name="password"
               type="password"
             />
+            {state?.errors && <p className="text-red-500">{state.errors.password}</p>}
           </div>
 
-          <div className="space-y-2">
+          {/* <div className="space-y-2">
             <label className="text-lg font-normal text-gray-800">Kode Referral :</label>
             <Input
               className="py-6 text-lg font-normal text-gray-500 placeholder:text-gray-300"
               placeholder="Kosongkan Jika Tidak Ada!"
               name="kode"
             />
-          </div>
+          </div> */}
 
           <Button type="submit" className="w-full py-6">
             Register
@@ -65,9 +91,9 @@ export default function Page() {
         </form>
 
         <section className="py-10">
-          <Link href="/" className="flex flex-row items-center justify-center gap-2">
+          <Link href="/" className="flex flex-row items-center justify-center gap-2 hover:text-green-600">
             <ArrowLeft size={22} strokeWidth={1.4} />
-            <p className="font-light tracking-normal hover:text-green-600">Kembali Ke Halaman Utama</p>
+            <p className="font-light tracking-normal">Kembali Ke Halaman Utama</p>
           </Link>
         </section>
       </div>

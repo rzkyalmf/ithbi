@@ -1,23 +1,14 @@
 "use server";
 
-import { redirect } from "next/navigation";
-
 import { generateVerificationCode } from "@/libs/generate-code";
-import { EmailServices } from "@/services/email.services";
 import { FormServices } from "@/services/form.services";
 
 export async function pendaftaranAction(_state: unknown, formData: FormData) {
   const name = formData.get("name") as string;
   const email = formData.get("email") as string;
   const phone = formData.get("phone") as string;
-  const images = formData.getAll("images") as File[];
 
-  const formulir = await FormServices.createForm(
-    name,
-    email,
-    phone,
-    images.map((image) => image.name),
-  );
+  const formulir = await FormServices.createForm(name, email, phone);
 
   if (!formulir) {
     console.log("Gagal membuat formulir");
@@ -28,15 +19,14 @@ export async function pendaftaranAction(_state: unknown, formData: FormData) {
         name,
         email,
         phone,
-        images,
       },
     };
   }
 
   const verificationCode = generateVerificationCode();
-
   await FormServices.createVerificationCode(formulir.id, verificationCode);
-  await EmailServices.sendVerificationCode(formulir.id, verificationCode);
 
-  redirect(`/download-app/verify/${formulir.id}`);
+  return {
+    downloadUrl: "https://drive.google.com/file/d/1lOlaITUnGLTJEm8eZhcOzuoLaZno54ek/view",
+  };
 }
