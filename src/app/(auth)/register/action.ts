@@ -5,7 +5,7 @@ import { redirect } from "next/navigation";
 import { z } from "zod";
 
 import { generateVerificationCode } from "@/libs/generate-code";
-// import { EmailServices } from "@/services/email.services";
+import { EmailServices } from "@/services/email.services";
 import { UserServices } from "@/services/user.services";
 
 const registrationSchema = z.object({
@@ -62,7 +62,7 @@ export async function registrationAction(_: unknown, formData: FormData) {
   const verificationCode = generateVerificationCode();
 
   await UserServices.createVerificationCode(user.id, verificationCode);
-  // await EmailServices.sendVerificationCode(user.id, verificationCode);
+  await EmailServices.sendVerificationCode(user.id, verificationCode);
 
   redirect(`/register/verify/${user.id}`);
 }
