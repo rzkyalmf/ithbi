@@ -18,7 +18,7 @@ export default function Layout({ children }: React.PropsWithChildren) {
   return (
     <div className="flex h-screen flex-col">
       <div className="flex flex-1 overflow-hidden">
-        <aside className="hidden w-[220px] flex-col justify-between border-slate-200 bg-white p-6 text-slate-950 md:flex">
+        <aside className="w-[220px] flex-col justify-between border-slate-200 bg-white p-6 text-slate-950 md:flex">
           <div className="flex flex-col gap-8">
             <div className="flex items-center justify-center">
               <Image
