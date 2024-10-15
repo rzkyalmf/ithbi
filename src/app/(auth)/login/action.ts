@@ -89,7 +89,7 @@ export async function loginAction(state: unknown, formData: FormData) {
   };
 
   const jwtToken = jwt.sign(payload, process.env.JWT_SECRET);
-  console.log({ jwtToken });
+  // console.log({ jwtToken });
 
   cookies().set("token", jwtToken, {
     httpOnly: true,

@@ -24,8 +24,6 @@ export async function registrationAction(_: unknown, formData: FormData) {
   const phoneNumber = formData.get("phone") as string;
   const password = formData.get("password") as string;
 
-  console.log(name, email, phoneNumber, password);
-
   const validation = registrationSchema.safeParse({
     name,
     email,
@@ -33,7 +31,7 @@ export async function registrationAction(_: unknown, formData: FormData) {
     password,
   });
 
-  console.log(validation.error);
+  // console.log(validation.error);
 
   if (!validation.success) {
     return {
