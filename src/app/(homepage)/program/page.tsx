@@ -10,11 +10,11 @@ interface CarouselItemData {
 }
 
 const carouselData: CarouselItemData[] = [
-  { id: 1, image: "https://pub-b3bbd8acb34f4f18b3140380b48ae46d.r2.dev/program/brosur1.png", alt: "picture" },
+  { id: 1, image: "https://pub-b3bbd8acb34f4f18b3140380b48ae46d.r2.dev/program/22.jpg", alt: "picture" },
   { id: 2, image: "https://pub-b3bbd8acb34f4f18b3140380b48ae46d.r2.dev/program/brosur2.png", alt: "picture" },
   { id: 3, image: "https://pub-b3bbd8acb34f4f18b3140380b48ae46d.r2.dev/program/brosur3.png", alt: "picture" },
-  { id: 4, image: "https://pub-b3bbd8acb34f4f18b3140380b48ae46d.r2.dev/program/brosur4.jpg", alt: "picture" },
-  { id: 5, image: "https://pub-b3bbd8acb34f4f18b3140380b48ae46d.r2.dev/program/brosur5.png", alt: "picture" },
+  { id: 4, image: "https://pub-b3bbd8acb34f4f18b3140380b48ae46d.r2.dev/program/44.jpg", alt: "picture" },
+  { id: 5, image: "https://pub-b3bbd8acb34f4f18b3140380b48ae46d.r2.dev/program/11.jpg", alt: "picture" },
 ];
 
 export default function Page() {
