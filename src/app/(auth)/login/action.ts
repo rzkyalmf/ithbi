@@ -91,7 +91,8 @@ export async function loginAction(state: unknown, formData: FormData) {
   const jwtToken = jwt.sign(payload, process.env.JWT_SECRET);
   // console.log({ jwtToken });
 
-  cookies().set("token", jwtToken, {
+  const cookie = await cookies();
+  cookie.set("token", jwtToken, {
     httpOnly: true,
     path: "/",
   });

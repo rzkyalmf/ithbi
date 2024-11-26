@@ -9,7 +9,8 @@ import { Button } from "./ui/button";
 async function logoutAction() {
   "use server";
 
-  cookies().set({
+  const cookie = await cookies();
+  cookie.set({
     name: "token",
     value: "",
     expires: new Date(0),

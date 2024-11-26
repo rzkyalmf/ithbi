@@ -8,7 +8,7 @@ const style = tv({
   slots: {
     base: "flex w-full items-center gap-2 overflow-hidden rounded-lg border border-slate-200 bg-white font-normal text-slate-600 focus:border-indigo-600 focus:outline-none focus:ring-4 focus:ring-indigo-100",
     button:
-      "flex gap-2.5 border-r bg-slate-50 px-3 py-2.5 font-normal text-gray-400 hover:text-slate-600 focus:ring-1 focus:ring-[#C2B59B]",
+      "flex gap-2.5 border-r bg-slate-50 px-3 py-3 font-normal text-gray-400 hover:text-slate-600 focus:ring-1 focus:ring-[#C2B59B]",
   },
 });
 

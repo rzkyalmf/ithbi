@@ -1,19 +1,22 @@
 "use client";
 
-import { useActionState } from "react";
+import { use, useActionState } from "react";
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 
 import { otpAction } from "./action";
 
-interface Props {
-  params: {
-    userId: string;
-  };
+// Definisikan tipe params sebagai Promise
+type Params = Promise<{ userId: string }>;
+
+interface PageProps {
+  params: Params;
 }
 
-export default function Page({ params }: Props) {
+export default function Page(props: PageProps) {
+  const params = use(props.params);
+  
   const { userId } = params;
   const [state, formAction] = useActionState(otpAction, null);
 

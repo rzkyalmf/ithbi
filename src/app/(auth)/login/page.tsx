@@ -79,6 +79,12 @@ export default function Page() {
             <p className="font-light tracking-normal">Kembali Ke Halaman Utama</p>
           </Link>
         </section>
+
+        <Link href="/register">
+          <Button variant={"outline"} type="submit" className="w-full py-6 font-normal">
+            Belum Memiliki Akun ? Klik Disini!
+          </Button>
+        </Link>
       </div>
     </div>
   );

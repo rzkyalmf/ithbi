@@ -1,4 +1,4 @@
-import { CirclePlus, CircleUserRound, ContactRound, House, MonitorDown, Search, Settings, TvMinimalPlay, Wallet } from "lucide-react";
+import { CirclePlus, ContactRound, House, MonitorDown, Search, TvMinimalPlay, Wallet } from "lucide-react";
 import Image from "next/image";
 import { redirect } from "next/navigation";
 import React from "react";
@@ -8,8 +8,8 @@ import { Menu } from "@/components/menu-usepath";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import serverAuth from "@/libs/server.auth";
 
-export default function Layout({ children }: React.PropsWithChildren) {
-  const auth = serverAuth();
+export default async function Layout({ children }: React.PropsWithChildren) {
+  const auth = await serverAuth();
 
   if (!auth) {
     redirect("/login");
@@ -35,27 +35,27 @@ export default function Layout({ children }: React.PropsWithChildren) {
               <Menu href="/dashboard" icon={<House size={19} />}>
                 Dashboard
               </Menu>
-              <Menu href="/dashboard/kelas-online" icon={<TvMinimalPlay size={19} />}>
-                Kelas Online
+              <Menu href="/dashboard/certificates" icon={<TvMinimalPlay size={19} />}>
+                Sertifikat
               </Menu>
               <Menu href="/dashboard/pembayaran" icon={<Wallet size={19} />}>
                 Pembayaran
               </Menu>
             </div>
-            <div>
-              <p className="pb-2 font-medium">Settings</p>
-              <Menu href="/dashboard/profile" icon={<CircleUserRound size={19} />}>
-                Profile
-              </Menu>
-              <Menu href="/dashboard/setting" icon={<Settings size={19} />}>
-                Setting
-              </Menu>
-            </div>
             {auth.role === "ADMIN" && (
               <div>
                 <p className="pb-2 font-medium">Menu Admin</p>
-                <Menu href="/admin/add-class" icon={<CirclePlus size={19} />}>
+                <Menu href="/admin/courses" icon={<CirclePlus size={19} />}>
                   Tambah Kelas
+                </Menu>
+                <Menu href="/admin/flash-sales" icon={<CirclePlus size={19} />}>
+                  Flash Sale
+                </Menu>
+                <Menu href="/admin/certificates-approvals" icon={<CirclePlus size={19} />}>
+                  Certificate
+                </Menu>
+                <Menu href="/admin/analytics" icon={<CirclePlus size={19} />}>
+                  Analytics
                 </Menu>
                 <Menu href="/admin/users" icon={<ContactRound size={19} />}>
                   Users

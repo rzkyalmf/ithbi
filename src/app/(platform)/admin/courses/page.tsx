@@ -1,0 +1,45 @@
+import Image from "next/image";
+import Link from "next/link";
+
+import { Button } from "@/components/ui/button";
+import { CourseServices } from "@/services/course.services";
+
+export default async function Page() {
+  const courses = await CourseServices.getAllCourses();
+
+  return (
+    <main className="space-y-8 p-12">
+      <section className="flex items-center justify-between">
+        <h3>Courses</h3>
+        <Link href="/admin/courses/new">
+          <Button className="w-full">Create course</Button>
+        </Link>
+      </section>
+      <section className="grid grid-cols-4 gap-6">
+        {courses.map((course) => {
+          return (
+            <div key={course.id} className="relative overflow-hidden rounded-xl border bg-white p-5 shadow-sm">
+              <Image
+                src={`${process.env.R2_PUBLIC_URL}/ithbi-lms/courses/${course.id}/${course.coverImage}`}
+                alt={course.title}
+                width={1000}
+                height={500}
+              />
+              <section className="space-y-3 p-4">
+                <div>{course.title}</div>
+                <div className="space-x-2">
+                  <Link href={`/admin/courses/${course.slug}/stats`}>
+                    <Button size="sm">Stats</Button>
+                  </Link>
+                  <Link href={`/admin/courses/${course.slug}`}>
+                    <Button size="sm">Edit Content</Button>
+                  </Link>
+                </div>
+              </section>
+            </div>
+          );
+        })}
+      </section>
+    </main>
+  );
+}

@@ -1,7 +1,7 @@
 import jwt, { JwtPayload } from "jsonwebtoken";
 import { cookies } from "next/headers";
 
-interface AuthPayload extends JwtPayload {
+export interface AuthPayload extends JwtPayload {
   id: string;
   email: string;
   name: string;
@@ -9,9 +9,10 @@ interface AuthPayload extends JwtPayload {
   role: "ADMIN" | "USER";
 }
 
-export default function serverAuth() {
+export default async function serverAuth() {
   // get token from cookies
-  const token = cookies().get("token")?.value;
+  const cookie = await cookies();
+  const token = cookie.get("token")?.value;
 
   if (!token) {
     return null;

@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useActionState, useState } from "react";
+import YouTube from "react-youtube";
 import { z } from "zod";
 
 import { Button } from "@/components/ui/button";
@@ -114,6 +115,24 @@ export default function Page() {
           </a>
         )}
       </form>
+
+      <div className="mx-auto mt-10 w-full max-w-4xl p-24 px-4">
+        {/* Container untuk video */}
+        <div className="relative pt-[56.25%]">
+          {/* Aspect ratio 16:9 */}
+          <YouTube
+            videoId="ekmRtI2zLs8"
+            opts={{
+              height: "100%",
+              width: "100%",
+              playerVars: {
+                autoplay: 0,
+              },
+            }}
+            className="absolute left-0 top-0 h-full w-full rounded-lg" // Tambahkan rounded-lg untuk sudut membulat
+          />
+        </div>
+      </div>
     </div>
   );
 }
