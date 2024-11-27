@@ -9,7 +9,7 @@ interface PageProps {
 }
 
 export default async function Page(props: PageProps) {
-  const params = await props.params
+  const params = await props.params;
   const course = await CourseServices.getCourseDetail(params.slug);
 
   if (!course) {

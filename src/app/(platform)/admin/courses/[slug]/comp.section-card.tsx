@@ -22,9 +22,14 @@ export const SectionCard = ({ section }: Props) => {
 
   return (
     <Card key={section.id} className="p-2">
-      <section className="flex items-center justify-between p-2">
+      <section className="flex items-center justify-between p-2 pb-5">
         <div className="ml-2 flex items-center gap-2">
-          <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="1em"
+            height="1em"
+            viewBox="0 0 24 24"
+          >
             <path
               fill="none"
               stroke="currentColor"
@@ -51,7 +56,11 @@ export const SectionCard = ({ section }: Props) => {
           </Button>
           <form action={deleteSectionAction}>
             <input name="sectionId" value={section.id} type="hidden" />
-            <Button disabled={section.lessons.length > 0} className="w-fit" variant="outline">
+            <Button
+              disabled={section.lessons.length > 0}
+              className="w-fit"
+              variant="outline"
+            >
               Delete
             </Button>
           </form>
@@ -59,7 +68,7 @@ export const SectionCard = ({ section }: Props) => {
         </div>
       </section>
 
-      <section className="space-y-2 bg-slate-50 p-2">
+      <section className="space-y-2 bg-slate-50 p-2 rounded-xl">
         {section.lessons.map((lesson) => {
           return <LessonCard key={lesson.id} lesson={lesson} />;
         })}

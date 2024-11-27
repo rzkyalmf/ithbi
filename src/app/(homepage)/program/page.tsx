@@ -1,7 +1,13 @@
 import Image from "next/image";
 import React from "react";
 
-import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
 
 interface CarouselItemData {
   id: number;
@@ -10,11 +16,33 @@ interface CarouselItemData {
 }
 
 const carouselData: CarouselItemData[] = [
-  { id: 1, image: "https://pub-b3bbd8acb34f4f18b3140380b48ae46d.r2.dev/program/22.jpg", alt: "picture" },
-  { id: 2, image: "https://pub-b3bbd8acb34f4f18b3140380b48ae46d.r2.dev/program/brosur2.png", alt: "picture" },
-  { id: 3, image: "https://pub-b3bbd8acb34f4f18b3140380b48ae46d.r2.dev/program/brosur3.png", alt: "picture" },
-  { id: 4, image: "https://pub-b3bbd8acb34f4f18b3140380b48ae46d.r2.dev/program/44.jpg", alt: "picture" },
-  { id: 5, image: "https://pub-b3bbd8acb34f4f18b3140380b48ae46d.r2.dev/program/11.jpg", alt: "picture" },
+  {
+    id: 1,
+    image: "https://pub-b3bbd8acb34f4f18b3140380b48ae46d.r2.dev/program/22.jpg",
+    alt: "picture",
+  },
+  {
+    id: 2,
+    image:
+      "https://pub-b3bbd8acb34f4f18b3140380b48ae46d.r2.dev/program/brosur2.png",
+    alt: "picture",
+  },
+  {
+    id: 3,
+    image:
+      "https://pub-b3bbd8acb34f4f18b3140380b48ae46d.r2.dev/program/brosur3.png",
+    alt: "picture",
+  },
+  {
+    id: 4,
+    image: "https://pub-b3bbd8acb34f4f18b3140380b48ae46d.r2.dev/program/44.jpg",
+    alt: "picture",
+  },
+  {
+    id: 5,
+    image: "https://pub-b3bbd8acb34f4f18b3140380b48ae46d.r2.dev/program/11.jpg",
+    alt: "picture",
+  },
 ];
 
 export default function Page() {
@@ -23,16 +51,22 @@ export default function Page() {
       <div className="mx-auto my-12 flex flex-col items-start gap-36 px-10 sm:px-10 lg:flex-row lg:gap-10 lg:px-10 xl:px-0">
         <div className="items-center justify-start space-y-8 lg:w-1/2 lg:pr-8">
           <h2 className="font-medium leading-tight tracking-tight text-emerald-900">
-            Solusi tepat sehatkan sakitmu, sayangi anak dan keluarga di masa sekarang maupun yang akan datang
+            Solusi tepat sehatkan sakitmu, sayangi anak dan keluarga di masa
+            sekarang maupun yang akan datang
           </h2>
           <h5 className="text-justify indent-14">
-            &quot;Jangan hanya bisa mengantar anak istri kerumah sakit saja, Dorong kursi roda bayar mengikuti alur yg tak tentu arah
-            tanpa kepastian Belajar sama sama ilmu Kesehatan sederhana sehat dari rumah hanya dengan merubah Pola Makan Agar kualitas
-            hidup lebih baik untuk beribadah & kumpul bersama Anak Cucu di hari tua yg produktif nantinya, Belajar sekali seumur hidup
-            Kesehatan Pola Makan Panas dan Dingin dengan Ust Abdurrahman Dani & Team Kupas tuntas Sehat dengan Pola Makan dan Diagnosa
-            Karakter Panas dan Dingin Bonus Bimbingan dan Mentoring Group Selama 3 Bulan dan Bonus Zoom Privat khusus dengan team jika
-            tidak di mengerti atau belum bisa di terapkan ilmunya Gratis Kelas Offline di Kantor ITHBI menyesuaikan waktu pengajar
-            Daftar kan diri anda sekarang juga, Kuota Terbatas.&quot;
+            &quot;Jangan hanya bisa mengantar anak istri kerumah sakit saja,
+            Dorong kursi roda bayar mengikuti alur yg tak tentu arah tanpa
+            kepastian Belajar sama sama ilmu Kesehatan sederhana sehat dari
+            rumah hanya dengan merubah Pola Makan Agar kualitas hidup lebih baik
+            untuk beribadah & kumpul bersama Anak Cucu di hari tua yg produktif
+            nantinya, Belajar sekali seumur hidup Kesehatan Pola Makan Panas dan
+            Dingin dengan Ust Abdurrahman Dani & Team Kupas tuntas Sehat dengan
+            Pola Makan dan Diagnosa Karakter Panas dan Dingin Bonus Bimbingan
+            dan Mentoring Group Selama 3 Bulan dan Bonus Zoom Privat khusus
+            dengan team jika tidak di mengerti atau belum bisa di terapkan
+            ilmunya Gratis Kelas Offline di Kantor ITHBI menyesuaikan waktu
+            pengajar Daftar kan diri anda sekarang juga, Kuota Terbatas.&quot;
           </h5>
 
           <div className="space-y-4">
@@ -51,7 +85,10 @@ export default function Page() {
               <h5 className="lg:text-justify">
                 <ul className="list-disc pl-6">
                   <li>Merangkum Video Ustadz Abdurahman Dani</li>
-                  <li>Kumpulkan 10 Data Pasien Dari Berbagai Kasus (5 Pasien Unsur Dingin & 5 Pasien Unsur Panas)</li>
+                  <li>
+                    Kumpulkan 10 Data Pasien Dari Berbagai Kasus (5 Pasien Unsur
+                    Dingin & 5 Pasien Unsur Panas)
+                  </li>
                 </ul>
               </h5>
             </div>
@@ -77,8 +114,14 @@ export default function Page() {
               <h5 className="font-bold">5. Tugas Advance :</h5>
               <h5 className="lg:text-justify">
                 <ul className="list-disc pl-6">
-                  <li>Kumpulkan 10 Data Pasien Dari Berbagai Kasus (5 Pasien Unsur Dingin & 5 Pasien Unsur Panas)</li>
-                  <li>Membantu Mengajar Privat Mentoring (Syarat Mengikuti Ujian & Menjadi Trainer)</li>
+                  <li>
+                    Kumpulkan 10 Data Pasien Dari Berbagai Kasus (5 Pasien Unsur
+                    Dingin & 5 Pasien Unsur Panas)
+                  </li>
+                  <li>
+                    Membantu Mengajar Privat Mentoring (Syarat Mengikuti Ujian &
+                    Menjadi Trainer)
+                  </li>
                 </ul>
               </h5>
             </div>
@@ -99,7 +142,8 @@ export default function Page() {
                 </ul>
               </h5>
               <h5 className="pt-2 text-sm font-light italic">
-                *Bisa dicicil selama 4 Bulan dengan cicilan biaya bulanan hanya 500.000
+                *Bisa dicicil selama 4 Bulan dengan cicilan biaya bulanan hanya
+                500.000
               </h5>
             </div>
           </div>
@@ -109,7 +153,13 @@ export default function Page() {
           <CarouselContent>
             {carouselData.map((item) => (
               <CarouselItem key={item.id} className="flex justify-center">
-                <Image width={500} height={500} src={item.image} alt={item.alt} className="w-10/12 rounded-xl" />
+                <Image
+                  width={500}
+                  height={500}
+                  src={item.image}
+                  alt={item.alt}
+                  className="w-10/12 rounded-xl"
+                />
               </CarouselItem>
             ))}
           </CarouselContent>

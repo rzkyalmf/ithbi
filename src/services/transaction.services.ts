@@ -4,7 +4,11 @@ import { CourseServices } from "./course.services";
 import { UserServices } from "./user.services";
 
 export const TransactionServices = {
-  createTransaction: async (courseId: string, userId: string, amount: number) => {
+  createTransaction: async (
+    courseId: string,
+    userId: string,
+    amount: number
+  ) => {
     const courseDetail = await CourseServices.getCourseDetail(courseId);
 
     if (!courseDetail) {
@@ -54,6 +58,19 @@ export const TransactionServices = {
     });
 
     return transaction;
+  },
+
+  freeTransaction: async (courseId: string, userId: string, amount: number) => {
+    await prisma.transaction.create({
+      data: {
+        courseId: courseId,
+        userId: userId,
+        amount,
+        paymentStatus: "PAID",
+        paymentLink: "",
+        transactionId: "",
+      },
+    });
   },
 
   getTransactions: async () => {
@@ -110,7 +127,10 @@ export const TransactionServices = {
       },
     });
 
-    const totalAmount = currentRevenues.reduce((currValue, trx) => trx.amount + currValue, 0);
+    const totalAmount = currentRevenues.reduce(
+      (currValue, trx) => trx.amount + currValue,
+      0
+    );
 
     return totalAmount;
   },

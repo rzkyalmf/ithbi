@@ -1,7 +1,13 @@
 import Image from "next/image";
 import React from "react";
 
-import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
 
 // Perbarui interface untuk menggunakan StaticImageData
 interface CarouselItemData {
@@ -12,32 +18,132 @@ interface CarouselItemData {
 
 // Data contoh untuk carousel
 const carouselData1: CarouselItemData[] = [
-  { id: 1, image: "https://pub-b3bbd8acb34f4f18b3140380b48ae46d.r2.dev/persyaratan/syarat1.jpg", alt: "picture" },
-  { id: 2, image: "https://pub-b3bbd8acb34f4f18b3140380b48ae46d.r2.dev/persyaratan/syarat2.jpg", alt: "picture" },
+  {
+    id: 1,
+    image:
+      "https://pub-b3bbd8acb34f4f18b3140380b48ae46d.r2.dev/persyaratan/syarat1.jpg",
+    alt: "picture",
+  },
+  {
+    id: 2,
+    image:
+      "https://pub-b3bbd8acb34f4f18b3140380b48ae46d.r2.dev/persyaratan/syarat2.jpg",
+    alt: "picture",
+  },
 ];
 
 const carouselData2: CarouselItemData[] = [
-  { id: 1, image: "https://pub-b3bbd8acb34f4f18b3140380b48ae46d.r2.dev/cara-menggunakan/cara-1.jpg", alt: "picture" },
-  { id: 2, image: "https://pub-b3bbd8acb34f4f18b3140380b48ae46d.r2.dev/cara-menggunakan/cara-2.jpg", alt: "picture" },
-  { id: 3, image: "https://pub-b3bbd8acb34f4f18b3140380b48ae46d.r2.dev/cara-menggunakan/cara-3.jpg", alt: "picture" },
-  { id: 4, image: "https://pub-b3bbd8acb34f4f18b3140380b48ae46d.r2.dev/cara-menggunakan/cara-4.jpg", alt: "picture" },
-  { id: 5, image: "https://pub-b3bbd8acb34f4f18b3140380b48ae46d.r2.dev/cara-menggunakan/cara-5.jpg", alt: "picture" },
-  { id: 6, image: "https://pub-b3bbd8acb34f4f18b3140380b48ae46d.r2.dev/cara-menggunakan/cara-6.jpg", alt: "picture" },
-  { id: 7, image: "https://pub-b3bbd8acb34f4f18b3140380b48ae46d.r2.dev/cara-menggunakan/cara-7.jpg", alt: "picture" },
-  { id: 8, image: "https://pub-b3bbd8acb34f4f18b3140380b48ae46d.r2.dev/cara-menggunakan/cara-8.jpg", alt: "picture" },
-  { id: 9, image: "https://pub-b3bbd8acb34f4f18b3140380b48ae46d.r2.dev/cara-menggunakan/cara-9.jpg", alt: "picture" },
-  { id: 10, image: "https://pub-b3bbd8acb34f4f18b3140380b48ae46d.r2.dev/cara-menggunakan/cara-10.jpg", alt: "picture" },
-  { id: 11, image: "https://pub-b3bbd8acb34f4f18b3140380b48ae46d.r2.dev/cara-menggunakan/cara-11.jpg", alt: "picture" },
-  { id: 12, image: "https://pub-b3bbd8acb34f4f18b3140380b48ae46d.r2.dev/cara-menggunakan/cara-12.jpg", alt: "picture" },
+  {
+    id: 1,
+    image:
+      "https://pub-b3bbd8acb34f4f18b3140380b48ae46d.r2.dev/cara-menggunakan/cara-1.jpg",
+    alt: "picture",
+  },
+  {
+    id: 2,
+    image:
+      "https://pub-b3bbd8acb34f4f18b3140380b48ae46d.r2.dev/cara-menggunakan/cara-2.jpg",
+    alt: "picture",
+  },
+  {
+    id: 3,
+    image:
+      "https://pub-b3bbd8acb34f4f18b3140380b48ae46d.r2.dev/cara-menggunakan/cara-3.jpg",
+    alt: "picture",
+  },
+  {
+    id: 4,
+    image:
+      "https://pub-b3bbd8acb34f4f18b3140380b48ae46d.r2.dev/cara-menggunakan/cara-4.jpg",
+    alt: "picture",
+  },
+  {
+    id: 5,
+    image:
+      "https://pub-b3bbd8acb34f4f18b3140380b48ae46d.r2.dev/cara-menggunakan/cara-5.jpg",
+    alt: "picture",
+  },
+  {
+    id: 6,
+    image:
+      "https://pub-b3bbd8acb34f4f18b3140380b48ae46d.r2.dev/cara-menggunakan/cara-6.jpg",
+    alt: "picture",
+  },
+  {
+    id: 7,
+    image:
+      "https://pub-b3bbd8acb34f4f18b3140380b48ae46d.r2.dev/cara-menggunakan/cara-7.jpg",
+    alt: "picture",
+  },
+  {
+    id: 8,
+    image:
+      "https://pub-b3bbd8acb34f4f18b3140380b48ae46d.r2.dev/cara-menggunakan/cara-8.jpg",
+    alt: "picture",
+  },
+  {
+    id: 9,
+    image:
+      "https://pub-b3bbd8acb34f4f18b3140380b48ae46d.r2.dev/cara-menggunakan/cara-9.jpg",
+    alt: "picture",
+  },
+  {
+    id: 10,
+    image:
+      "https://pub-b3bbd8acb34f4f18b3140380b48ae46d.r2.dev/cara-menggunakan/cara-10.jpg",
+    alt: "picture",
+  },
+  {
+    id: 11,
+    image:
+      "https://pub-b3bbd8acb34f4f18b3140380b48ae46d.r2.dev/cara-menggunakan/cara-11.jpg",
+    alt: "picture",
+  },
+  {
+    id: 12,
+    image:
+      "https://pub-b3bbd8acb34f4f18b3140380b48ae46d.r2.dev/cara-menggunakan/cara-12.jpg",
+    alt: "picture",
+  },
 ];
 
 const carouselData3: CarouselItemData[] = [
-  { id: 1, image: "https://pub-b3bbd8acb34f4f18b3140380b48ae46d.r2.dev/cara-install/install-1.jpg", alt: "picture" },
-  { id: 2, image: "https://pub-b3bbd8acb34f4f18b3140380b48ae46d.r2.dev/cara-install/install-2.jpg", alt: "picture" },
-  { id: 3, image: "https://pub-b3bbd8acb34f4f18b3140380b48ae46d.r2.dev/cara-install/install-3.jpg", alt: "picture" },
-  { id: 4, image: "https://pub-b3bbd8acb34f4f18b3140380b48ae46d.r2.dev/cara-install/install-4.jpg", alt: "picture" },
-  { id: 5, image: "https://pub-b3bbd8acb34f4f18b3140380b48ae46d.r2.dev/cara-install/install-5.jpg", alt: "picture" },
-  { id: 6, image: "https://pub-b3bbd8acb34f4f18b3140380b48ae46d.r2.dev/cara-install/install-6.jpg", alt: "picture" },
+  {
+    id: 1,
+    image:
+      "https://pub-b3bbd8acb34f4f18b3140380b48ae46d.r2.dev/cara-install/install-1.jpg",
+    alt: "picture",
+  },
+  {
+    id: 2,
+    image:
+      "https://pub-b3bbd8acb34f4f18b3140380b48ae46d.r2.dev/cara-install/install-2.jpg",
+    alt: "picture",
+  },
+  {
+    id: 3,
+    image:
+      "https://pub-b3bbd8acb34f4f18b3140380b48ae46d.r2.dev/cara-install/install-3.jpg",
+    alt: "picture",
+  },
+  {
+    id: 4,
+    image:
+      "https://pub-b3bbd8acb34f4f18b3140380b48ae46d.r2.dev/cara-install/install-4.jpg",
+    alt: "picture",
+  },
+  {
+    id: 5,
+    image:
+      "https://pub-b3bbd8acb34f4f18b3140380b48ae46d.r2.dev/cara-install/install-5.jpg",
+    alt: "picture",
+  },
+  {
+    id: 6,
+    image:
+      "https://pub-b3bbd8acb34f4f18b3140380b48ae46d.r2.dev/cara-install/install-6.jpg",
+    alt: "picture",
+  },
 ];
 
 export const Pictures: React.FC = () => {
@@ -58,7 +164,13 @@ export const Pictures: React.FC = () => {
           <CarouselContent>
             {carouselData1.map((item) => (
               <CarouselItem key={item.id} className="flex justify-center">
-                <Image width={500} height={500} src={item.image} alt={item.alt} className="w-10/12 rounded-xl" />
+                <Image
+                  width={500}
+                  height={500}
+                  src={item.image}
+                  alt={item.alt}
+                  className="w-10/12 rounded-xl"
+                />
               </CarouselItem>
             ))}
           </CarouselContent>
@@ -96,8 +208,17 @@ export const Pictures: React.FC = () => {
 
           <CarouselContent>
             {carouselData2.map((item) => (
-              <CarouselItem key={item.id} className="flex items-center justify-center">
-                <Image width={500} height={500} src={item.image} alt={item.alt} className="w-10/12 rounded-xl" />
+              <CarouselItem
+                key={item.id}
+                className="flex items-center justify-center"
+              >
+                <Image
+                  width={500}
+                  height={500}
+                  src={item.image}
+                  alt={item.alt}
+                  className="w-10/12 rounded-xl"
+                />
               </CarouselItem>
             ))}
           </CarouselContent>
@@ -136,7 +257,13 @@ export const Pictures: React.FC = () => {
           <CarouselContent>
             {carouselData3.map((item) => (
               <CarouselItem key={item.id} className="flex justify-center">
-                <Image width={500} height={500} src={item.image} alt={item.alt} className="w-10/12 rounded-xl" />
+                <Image
+                  width={500}
+                  height={500}
+                  src={item.image}
+                  alt={item.alt}
+                  className="w-10/12 rounded-xl"
+                />
               </CarouselItem>
             ))}
           </CarouselContent>

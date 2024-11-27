@@ -17,7 +17,15 @@ const formatTime = (dateTimeString: Date): string => {
 
 const formatDay = (dateTimeString: Date): string => {
   const date = new Date(dateTimeString);
-  const days = ["Minggu", "Senin", "Selasa", "Rabu", "Kamis", "Jum'at", "Sabtu"];
+  const days = [
+    "Minggu",
+    "Senin",
+    "Selasa",
+    "Rabu",
+    "Kamis",
+    "Jum'at",
+    "Sabtu",
+  ];
   return days[date.getDay()];
 };
 

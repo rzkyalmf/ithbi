@@ -9,7 +9,8 @@ const contentData = [
   {
     number: "02",
     title: "Pengajar Berpengalaman",
-    description: "Ust Abdurahman Dani dan Team memiliki pengalaman luas dalam kesehatan Arab Klasik & Thibbun Nabawi",
+    description:
+      "Ust Abdurahman Dani dan Team memiliki pengalaman luas dalam kesehatan Arab Klasik & Thibbun Nabawi",
   },
   {
     number: "03",
@@ -19,7 +20,8 @@ const contentData = [
   {
     number: "04",
     title: "Kelas Interaktif",
-    description: "Interaksi langsung dengan pengajar dalam sesi online & Offline",
+    description:
+      "Interaksi langsung dengan pengajar dalam sesi online & Offline",
   },
   {
     number: "05",
@@ -34,7 +36,9 @@ export const Features = () => {
       <div className="flex flex-col items-center gap-10 px-10 lg:flex-row lg:items-start lg:px-5">
         <div className="w-full space-y-5 text-center lg:w-1/2 lg:text-start">
           <h1 className="text-5xl text-green-600 lg:text-6xl">
-            <span className="rounded-lg border-b-2 bg-green-100 px-5 shadow-sm">5 Alasan Utama </span>
+            <span className="rounded-lg border-b-2 bg-green-100 px-5 shadow-sm">
+              5 Alasan Utama{" "}
+            </span>
           </h1>
           <h2>Kenapa harus belajar di Akademi Ath Thibbul Badil ?</h2>
         </div>
@@ -43,12 +47,16 @@ export const Features = () => {
           {contentData.map((item, index) => (
             <div className="mb-6 flex items-start gap-4" key={index}>
               <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-yellow-100">
-                <span className="text-sm font-semibold text-yellow-600">{item.number}</span>
+                <span className="text-sm font-semibold text-yellow-600">
+                  {item.number}
+                </span>
               </div>
 
               <div className="mb-5 flex-grow">
                 <h4 className="text-black">{item.title}</h4>
-                <p className="text-base font-normal tracking-normal text-gray-600">{item.description}</p>
+                <p className="text-base font-normal tracking-normal text-gray-600">
+                  {item.description}
+                </p>
               </div>
             </div>
           ))}

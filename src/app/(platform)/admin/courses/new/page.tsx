@@ -31,21 +31,46 @@ export default function Page() {
             className="py-6 text-base font-normal text-gray-500 placeholder:text-gray-300"
             name="title"
             placeholder="Course title"
+            maxLength={50}
+            minLength={3}
+            required
           />
           <Input
             className="py-6 text-base font-normal text-gray-500 placeholder:text-gray-300"
             name="description"
             placeholder="Course descriptions"
+            maxLength={150}
+            minLength={3}
+            required
           />
           <Input
             className="py-6 text-base font-normal text-gray-500 placeholder:text-gray-300"
             name="price"
             placeholder="Course prices"
+            type="text"
+            pattern="[0-9]*"
+            maxLength={10}
+            minLength={1}
+            inputMode="numeric"
+            required
           />
-          <FileInput name="coverImage" placeholder="Choose the course cover" onChange={handleCreatePreview} />
-          {preview ? <Image src={preview} width={800} height={300} alt="Course cover" className="rounded-lg" /> : null}
+          <FileInput
+            name="coverImage"
+            placeholder="Wajib ukuran 1280x720px"
+            accept="image/png,image/jpeg"
+            onChange={handleCreatePreview}
+          />
+          {preview ? (
+            <Image
+              src={preview}
+              width={800}
+              height={300}
+              alt="Course cover"
+              className="rounded-lg"
+            />
+          ) : null}
 
-          <Button>Save Draft</Button>
+          <Button>Simpan Draft</Button>
         </form>
       </section>
     </main>

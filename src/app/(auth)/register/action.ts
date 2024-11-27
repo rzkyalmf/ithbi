@@ -9,13 +9,19 @@ import { EmailServices } from "@/services/email.services";
 import { UserServices } from "@/services/user.services";
 
 const registrationSchema = z.object({
-  name: z.string().min(3, { message: "Nama tidak boleh kosong" }).max(18, { message: "Nama terlalu panjang" }),
+  name: z
+    .string()
+    .min(3, { message: "Nama tidak boleh kosong" })
+    .max(18, { message: "Nama terlalu panjang" }),
   email: z.string().email({ message: "Email tidak boleh kosong" }),
   phoneNumber: z
     .string({ message: "Masukan nomor HP" })
     .min(8, { message: "No HP tidak sesuai" })
     .max(18, { message: "No HP terlalu panjang" }),
-  password: z.string().min(8, { message: "Password terlalu pendek" }).max(18, { message: "Password terlalu panjang" }),
+  password: z
+    .string()
+    .min(8, { message: "Password terlalu pendek" })
+    .max(18, { message: "Password terlalu panjang" }),
 });
 
 export async function registrationAction(_: unknown, formData: FormData) {
@@ -56,7 +62,13 @@ export async function registrationAction(_: unknown, formData: FormData) {
   }
 
   const hanshedPassword = await bcrypt.hash(password, 13);
-  const user = await UserServices.createUser({ name, email, phoneNumber, password: hanshedPassword, isVerified: false });
+  const user = await UserServices.createUser({
+    name,
+    email,
+    phoneNumber,
+    password: hanshedPassword,
+    isVerified: false,
+  });
   const verificationCode = generateVerificationCode();
 
   await UserServices.createVerificationCode(user.id, verificationCode);

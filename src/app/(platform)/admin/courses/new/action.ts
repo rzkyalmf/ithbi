@@ -19,7 +19,12 @@ export async function createCourseAction(_: unknown, formData: FormData) {
   const price = Number(formData.get("price"));
   const coverImage = formData.get("coverImage");
 
-  const validation = courseSchema.safeParse({ title, description, price, coverImage });
+  const validation = courseSchema.safeParse({
+    title,
+    description,
+    price,
+    coverImage,
+  });
 
   if (!validation.success) {
     return {

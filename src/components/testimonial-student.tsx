@@ -2,7 +2,13 @@ import { Star } from "lucide-react";
 import Image from "next/image";
 import React from "react";
 
-import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
 
 interface TestimonialData {
   id: number;
@@ -28,7 +34,9 @@ export const TestimonialStudent: React.FC = () => {
     <div className="py-16">
       <div className="mx-auto flex max-w-7xl flex-col items-center gap-10">
         <h1 className="text-5xl text-green-600">
-          <span className="rounded-lg border-b-2 bg-green-100 px-5 shadow-sm">Testimoni Alumni</span>
+          <span className="rounded-lg border-b-2 bg-green-100 px-5 shadow-sm">
+            Testimoni Alumni
+          </span>
         </h1>
 
         <div className="w-full px-10 lg:w-8/12">
@@ -39,19 +47,32 @@ export const TestimonialStudent: React.FC = () => {
                   <div className="flex w-full flex-col items-center rounded-xl p-6">
                     <div className="mb-10 flex">
                       {Array.from({ length: 5 }).map((_, i) => (
-                        <Star key={i} className="h-8 w-8 fill-current text-yellow-400" />
+                        <Star
+                          key={i}
+                          className="h-8 w-8 fill-current text-yellow-400"
+                        />
                       ))}
                     </div>
 
-                    <h4 className="mb-10 text-center">&quot;{item.content}&quot;</h4>
+                    <h4 className="mb-10 text-center">
+                      &quot;{item.content}&quot;
+                    </h4>
 
                     <div className="flex items-center">
                       <div className="mr-4 h-16 w-16 overflow-hidden rounded-xl">
-                        <Image src={item.avatar} alt={item.name} width={48} height={48} className="h-full w-full object-contain" />
+                        <Image
+                          src={item.avatar}
+                          alt={item.name}
+                          width={48}
+                          height={48}
+                          className="h-full w-full object-contain"
+                        />
                       </div>
                       <div className="mr-8 text-left">
                         <p className="font-semibold">{item.name}</p>
-                        <p className="text-xs text-gray-600">{item.followers}</p>
+                        <p className="text-xs text-gray-600">
+                          {item.followers}
+                        </p>
                       </div>
                     </div>
                   </div>

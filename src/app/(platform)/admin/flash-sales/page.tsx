@@ -1,5 +1,6 @@
 import Image from "next/image";
 
+import { TruncatedText } from "@/components/isomorphic/truncated-text";
 import { Button } from "@/components/ui/button";
 import { currencyFormat } from "@/libs/currency-format";
 import { CourseServices } from "@/services/course.services";
@@ -16,10 +17,13 @@ export default async function Page() {
     <main className="m-auto max-w-xl space-y-4 py-12">
       <h3>Flash Sale</h3>
       <SaleForm courses={courses} />
-      <section>
+      <section className="space-y-4">
         {flashSales.map((flashsale) => {
           return (
-            <div key={flashsale.id} className="flex items-center gap-6 rounded-xl border bg-white p-4">
+            <div
+              key={flashsale.id}
+              className="flex items-center gap-6 rounded-xl border bg-white p-4"
+            >
               <div>
                 <Image
                   alt={flashsale.course.title}
@@ -30,7 +34,9 @@ export default async function Page() {
                 />
               </div>
               <div className="space-y-2">
-                <h4>{flashsale.course.title}</h4>
+                <h4>
+                  <TruncatedText content={flashsale.course.title} />
+                </h4>
                 <p>{currencyFormat(flashsale.newAmount)}</p>
                 <form action={deleteSaleAction}>
                   <input name="saleId" value={flashsale.id} type="hidden" />

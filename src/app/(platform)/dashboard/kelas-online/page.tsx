@@ -4,6 +4,7 @@ import { redirect } from "next/navigation";
 import React from "react";
 
 import { Card } from "@/components/isomorphic/card";
+import { TruncatedText } from "@/components/isomorphic/truncated-text";
 import serverAuth from "@/libs/server.auth";
 import { CourseServices } from "@/services/course.services";
 
@@ -19,14 +20,18 @@ export default async function Page() {
   return (
     <main className="m-auto max-w-2xl space-y-6 py-12">
       <section className="space-y-1">
-        <h3>My Courses</h3>
-        <p className="font-medium text-slate-400">All courses you enrolled</p>
+        <h3>Kelas Online</h3>
+        <p className="text-slate-500 font-normal">Kelas yang telah anda beli</p>
       </section>
       <section className="space-y-6">
         {userCourses.map(({ course }) => {
           return (
-            <Link key={course.id} href={`/dashboard/kelas-online/${course.slug}`} className="block">
-              <Card className="flex cursor-pointer items-center gap-6 space-y-0 rounded-xl border bg-white transition duration-200 hover:border-indigo-600 hover:shadow-md">
+            <Link
+              key={course.id}
+              href={`/dashboard/kelas-online/${course.slug}`}
+              className="block"
+            >
+              <Card className="flex cursor-pointer items-center p-4 gap-6 space-y-0 rounded-xl border bg-white transition duration-200 hover:border-yellow-400 hover:shadow-md">
                 <Image
                   src={`${process.env.R2_PUBLIC_URL}/ithbi-lms/courses/${course.id}/${course.coverImage}`}
                   alt={course.title}
@@ -34,9 +39,16 @@ export default async function Page() {
                   height={140}
                   className="rounded-lg"
                 />
-                <section>
-                  <h4>{course.title}</h4>
-                  <p>{course.description}</p>
+                <section className="space-y-1">
+                  <h3>
+                    <TruncatedText content={course.title} />
+                  </h3>
+                  <p className="font-normal">
+                    <TruncatedText
+                      content={course.description}
+                      maxLength={100}
+                    />
+                  </p>
                 </section>
               </Card>
             </Link>

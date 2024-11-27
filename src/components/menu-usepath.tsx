@@ -3,7 +3,15 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
-export const Menu = ({ href, icon, children }: { href: string; icon: React.ReactNode; children: React.ReactNode }) => {
+export const Menu = ({
+  href,
+  icon,
+  children,
+}: {
+  href: string;
+  icon: React.ReactNode;
+  children: React.ReactNode;
+}) => {
   const pathname = usePathname();
 
   const getLinkClassName = (path: string) => {
@@ -11,7 +19,9 @@ export const Menu = ({ href, icon, children }: { href: string; icon: React.React
     const active = "bg-yellow-400 text-black";
     const inactive = "text-gray-500 hover:bg-yellow-400 hover:text-black";
 
-    return `${base} ${pathname === path ? active : inactive}`;
+    const isActive = pathname.startsWith(path);
+
+    return `${base} ${isActive ? active : inactive}`;
   };
   return (
     <Link href={href} className={getLinkClassName(href)}>

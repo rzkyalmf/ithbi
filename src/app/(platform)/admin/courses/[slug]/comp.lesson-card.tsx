@@ -23,7 +23,12 @@ export const LessonCard = ({ lesson }: Props) => {
     <Card className="p-2">
       <section className="flex items-center justify-between">
         <div className="ml-2 flex items-center gap-2">
-          <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="1em"
+            height="1em"
+            viewBox="0 0 24 24"
+          >
             <path
               fill="none"
               stroke="currentColor"
@@ -38,20 +43,20 @@ export const LessonCard = ({ lesson }: Props) => {
         </div>
         <div className="flex gap-2">
           {!lesson.isPreview ? (
-                  <form action={markAsPreviewAction}>
-                    <input name="lessonId" value={lesson.id} type="hidden" />
-                    <Button size="sm" variant="secondary" className="w-fit">
-                      Mark as preview
-                    </Button>
-                  </form>
-                ) : (
-                  <form action={unmarkAsPreviewAction}>
-                    <input name="lessonId" value={lesson.id} type="hidden" />
-                    <Button size="sm" variant="secondary" className="w-fit">
-                      Unmark as preview
-                    </Button>
-                  </form>
-                )}
+            <form action={markAsPreviewAction}>
+              <input name="lessonId" value={lesson.id} type="hidden" />
+              <Button size="sm" variant="secondary" className="w-fit">
+                Mark as preview
+              </Button>
+            </form>
+          ) : (
+            <form action={unmarkAsPreviewAction}>
+              <input name="lessonId" value={lesson.id} type="hidden" />
+              <Button size="sm" variant="secondary" className="w-fit">
+                Unmark as preview
+              </Button>
+            </form>
+          )}
           <Button
             onClick={() => {
               setOpenModal(true);

@@ -12,7 +12,12 @@ export const BanUser = ({ userId }: { userId: string }) => {
   return (
     <form action={formAction}>
       <input name="userId" value={userId} type="hidden" />
-      <Button variant="destructive" disabled={pending} size="sm" className="w-fit">
+      <Button
+        variant="destructive"
+        disabled={pending}
+        size="sm"
+        className="w-fit"
+      >
         Ban
       </Button>
     </form>

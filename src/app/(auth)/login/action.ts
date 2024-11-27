@@ -46,7 +46,8 @@ export async function loginAction(state: unknown, formData: FormData) {
   if (!user.isVerified) {
     return {
       status: "error",
-      message: "Akun anda belum diverifikasi, Silahkan cek email anda untuk verifikasi!",
+      message:
+        "Akun anda belum diverifikasi, Silahkan cek email anda untuk verifikasi!",
       data: {
         email,
         password,
@@ -97,5 +98,5 @@ export async function loginAction(state: unknown, formData: FormData) {
     path: "/",
   });
 
-  redirect("/dashboard");
+  redirect("/dashboard/kelas-online");
 }

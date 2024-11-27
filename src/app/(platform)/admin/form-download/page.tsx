@@ -10,8 +10,12 @@ export default async function Page() {
   return (
     <>
       <section className="pb-8 text-center">
-        <h2 className="gradient-ns font-philosopher text-3xl font-bold tracking-tight">Data Formulir Download Apps</h2>
-        <p className="font-light tracking-normal text-gray-500">data-data yang download</p>
+        <h2 className="gradient-ns font-philosopher text-3xl font-bold tracking-tight">
+          Data Formulir Download Apps
+        </h2>
+        <p className="font-light tracking-normal text-gray-500">
+          data-data yang download
+        </p>
       </section>
       <table className="min-w-full bg-white">
         <thead className="border-y border-slate-200 bg-white text-sm font-semibold tracking-normal text-gray-700 sm:text-base">
@@ -26,7 +30,10 @@ export default async function Page() {
         <tbody>
           {form.map((data, index) => {
             return (
-              <tr key={data.id} className="border-b border-slate-200 bg-white text-center font-light tracking-normal text-gray-500">
+              <tr
+                key={data.id}
+                className="border-b border-slate-200 bg-white text-center font-light tracking-normal text-gray-500"
+              >
                 <td>{index + 1}</td>
                 <td>{data.name}</td>
                 <td>{data.email}</td>

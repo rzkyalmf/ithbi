@@ -13,12 +13,20 @@ interface Props extends TInput, React.ComponentPropsWithRef<"input"> {}
 interface SelectProps extends TInput, React.ComponentPropsWithRef<"select"> {}
 
 export const Input = (props: Props) => {
-  return <input {...props} className={twMerge(style({ ...props }), props.className)} />;
+  return (
+    <input
+      {...props}
+      className={twMerge(style({ ...props }), props.className)}
+    />
+  );
 };
 
 export const Select = (props: SelectProps) => {
   return (
-    <select {...props} className={twMerge(style({ ...props }), props.className)}>
+    <select
+      {...props}
+      className={twMerge(style({ ...props }), props.className)}
+    >
       {props.children}
     </select>
   );

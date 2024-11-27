@@ -11,8 +11,12 @@ interface UploadFileArgs {
 export const S3Services = {
   uploadFile: async (args: UploadFileArgs) => {
     try {
-      const buffer = args.body instanceof File ? Buffer.from(await args.body.arrayBuffer()) : args.body;
-      const contentType = args.body instanceof File ? "image/png" : "application/pdf";
+      const buffer =
+        args.body instanceof File
+          ? Buffer.from(await args.body.arrayBuffer())
+          : args.body;
+      const contentType =
+        args.body instanceof File ? "image/png" : "application/pdf";
 
       const data = await s3Client.send(
         new PutObjectCommand({
@@ -30,7 +34,9 @@ export const S3Services = {
     }
   },
 
-  deleteFile: async (args: UploadFileArgs | { key: string; folder: string }) => {
+  deleteFile: async (
+    args: UploadFileArgs | { key: string; folder: string },
+  ) => {
     try {
       const data = await s3Client.send(
         new DeleteObjectCommand({

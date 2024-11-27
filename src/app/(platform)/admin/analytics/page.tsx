@@ -2,6 +2,7 @@ import React from "react";
 
 import { Card } from "@/components/isomorphic/card";
 import { currencyFormat } from "@/libs/currency-format";
+import { formatDate } from "@/libs/dates-format";
 import { TransactionServices } from "@/services/transaction.services";
 import prisma from "@/utils/prisma";
 
@@ -15,7 +16,7 @@ export default async function Page() {
     <main className="space-y-4 py-12">
       <section className="space-y-2 px-12">
         <h3>Analytics</h3>
-        <p>Here is all time analytics</p>
+        <p className="text-slate-500 font-normal">Here is all time analytics</p>
       </section>
       <section className="grid grid-cols-3 gap-4 px-12">
         <Card>
@@ -35,7 +36,8 @@ export default async function Page() {
         <table className="w-full table-auto">
           <thead className="border-y border-slate-200 bg-white text-left">
             <tr>
-              <th className="py-5 pl-12">Course Title</th>
+              <th className="py-5 pl-12">No</th>
+              <th>Course Title</th>
               <th>Student Name</th>
               <th>Amount</th>
               <th>Status</th>
@@ -43,14 +45,28 @@ export default async function Page() {
             </tr>
           </thead>
           <tbody>
-            {transactions.map((transaction) => {
+            {transactions.map((transaction, index) => {
               return (
-                <tr key={transaction.id}>
-                  <td className="py-5 pl-12">{transaction.course.title}</td>
+                <tr
+                  className="border-b text-slate-500 font-normal"
+                  key={transaction.id}
+                >
+                  <td className="py-5 pl-12">{index + 1}</td>
+                  <td>{transaction.course.title}</td>
                   <td>{transaction.user.name}</td>
                   <td>{currencyFormat(transaction.amount)}</td>
-                  <td>{transaction.paymentStatus}</td>
-                  <td>{transaction.createdAt.toDateString()}</td>
+                  <td>
+                    {transaction.paymentStatus === "UNPAID" ? (
+                      <div className="msg w-fit  msg-error text-sm font-normal">
+                        {transaction.paymentStatus}
+                      </div>
+                    ) : (
+                      <div className="msg w-fit msg-success text-sm font-normal">
+                        {transaction.paymentStatus}
+                      </div>
+                    )}
+                  </td>
+                  <td>{formatDate(transaction.createdAt)}</td>
                 </tr>
               );
             })}

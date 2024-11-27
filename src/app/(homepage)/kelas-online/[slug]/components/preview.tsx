@@ -8,8 +8,11 @@ export const PreviewBtn = ({ videoUrl }: { videoUrl: string }) => {
 
   return (
     <>
-      <div onClick={() => setOpen(true)} className="cursor-pointer font-semibold hover:text-blue-600">
-        Free preview
+      <div
+        onClick={() => setOpen(true)}
+        className="cursor-pointer font-base text-sm underline hover:text-green-600"
+      >
+        Free Preview
       </div>
       <Dialog
         open={open}

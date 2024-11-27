@@ -9,7 +9,12 @@ export const UserServices = {
     return users;
   },
 
-  createUser: async (user: Pick<User, "name" | "email" | "phoneNumber" | "password" | "isVerified">) => {
+  createUser: async (
+    user: Pick<
+      User,
+      "name" | "email" | "phoneNumber" | "password" | "isVerified"
+    >
+  ) => {
     const newUser = await prisma.user.create({
       data: {
         name: user.name,
@@ -39,6 +44,9 @@ export const UserServices = {
             },
           },
         ],
+      },
+      include: {
+        coursesAccess: true,
       },
     });
 

@@ -1,6 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
 
+import { TruncatedText } from "@/components/isomorphic/truncated-text";
+import { AspectRatio } from "@/components/ui/aspect-ratio";
 import { Button } from "@/components/ui/button";
 import { CourseServices } from "@/services/course.services";
 
@@ -18,21 +20,37 @@ export default async function Page() {
       <section className="grid grid-cols-4 gap-6">
         {courses.map((course) => {
           return (
-            <div key={course.id} className="relative overflow-hidden rounded-xl border bg-white p-5 shadow-sm">
-              <Image
-                src={`${process.env.R2_PUBLIC_URL}/ithbi-lms/courses/${course.id}/${course.coverImage}`}
-                alt={course.title}
-                width={1000}
-                height={500}
-              />
-              <section className="space-y-3 p-4">
-                <div>{course.title}</div>
-                <div className="space-x-2">
+            <div
+              key={course.id}
+              className="relative overflow-hidden rounded-xl border bg-white p-5 shadow-sm"
+            >
+              <AspectRatio ratio={16 / 9}>
+                <Image
+                  src={`${process.env.R2_PUBLIC_URL}/ithbi-lms/courses/${course.id}/${course.coverImage}`}
+                  alt={course.title}
+                  fill
+                  className="object-cover"
+                />
+              </AspectRatio>
+              <section className="space-y-3 p-4 border">
+                <TruncatedText content={course.title} maxLength={28} />
+                <div className="grid grid-cols-2 gap-3">
                   <Link href={`/admin/courses/${course.slug}/stats`}>
-                    <Button size="sm">Stats</Button>
+                    <Button variant={"outline"} className="w-full">
+                      Stats
+                    </Button>
                   </Link>
                   <Link href={`/admin/courses/${course.slug}`}>
-                    <Button size="sm">Edit Content</Button>
+                    <Button variant={"outline"} className="w-full">
+                      Edit Content
+                    </Button>
+                  </Link>
+                </div>
+                <div>
+                  <Link href={`/admin/courses/edit/${course.id}`}>
+                    <Button variant={"default"} className="w-full">
+                      Edit Course
+                    </Button>
                   </Link>
                 </div>
               </section>

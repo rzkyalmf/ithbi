@@ -27,7 +27,10 @@ interface Props extends TButton, React.ComponentPropsWithRef<"button"> {}
 
 export const Button = (props: Props) => {
   return (
-    <button {...props} className={twMerge(style({ ...props }), props.className)}>
+    <button
+      {...props}
+      className={twMerge(style({ ...props }), props.className)}
+    >
       {props.children}
     </button>
   );

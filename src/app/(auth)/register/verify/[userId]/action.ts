@@ -10,7 +10,9 @@ import { UserServices } from "@/services/user.services";
 
 const contentSchema = z.object({
   code: z.string().length(6, { message: "Kode OTP harus 6 digit" }),
-  userId: z.string().length(25, { message: "Masukan kode OTP melalui link yang kami kirimkan melalui email" }),
+  userId: z.string().length(25, {
+    message: "Masukan kode OTP melalui link yang kami kirimkan melalui email",
+  }),
 });
 
 export async function otpAction(state: unknown, formData: FormData) {
@@ -42,7 +44,8 @@ export async function otpAction(state: unknown, formData: FormData) {
   if (!existingVerify?.id) {
     return {
       status: "error",
-      message: "Page Error, Masukan kode OTP melalui link yang kami kirimkan melalui email",
+      message:
+        "Page Error, Masukan kode OTP melalui link yang kami kirimkan melalui email",
     };
   }
 
@@ -96,5 +99,5 @@ export async function otpAction(state: unknown, formData: FormData) {
     path: "/",
   });
 
-  redirect("/dashboard");
+  redirect("/dashboard/kelas-online");
 }

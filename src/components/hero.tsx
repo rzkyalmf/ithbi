@@ -15,27 +15,40 @@ export const Hero: React.FC = () => {
             </span>
           </h3>
 
-          <h1 className="text-center text-emerald-600 lg:text-left lg:text-7xl">Sekolah Thibbun Nabawi & Kedokteran Arab Klasik</h1>
+          <h1 className="text-center text-emerald-600 lg:text-left lg:text-7xl">
+            Sekolah Thibbun Nabawi & Kedokteran Arab Klasik
+          </h1>
 
           <h4 className="w-10/12 text-center text-slate-600 lg:text-left">
-            Download Sekarang Juga Aplikasi Diklat Kuliah Kesehatan Akademi Ath Thibbul Badil Indonesia!
+            Download Sekarang Juga Aplikasi Diklat Kuliah Kesehatan Akademi Ath
+            Thibbul Badil Indonesia!
           </h4>
 
           <Link href="/download-app">
-            <Button size={"lg"} className="text-md bg-yellow-400 px-12 py-7 text-black hover:text-white">
+            <Button
+              size={"lg"}
+              className="text-md bg-yellow-400 px-12 py-7 text-black hover:text-white"
+            >
               Download Sekarang
             </Button>
           </Link>
         </div>
 
         <div className="flex h-[600px] w-1/2 items-center justify-end">
-          <Image src="https://pub-b3bbd8acb34f4f18b3140380b48ae46d.r2.dev/ustdani.png" alt="hero" width={400} height={400} />
+          <Image
+            src="https://pub-b3bbd8acb34f4f18b3140380b48ae46d.r2.dev/ustdani.png"
+            alt="hero"
+            width={400}
+            height={400}
+          />
         </div>
       </div>
 
       <div className="w-full rounded-sm px-5 py-4">
         <div className="flex items-center justify-center gap-8">
-          <p className="text-sm font-medium tracking-normal text-gray-400">Supported :</p>
+          <p className="text-sm font-medium tracking-normal text-gray-400">
+            Supported :
+          </p>
           <Image
             src="https://pub-b3bbd8acb34f4f18b3140380b48ae46d.r2.dev/ithbi%201.png"
             alt="logo"

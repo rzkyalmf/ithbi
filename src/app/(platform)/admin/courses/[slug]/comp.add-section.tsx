@@ -8,7 +8,9 @@ export const AddSectionBtn = ({ courseId }: { courseId: string }) => {
   return (
     <form action={addSectionAction}>
       <input name="courseId" value={courseId} type="hidden" required />
-      <Button variant="default">Add Section</Button>
+      <Button variant="outline" className="w-full">
+        Add Section
+      </Button>
     </form>
   );
 };

@@ -16,7 +16,9 @@ interface NavLinkProps {
 
 const NavLink: React.FC<NavLinkProps> = ({ href, text }) => (
   <Link href={href}>
-    <h5 className="transition-colors duration-300 hover:text-yellow-500">{text}</h5>
+    <h5 className="transition-colors duration-300 hover:text-yellow-500">
+      {text}
+    </h5>
   </Link>
 );
 
@@ -52,7 +54,7 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ auth }) => {
         </div>
         <div className="hidden gap-3 md:flex">
           {auth?.id ? (
-            <Link href="/dashboard">
+            <Link href="/dashboard/kelas-online">
               <Button className="px-6 py-5" size="lg">
                 Dashboard
               </Button>
@@ -88,7 +90,7 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ auth }) => {
             <NavLink href="/tentang-kami" text="Tentang Kami" />
             <NavLink href="/download-app" text="Download App" />
             {auth?.id ? (
-              <Link href="/dashboard">
+              <Link href="/dashboard/kelas-online">
                 <Button className="w-fit" size="sm">
                   Dashboard
                 </Button>

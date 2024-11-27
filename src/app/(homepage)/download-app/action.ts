@@ -27,6 +27,7 @@ export async function pendaftaranAction(_state: unknown, formData: FormData) {
   await FormServices.createVerificationCode(formulir.id, verificationCode);
 
   return {
-    downloadUrl: "https://drive.google.com/file/d/1lOlaITUnGLTJEm8eZhcOzuoLaZno54ek/view",
+    downloadUrl:
+      "https://drive.google.com/file/d/1lOlaITUnGLTJEm8eZhcOzuoLaZno54ek/view",
   };
 }

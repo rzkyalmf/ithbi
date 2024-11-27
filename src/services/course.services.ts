@@ -4,7 +4,9 @@ import slugify from "slugify";
 import prisma from "@/utils/prisma";
 
 export const CourseServices = {
-  createCourse: async (courseData: Pick<Course, "title" | "description" | "price" | "coverImage">) => {
+  createCourse: async (
+    courseData: Pick<Course, "title" | "description" | "price" | "coverImage">
+  ) => {
     try {
       const slug = slugify(courseData.title, { lower: true });
 
@@ -22,6 +24,29 @@ export const CourseServices = {
     } catch (error) {
       console.log(error);
     }
+  },
+
+  updateCourse: async (
+    id: string,
+    title: string,
+    description: string,
+    price: number,
+    coverImage?: string
+  ) => {
+    const slug = slugify(title, { lower: true });
+
+    await prisma.course.update({
+      where: {
+        id,
+      },
+      data: {
+        title,
+        slug,
+        description,
+        price,
+        coverImage,
+      },
+    });
   },
 
   createSection: async (courseId: string) => {

@@ -21,7 +21,11 @@ export const FileInput = (props: Props) => {
 
   return (
     <div className={style.slots.base}>
-      <button type="button" className={style.slots.button} onClick={() => inputRef.current?.click()}>
+      <button
+        type="button"
+        className={style.slots.button}
+        onClick={() => inputRef.current?.click()}
+      >
         <ImageUp size={22} strokeWidth={1.4} /> Pilih Gambar
       </button>
       <input
@@ -34,7 +38,11 @@ export const FileInput = (props: Props) => {
           props.onChange?.(e);
         }}
       />
-      {files ? <div>Kamu telah menambahkan {files.length} file</div> : <div>{props.placeholder}</div>}
+      {files ? (
+        <div>Kamu telah menambahkan {files.length} file</div>
+      ) : (
+        <div>{props.placeholder}</div>
+      )}
     </div>
   );
 };

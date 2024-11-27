@@ -1,8 +1,8 @@
+import { CirclePlay } from "lucide-react";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 
 import { CourseServices } from "@/services/course.services";
-
 
 type Params = Promise<{
   slug: string;
@@ -14,7 +14,7 @@ interface PageProps {
 }
 
 export default async function Page(props: PageProps) {
-  const params = await props.params
+  const params = await props.params;
 
   const course = await CourseServices.getCourseDetail(params.slug);
   const lesson = await CourseServices.getLessonDetail(params.lessonSlug);
@@ -25,15 +25,22 @@ export default async function Page(props: PageProps) {
 
   return (
     <main className="flex h-screen">
-      <aside className="w-[300px] border-r">
+      <aside className="w-[300px] border-r pr-6">
         {course?.sections.map((section) => {
           return (
-            <div key={section.id}>
-              <h4 className="p-2">{section.title}</h4>
+            <div key={section.id} className="">
+              <h4 className="p-1 pt-4">{section.title}</h4>
               {section.lessons.map((lesson) => {
                 return (
-                  <Link key={lesson.id} href={`/dashboard/kelas-online/${course.slug}/${lesson.slug}`} className="block">
-                    <div className="p-2 hover:bg-indigo-600 hover:text-white">{lesson.title}</div>
+                  <Link
+                    key={lesson.id}
+                    href={`/dashboard/kelas-online/${course.slug}/${lesson.slug}`}
+                    className="block"
+                  >
+                    <div className="p-2 pl-3 flex items-center gap-2 font-normal text-slate-600 hover:bg-yellow-400 hover:text-black rounded-md">
+                      <CirclePlay size={17} />
+                      {lesson.title}
+                    </div>
                   </Link>
                 );
               })}
@@ -48,7 +55,12 @@ export default async function Page(props: PageProps) {
           src={`https://www.youtube.com/embed/${lesson.videoUrl}`}
           allowFullScreen
           className="h-[70vh] rounded-xl"
-        ></iframe>
+        />
+        <div>
+          <h4>
+            {params.slug.split("-").join(" ").toUpperCase()} - {lesson.title}
+          </h4>
+        </div>
       </section>
     </main>
   );

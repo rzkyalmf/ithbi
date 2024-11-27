@@ -36,20 +36,30 @@ export default function Page() {
         <p className="text-green-400">TENTANG KAMI :</p>
         <h2 className="font-bold text-emerald-600">Visi & Misi ITHBI</h2>
         <p className="text-base font-normal tracking-normal text-gray-600">
-          <b>Visi</b> ITHBI menjadi institusi pendidikan kesehatan tradisional berlandaskan Al Qur&apos;an, Hadist, dan Pendapat Ulama
-          pakar kesehatan yang menghasilkan lulusan berkompeten dan siap berperan sebagai garda terdepan dakwah.
+          <b>Visi</b> ITHBI menjadi institusi pendidikan kesehatan tradisional
+          berlandaskan Al Qur&apos;an, Hadist, dan Pendapat Ulama pakar
+          kesehatan yang menghasilkan lulusan berkompeten dan siap berperan
+          sebagai garda terdepan dakwah.
         </p>
         <p className="font-bold">Misi :</p>
         <ul className="list-disc pl-6">
           {missions.map((mission, index) => (
-            <li key={index} className="mb-2 text-base font-normal tracking-normal text-gray-600">
+            <li
+              key={index}
+              className="mb-2 text-base font-normal tracking-normal text-gray-600"
+            >
               {mission.text}
             </li>
           ))}
         </ul>
       </div>
       <div className="flex h-[600px] w-1/2 items-center justify-end">
-        <Image src="https://pub-b3bbd8acb34f4f18b3140380b48ae46d.r2.dev/goal.png" alt="hero" width={400} height={400} />
+        <Image
+          src="https://pub-b3bbd8acb34f4f18b3140380b48ae46d.r2.dev/goal.png"
+          alt="hero"
+          width={400}
+          height={400}
+        />
       </div>
     </div>
   );
