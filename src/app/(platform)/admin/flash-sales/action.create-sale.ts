@@ -8,10 +8,12 @@ export async function createSaleAction(_: unknown, formData: FormData) {
   const amount = Number(formData.get("amount"));
   const courseId = formData.get("courseId") as string;
 
-  if (!amount || !courseId) {
+  console.log({ amount, courseId });
+
+  if (!courseId) {
     return {
       status: "error",
-      message: "Amount and course ID are required",
+      message: "Course are required",
     };
   }
 

@@ -17,6 +17,7 @@ export default async function Page() {
   if (!auth) {
     redirect("/login");
   }
+
   const userCourses = await CourseServices.getUserCourses(auth.id);
 
   return (
