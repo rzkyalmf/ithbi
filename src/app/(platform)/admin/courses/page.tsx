@@ -47,9 +47,16 @@ export default async function Page() {
                   </Link>
                 </div>
                 <div>
+                  <Link href={`/admin/courses/ujian/${course.id}`}>
+                    <Button variant={"outline"} className="w-full">
+                      Tambah Ujian
+                    </Button>
+                  </Link>
+                </div>
+                <div>
                   <Link href={`/admin/courses/edit/${course.id}`}>
                     <Button variant={"default"} className="w-full">
-                      Edit Course
+                      Edit Kelas
                     </Button>
                   </Link>
                 </div>

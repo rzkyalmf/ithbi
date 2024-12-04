@@ -56,6 +56,7 @@ model Course {
   flashSales FlashSale?
   transactions Transaction[]
   coursesAccess CourseAccess[]
+  exams Exam[]
 }
 
 model Section {
@@ -127,6 +128,23 @@ model CourseAccess {
   course Course @relation(fields: [courseId], references: [id])
 }
 
+model Exam {
+  id String @id @default(cuid())
+  title String
+  index Int @default(0)
+  courseId String
+  course Course @relation(fields: [courseId], references: [id])
+  questions Question[]
+}
+
+model Question {
+  id String @id @default(cuid())
+  title String
+  index Int @default(0)
+  isTrue Boolean @default(false)
+  examId String
+  exam Exam @relation(fields: [examId], references: [id], onDelete: Cascade)
+}
 
 
 

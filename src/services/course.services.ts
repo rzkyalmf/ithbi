@@ -1,4 +1,4 @@
-import { Course, Lesson } from "@prisma/client";
+import { Course, Exam, Lesson, Question, Section } from "@prisma/client";
 import slugify from "slugify";
 
 import prisma from "@/utils/prisma";
@@ -170,7 +170,7 @@ export const CourseServices = {
     });
   },
 
-  updateSection: async (section: Pick<Lesson, "id" | "title">) => {
+  updateSection: async (section: Pick<Section, "id" | "title">) => {
     await prisma.section.update({
       where: {
         id: section.id,
@@ -198,6 +198,122 @@ export const CourseServices = {
         title: lesson.title,
         slug: slugify(lesson.title, { lower: true }),
         videoUrl: lesson.videoUrl,
+      },
+    });
+  },
+
+  createExam: async (courseId: string) => {
+    const totalExam = await prisma.exam.count({
+      where: {
+        courseId,
+      },
+    });
+
+    await prisma.exam.create({
+      data: {
+        title: "Soal Ujian",
+        courseId,
+        index: totalExam,
+        questions: {
+          create: [
+            {
+              title: "...",
+              index: 0,
+            },
+            {
+              title: "...",
+              index: 1,
+            },
+            {
+              title: "...",
+              index: 2,
+            },
+            {
+              title: "...",
+              index: 3,
+            },
+          ],
+        },
+      },
+    });
+  },
+
+  deleteExam: async (examId: string) => {
+    // Ambil exam yang akan dihapus untuk tahu indexnya
+    const examToDelete = await prisma.exam.findUnique({
+      where: { id: examId },
+    });
+
+    // Delete exam
+    await prisma.exam.delete({
+      where: { id: examId },
+    });
+
+    // Update index semua exam yang indexnya lebih besar
+    await prisma.exam.updateMany({
+      where: {
+        courseId: examToDelete?.courseId,
+        index: {
+          gt: examToDelete?.index,
+        },
+      },
+      data: {
+        index: {
+          decrement: 1,
+        },
+      },
+    });
+  },
+
+  getCourseExam: async (idOrSlug: string) => {
+    const data = await prisma.course.findFirst({
+      where: {
+        OR: [
+          {
+            id: idOrSlug,
+          },
+          {
+            slug: idOrSlug,
+          },
+        ],
+      },
+      include: {
+        exams: {
+          include: {
+            questions: {
+              orderBy: {
+                index: "asc",
+              },
+            },
+          },
+          orderBy: {
+            index: "asc",
+          },
+        },
+      },
+    });
+
+    return data;
+  },
+
+  updateExam: async (exam: Pick<Exam, "id" | "title">) => {
+    await prisma.exam.update({
+      where: {
+        id: exam.id,
+      },
+      data: {
+        title: exam.title,
+      },
+    });
+  },
+
+  updateQuestion: async (question: Pick<Question, "id" | "title">) => {
+    await prisma.question.update({
+      where: {
+        id: question.id,
+      },
+      data: {
+        title: question.title,
       },
     });
   },
