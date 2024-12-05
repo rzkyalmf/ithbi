@@ -135,6 +135,8 @@ model Exam {
   courseId String
   course Course @relation(fields: [courseId], references: [id])
   questions Question[]
+  result Boolean @default(false)
+  lock Boolean @default(false)
 }
 
 model Question {

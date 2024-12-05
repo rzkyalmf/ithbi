@@ -1,13 +1,12 @@
 import { redirect } from "next/navigation";
 
+import { Button } from "@/components/ui/button";
 import { CourseServices } from "@/services/course.services";
 
-import { AddExamBtn } from "./comp.add-exam";
-import { ExamCard } from "./comp.exam-card";
-import { ExamEditForm } from "./comp.exam-edit-form";
-import { QuestionEditForm } from "./comp.question-edit-form";
+import { lockAction } from "./action.lock";
+import { CompExam } from "./comp.exam";
 
-type Params = Promise<{ courseId: string }>;
+type Params = Promise<{ slug: string }>;
 
 interface PageProps {
   params: Params;
@@ -16,10 +15,10 @@ interface PageProps {
 export default async function Page(props: PageProps) {
   const params = await props.params;
 
-  const course = await CourseServices.getCourseExam(params.courseId);
+  const course = await CourseServices.getCourseExam(params.slug);
 
   if (!course) {
-    redirect("/admin/courses");
+    redirect("/dashboard/kelas-online");
   }
 
   return (
@@ -32,14 +31,15 @@ export default async function Page(props: PageProps) {
       <section className="space-y-8">
         <section className="space-y-4">
           {course.exams.map((exam) => {
-            return <ExamCard key={exam.id} exam={exam} />;
+            return <CompExam key={exam.id} exam={exam} />;
           })}
         </section>
-
-        <AddExamBtn courseId={course.id} />
       </section>
-      <ExamEditForm />
-      <QuestionEditForm />
+
+      <form action={lockAction}>
+        <input name="courseId" defaultValue={course.id} hidden />
+        <Button>Klik Untuk Menyelesaikan Ujian!</Button>
+      </form>
     </main>
   );
 }

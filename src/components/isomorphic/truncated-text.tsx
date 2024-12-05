@@ -6,8 +6,8 @@ export const TruncatedText = ({ content = "", maxLength = 30 }) => {
   const shouldTruncate = plainText.length > maxLength;
 
   return (
-    <div>
+    <span>
       {shouldTruncate ? `${plainText.slice(0, maxLength)}...` : plainText}
-    </div>
+    </span>
   );
 };

@@ -90,6 +90,7 @@ export const CourseServices = {
       },
       include: {
         flashSales: true,
+        exams: true,
       },
     });
 
@@ -105,6 +106,11 @@ export const CourseServices = {
         course: {
           include: {
             certificates: true,
+            exams: {
+              include: {
+                questions: true,
+              },
+            },
           },
         },
       },
@@ -316,5 +322,15 @@ export const CourseServices = {
         title: question.title,
       },
     });
+  },
+
+  getQuestionDetail: async (questionId: string) => {
+    const data = await prisma.question.findFirst({
+      where: {
+        id: questionId,
+      },
+    });
+
+    return data;
   },
 };

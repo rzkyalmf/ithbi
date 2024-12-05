@@ -12,10 +12,11 @@ export default async function Page(props: PageProps) {
   const params = await props.params;
   const course = await CourseServices.getCourseDetail(params.slug);
 
-  if (!course) {
+  if (!course || !course.sections[0]?.lessons?.[0]?.slug) {
     redirect("/dashboard/kelas-online");
   }
 
   const firstLesson = course.sections[0].lessons[0].slug;
+
   redirect(`/dashboard/kelas-online/${course.slug}/${firstLesson}`);
 }

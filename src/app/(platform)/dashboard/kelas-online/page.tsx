@@ -53,12 +53,34 @@ export default async function Page() {
                   </section>
                 </Card>
               </Link>
-              <Button variant={"outline"} className="w-full">
-                Ujian
+              <Button
+                variant="outline"
+                className="w-full"
+                asChild={
+                  !course.exams.some((exam) => exam.lock) &&
+                  course.exams[0]?.questions?.length > 0
+                }
+                disabled={
+                  course.exams.some((exam) => exam.lock) ||
+                  !course.exams[0]?.questions?.length
+                }
+              >
+                {!course.exams.some((exam) => exam.lock) ? (
+                  course.exams[0]?.questions?.length > 0 ? (
+                    <Link href={`/dashboard/kelas-online/ujian/${course.slug}`}>
+                      Mulai Ujian
+                    </Link>
+                  ) : (
+                    <span>Ujian Belum Tersedia</span>
+                  )
+                ) : (
+                  <span>Ujian Telah Selesai</span>
+                )}
               </Button>
             </div>
           );
         })}
+
         {userCourses.length === 0 && (
           <Card className="text-balance bg-slate-50 text-center">
             <h5>You have no course</h5>

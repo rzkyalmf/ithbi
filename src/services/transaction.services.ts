@@ -67,8 +67,8 @@ export const TransactionServices = {
         userId: userId,
         amount,
         paymentStatus: "PAID",
-        paymentLink: "",
-        transactionId: "",
+        paymentLink: "free",
+        transactionId: "free",
       },
     });
   },

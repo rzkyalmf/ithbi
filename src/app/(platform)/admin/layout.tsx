@@ -11,7 +11,7 @@ export default async function Layout({
   const auth = await serverAuth();
 
   if (auth?.role !== "ADMIN") {
-    redirect("/dashboard/my-courses");
+    redirect("/dashboard/kelas-online");
   }
 
   return <div>{children}</div>;

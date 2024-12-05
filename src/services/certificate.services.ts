@@ -4,7 +4,19 @@ export const CertificateServices = {
   getAll: async () => {
     return await prisma.certificate.findMany({
       include: {
-        course: true,
+        course: {
+          select: {
+            title: true,
+            id: true,
+            exams: {
+              select: {
+                lock: true,
+                result: true,
+                courseId: true,
+              },
+            },
+          },
+        },
         user: {
           select: {
             name: true,
