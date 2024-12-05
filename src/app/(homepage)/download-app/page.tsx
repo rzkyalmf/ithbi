@@ -139,7 +139,7 @@ export default function Page() {
         <div className="relative pt-[56.25%]">
           {/* Aspect ratio 16:9 */}
           <YouTube
-            videoId="ekmRtI2zLs8"
+            videoId="c0HjXa6HaR4"
             opts={{
               height: "100%",
               width: "100%",
