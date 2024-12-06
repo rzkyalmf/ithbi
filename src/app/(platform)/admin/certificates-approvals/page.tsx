@@ -50,7 +50,7 @@ export default async function Page() {
                   </td>
                   <td>
                     {cert.course.exams.reduce((total, exam) => {
-                      return total + (exam.result ? 2.5 : 0);
+                      return total + (exam.result ? 10 : 0);
                     }, 0)}{" "}
                     / 100
                   </td>

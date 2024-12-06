@@ -17,18 +17,18 @@ export default async function Page() {
   return (
     <main className="space-y-6 py-12">
       <section className="space-y-1 px-12">
-        <h3>Order</h3>
-        <p className="text-slate-500 font-normal">Order History and Details</p>
+        <h3>Pesanan</h3>
+        <p className="text-slate-500 font-normal">Riwayat dan Detail Pesanan</p>
       </section>
       <section>
         <table className="w-full table-auto">
           <thead className="border-y border-slate-200 bg-white text-left">
             <tr>
               <th className="py-5 pl-12">No</th>
-              <th>Course Title</th>
-              <th>Amount</th>
+              <th>Judul Kelas</th>
+              <th>Harga</th>
               <th>Status</th>
-              <th>Date</th>
+              <th>Waktu</th>
             </tr>
           </thead>
           <tbody>

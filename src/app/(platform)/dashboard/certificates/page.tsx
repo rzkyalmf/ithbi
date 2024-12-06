@@ -23,9 +23,9 @@ export default async function Page() {
   return (
     <main className="m-auto max-w-2xl space-y-6 py-12">
       <section className="space-y-1">
-        <h3>Certificates</h3>
+        <h3>Sertifikat Kelas</h3>
         <p className="text-slate-500 font-normal">
-          Here is your all available certificates
+          Ini semua sertifikat kamu yang tersedia
         </p>
       </section>
       <section className="space-y-6">
@@ -83,7 +83,7 @@ export default async function Page() {
       </section>
       {userCourses.length === 0 && (
         <Card className="text-balance bg-slate-50 text-center">
-          <h5>You have no course</h5>
+          <h5>Anda belum memiliki sertifikat</h5>
         </Card>
       )}
     </main>

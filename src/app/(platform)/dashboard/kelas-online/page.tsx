@@ -83,7 +83,7 @@ export default async function Page() {
 
         {userCourses.length === 0 && (
           <Card className="text-balance bg-slate-50 text-center">
-            <h5>You have no course</h5>
+            <h5>Anda tidak punya kursus</h5>
           </Card>
         )}
       </section>

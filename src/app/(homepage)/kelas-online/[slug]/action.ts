@@ -24,8 +24,8 @@ export async function buyCourseAction(formData: FormData) {
     redirect(`/dashboard/kelas-online/${slug}`);
   }
 
-  // Free Transaction
-  if (amount <= "499") {
+  // // Free Transaction
+  if (Number(amount) <= 499) {
     // update Transaction => Paid
     await TransactionServices.freeTransaction(
       courseId,
@@ -57,6 +57,10 @@ export async function buyCourseAction(formData: FormData) {
     user.id,
     Number(amount)
   );
+
+  if (!data.paymentLink) {
+    throw new Error("Payment Gateway not found");
+  }
 
   redirect(data.paymentLink);
 }
