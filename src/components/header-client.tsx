@@ -49,6 +49,7 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ auth }) => {
           <NavLink href="/" text="Home" />
           <NavLink href="/program" text="Program" />
           <NavLink href="/kelas-online" text="Kelas Online" />
+          <NavLink href="/events" text="Events" />
           <NavLink href="/tentang-kami" text="Tentang Kami" />
           <NavLink href="/download-app" text="Download App" />
         </div>

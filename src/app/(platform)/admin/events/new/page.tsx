@@ -7,11 +7,11 @@ import { FileInput } from "@/components/isomorphic/file-input";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 
-import { createCourseAction } from "./action";
+import { createEventAction } from "./action";
 
 export default function Page() {
   const [preview, setPreview] = useState("");
-  const [_state, formAction] = useActionState(createCourseAction, null);
+  const [_state, formAction] = useActionState(createEventAction, null);
 
   function handleCreatePreview(event: ChangeEvent<HTMLInputElement>) {
     if (!event.target.files) return;
@@ -23,22 +23,46 @@ export default function Page() {
   return (
     <main className="m-auto max-w-lg space-y-6">
       <section>
-        <h3>Buat Kelas Baru</h3>
+        <h3>Buat Event Baru</h3>
       </section>
       <section>
         <form action={formAction} className="space-y-2">
           <Input
             className="py-6 text-base font-normal text-gray-500 placeholder:text-gray-300"
             name="title"
-            placeholder="Judul Kelas"
+            placeholder="Judul Event"
             maxLength={50}
             minLength={3}
             required
           />
           <Input
             className="py-6 text-base font-normal text-gray-500 placeholder:text-gray-300"
-            name="description"
-            placeholder="Deskripsi Kelas"
+            name="date"
+            placeholder="dd-mm-yyyy"
+            maxLength={150}
+            minLength={3}
+            required
+          />
+          <Input
+            className="py-6 text-base font-normal text-gray-500 placeholder:text-gray-300"
+            name="time"
+            placeholder="00:00 - 00:00 WIB"
+            maxLength={150}
+            minLength={3}
+            required
+          />
+          <Input
+            className="py-6 text-base font-normal text-gray-500 placeholder:text-gray-300"
+            name="location"
+            placeholder="Lokasi Event"
+            maxLength={150}
+            minLength={3}
+            required
+          />
+          <Input
+            className="py-6 text-base font-normal text-gray-500 placeholder:text-gray-300"
+            name="linkMaps"
+            placeholder="Link Maps"
             maxLength={150}
             minLength={3}
             required
@@ -46,7 +70,7 @@ export default function Page() {
           <Input
             className="py-6 text-base font-normal text-gray-500 placeholder:text-gray-300"
             name="price"
-            placeholder="Harga Kelas"
+            placeholder="Harga Event"
             type="text"
             pattern="[0-9]*"
             maxLength={10}
@@ -54,9 +78,17 @@ export default function Page() {
             inputMode="numeric"
             required
           />
+          <Input
+            className="py-6 text-base font-normal text-gray-500 placeholder:text-gray-300"
+            name="description"
+            placeholder="Deskripsi Event"
+            maxLength={150}
+            minLength={3}
+            required
+          />
           <FileInput
             name="coverImage"
-            placeholder="Wajib ukuran 1280x720px"
+            placeholder="Wajib ukuran 724x340px"
             accept="image/png,image/jpeg"
             onChange={handleCreatePreview}
           />

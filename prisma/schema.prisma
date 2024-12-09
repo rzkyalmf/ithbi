@@ -148,7 +148,20 @@ model Question {
   exam Exam @relation(fields: [examId], references: [id], onDelete: Cascade)
 }
 
+model Event {
+  id String @id @default(cuid())
+  title String
+  slug String
+  description String
+  price Int
+  coverImage String
+  date String
+  time String
+  linkMaps String
+  location String
 
+  isPublished Boolean @default(false)
+}
 
 
 

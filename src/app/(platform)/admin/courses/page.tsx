@@ -17,6 +17,7 @@ export default async function Page() {
           <Button className="w-full">Create course</Button>
         </Link>
       </section>
+      
       <section className="grid grid-cols-4 gap-6">
         {courses.map((course) => {
           return (
