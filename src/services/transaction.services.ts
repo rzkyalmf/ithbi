@@ -5,7 +5,7 @@ import { EventServices } from "./event.services";
 import { UserServices } from "./user.services";
 
 export const TransactionServices = {
-  createTransaction: async (
+  createCourseTransaction: async (
     courseId: string,
     userId: string,
     amount: number
@@ -117,17 +117,31 @@ export const TransactionServices = {
     return transaction;
   },
 
-  freeTransaction: async (
+  freeCourseTransaction: async (
     userId: string,
     amount: number,
-    eventId?: string,
-    courseId?: string,
-    quantity?: number
+    courseId: string
   ) => {
     await prisma.transaction.create({
       data: {
-        courseId: courseId ?? null,
-        eventId: eventId ?? null,
+        courseId: courseId,
+        userId: userId,
+        amount: amount,
+        paymentStatus: "PAID",
+        paymentLink: "",
+      },
+    });
+  },
+
+  freeEventTransaction: async (
+    userId: string,
+    amount: number,
+    eventId: string,
+    quantity: number
+  ) => {
+    await prisma.transaction.create({
+      data: {
+        eventId: eventId,
         userId: userId,
         amount: amount,
         quantity: quantity,

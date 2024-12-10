@@ -20,16 +20,16 @@ export async function buyCourseAction(formData: FormData) {
     redirect("/login");
   }
 
-  console.log(eventId, amount, slug);
+  console.log(eventId, amount, user.id, quantity);
 
   // Free Transaction
   if (Number(amount) <= 499) {
     // update Transaction => Paid
-    await TransactionServices.freeTransaction(
+    await TransactionServices.freeEventTransaction(
       user.id,
       Number(amount),
       eventId,
-      quantity
+      Number(quantity)
     );
 
     // Generate multiple unique codes

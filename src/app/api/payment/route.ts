@@ -44,15 +44,21 @@ export async function POST(req: NextRequest) {
 
     // Handle Event Access & Certificate jika eventId ada
     if (updatedTransaction.eventId) {
-      const eventCode = generateEventCode(updatedTransaction.amount);
+      const eventId = updatedTransaction.eventId;
 
-      // Create Event Access
-      await prisma.eventAccess.create({
-        data: {
+      // Generate kode terlebih dahulu dan simpan dalam array
+      const eventCodes = Array.from(
+        { length: Number(updatedTransaction.quantity) },
+        () => generateEventCode(updatedTransaction.amount)
+      );
+
+      // Buat event access dengan kode yang sudah di-generate
+      await prisma.eventAccess.createMany({
+        data: eventCodes.map((code) => ({
           userId: updatedTransaction.userId,
-          eventId: updatedTransaction.eventId,
-          code: eventCode,
-        },
+          eventId: eventId,
+          code: code,
+        })),
       });
 
       // Create Event Certificate
@@ -63,11 +69,20 @@ export async function POST(req: NextRequest) {
         },
       });
 
-      await EmailServices.sendEventCode(
-        updatedTransaction.userId,
-        eventCode,
-        updatedTransaction.eventId
-      );
+      // Kirim email berdasarkan jumlah kode
+      if (Number(updatedTransaction.quantity) === 1) {
+        await EmailServices.sendEventCode(
+          updatedTransaction.userId,
+          eventCodes[0],
+          eventId
+        );
+      } else {
+        await EmailServices.sendMultipleEventCodes(
+          updatedTransaction.userId,
+          eventCodes,
+          eventId
+        );
+      }
     }
 
     console.log("Transaction API has been hitted");

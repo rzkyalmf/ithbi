@@ -12,6 +12,8 @@ export async function buyCourseAction(formData: FormData) {
   const amount = formData.get("amount") as string;
   const slug = formData.get("slug") as string;
 
+  console.log({ courseId, amount, slug });
+
   const user = await serverAuth();
 
   if (!user) {
@@ -27,7 +29,7 @@ export async function buyCourseAction(formData: FormData) {
   // // Free Transaction
   if (Number(amount) <= 499) {
     // update Transaction => Paid
-    await TransactionServices.freeTransaction(
+    await TransactionServices.freeCourseTransaction(
       user.id,
       Number(amount),
       courseId
@@ -52,7 +54,7 @@ export async function buyCourseAction(formData: FormData) {
     redirect(`/dashboard/kelas-online/${slug}`);
   }
 
-  const data = await TransactionServices.createTransaction(
+  const data = await TransactionServices.createCourseTransaction(
     courseId,
     user.id,
     Number(amount)
