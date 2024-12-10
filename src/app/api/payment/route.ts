@@ -1,5 +1,7 @@
 import { NextRequest } from "next/server";
 
+import { generateEventCode } from "@/libs/generate-code";
+import { EmailServices } from "@/services/email.services";
 import prisma from "@/utils/prisma";
 
 interface ReqBody {
@@ -21,21 +23,52 @@ export async function POST(req: NextRequest) {
       },
     });
 
-    // create Access
-    await prisma.courseAccess.create({
-      data: {
-        userId: updatedTransaction.userId,
-        courseId: updatedTransaction.courseId,
-      },
-    });
+    // Handle Course Access & Certificate jika courseId ada
+    if (updatedTransaction.courseId) {
+      // Create Course Access
+      await prisma.courseAccess.create({
+        data: {
+          userId: updatedTransaction.userId,
+          courseId: updatedTransaction.courseId,
+        },
+      });
 
-    // create certificate Placeholder
-    await prisma.certificate.create({
-      data: {
-        userId: updatedTransaction.userId,
-        courseId: updatedTransaction.courseId,
-      },
-    });
+      // Create Course Certificate
+      await prisma.certificate.create({
+        data: {
+          userId: updatedTransaction.userId,
+          courseId: updatedTransaction.courseId,
+        },
+      });
+    }
+
+    // Handle Event Access & Certificate jika eventId ada
+    if (updatedTransaction.eventId) {
+      const eventCode = generateEventCode(updatedTransaction.amount);
+
+      // Create Event Access
+      await prisma.eventAccess.create({
+        data: {
+          userId: updatedTransaction.userId,
+          eventId: updatedTransaction.eventId,
+          code: eventCode,
+        },
+      });
+
+      // Create Event Certificate
+      await prisma.certificate.create({
+        data: {
+          userId: updatedTransaction.userId,
+          eventId: updatedTransaction.eventId,
+        },
+      });
+
+      await EmailServices.sendEventCode(
+        updatedTransaction.userId,
+        eventCode,
+        updatedTransaction.eventId
+      );
+    }
 
     console.log("Transaction API has been hitted");
   }

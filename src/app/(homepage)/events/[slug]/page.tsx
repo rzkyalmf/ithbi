@@ -4,9 +4,9 @@ import Link from "next/link";
 import { redirect } from "next/navigation";
 
 import { Card } from "@/components/isomorphic/card";
-import { Button } from "@/components/ui/button";
-import { currencyFormat } from "@/libs/currency-format";
 import { EventServices } from "@/services/event.services";
+
+import { QuantitySelector } from "./components/quantity";
 
 type Params = Promise<{ slug: string }>;
 
@@ -67,15 +67,7 @@ export default async function Page(props: PageProps) {
         </div>
 
         <Card className="space-y-2 p-4">
-          <h4>Harga mulai dari :</h4>
-          <form action="">
-            <input type="hidden" value={event.id} name="courseId" />
-            <input type="hidden" value={event.slug} name="slug" />
-            <input type="hidden" value={event.price} name="amount" />
-            <Button className="w-full py-6 shadow-md">
-              {currencyFormat(event.price)}
-            </Button>
-          </form>
+          <QuantitySelector event={event} />
         </Card>
       </section>
     </main>

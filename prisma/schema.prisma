@@ -32,6 +32,8 @@ model User {
   certificates Certificate[]
   transactions Transaction[]
   coursesAccess CourseAccess[]
+  eventsAccess EventAccess[]
+
 }
 
 model VerificationCode {
@@ -94,8 +96,10 @@ enum RequestStatus {
 
 model Certificate {
   id String @id @default(cuid())
-  courseId String
-  course Course @relation(fields: [courseId], references: [id])
+  courseId String?
+  course Course? @relation(fields: [courseId], references: [id])
+  eventId String?
+  event Event? @relation(fields: [eventId], references: [id])
   userId String
   user User @relation(fields: [userId], references: [id])
   status RequestStatus @default(NO_REQUEST)
@@ -109,11 +113,17 @@ enum PaymentStatus {
 model Transaction {
   id String @id @default(cuid())
   amount Int
+  quantity Int @default(1)
   paymentStatus PaymentStatus @default(UNPAID)
   userId String
   user User @relation(fields: [userId], references: [id])
-  courseId String
-  course Course @relation(fields: [courseId], references: [id])
+
+  courseId String?
+  course Course? @relation(fields: [courseId], references: [id])
+  
+  eventId String?
+  event Event? @relation(fields: [eventId], references: [id])
+  
   paymentLink String?
   transactionId String? @unique
   createdAt DateTime @default(now())
@@ -154,6 +164,8 @@ model Event {
   slug String
   description String
   price Int
+  price2 Int?
+  price3 Int?
   coverImage String
   date String
   time String
@@ -161,9 +173,22 @@ model Event {
   location String
 
   isPublished Boolean @default(false)
+
+  transactions Transaction[]
+  eventsAccess EventAccess[]
+  certificates Certificate[]
+
 }
 
-
+model EventAccess {
+  id String @id @default(cuid())
+  userId String
+  user User @relation(fields: [userId], references: [id])
+  eventId String
+  event Event @relation(fields: [eventId], references: [id])
+  code String
+  isActive Boolean @default(false)
+}
 
 
 

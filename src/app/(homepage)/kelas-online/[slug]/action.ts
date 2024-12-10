@@ -28,9 +28,9 @@ export async function buyCourseAction(formData: FormData) {
   if (Number(amount) <= 499) {
     // update Transaction => Paid
     await TransactionServices.freeTransaction(
-      courseId,
       user.id,
-      Number(amount)
+      Number(amount),
+      courseId
     );
 
     // create Access

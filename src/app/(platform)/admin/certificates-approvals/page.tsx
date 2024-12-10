@@ -34,10 +34,10 @@ export default async function Page() {
                   key={cert.id}
                 >
                   <td className="py-5 pl-12">{index + 1}</td>
-                  <td>{cert.course.title}</td>
+                  <td>{cert.course?.title}</td>
                   <td>
                     <div className="space-y-2">
-                      {cert.course.exams.some((exam) => exam.lock) ? (
+                      {cert.course?.exams.some((exam) => exam.lock) ? (
                         <div className="msg w-fit msg-success text-sm font-normal">
                           Ujian Selesai
                         </div>
@@ -49,7 +49,7 @@ export default async function Page() {
                     </div>
                   </td>
                   <td>
-                    {cert.course.exams.reduce((total, exam) => {
+                    {cert.course?.exams.reduce((total, exam) => {
                       return total + (exam.result ? 10 : 0);
                     }, 0)}{" "}
                     / 100
@@ -88,7 +88,7 @@ export default async function Page() {
                     <form action={resetUjianAction}>
                       <input
                         name="courseId"
-                        value={cert.course.id}
+                        value={cert.course?.id}
                         type="hidden"
                       />
                       <Button size="sm" type="submit">

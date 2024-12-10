@@ -52,7 +52,7 @@ export default async function Page() {
                   key={transaction.id}
                 >
                   <td className="py-5 pl-12">{index + 1}</td>
-                  <td>{transaction.course.title}</td>
+                  <td>{transaction.course?.title}</td>
                   <td>{transaction.user.name}</td>
                   <td>{currencyFormat(transaction.amount)}</td>
                   <td>

@@ -59,7 +59,7 @@ export async function downloadCertificateAction(
   }
 
   let titleXPos = 190;
-  for (const char of certificate.course.title) {
+  for (const char of certificate.course?.title ?? "") {
     page.drawText(char, {
       x: titleXPos,
       y: 420,
