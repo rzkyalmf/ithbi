@@ -3,6 +3,7 @@
 import { redirect } from "next/navigation";
 import { z } from "zod";
 
+import { sanitizeHTML } from "@/libs/sanitize";
 import { EventServices } from "@/services/event.services";
 import { S3Services } from "@/services/s3.services";
 
@@ -28,8 +29,23 @@ export async function createEventAction(_: unknown, formData: FormData) {
   const price = Number(formData.get("price"));
   const price2 = Number(formData.get("price2"));
   const price3 = Number(formData.get("price3"));
-  const description = formData.get("description");
+  const description = formData.get("description") as string;
   const coverImage = formData.get("coverImage");
+
+  const sanitizedDescription = sanitizeHTML(description);
+
+  console.log({
+    title,
+    date,
+    time,
+    location,
+    linkMaps,
+    price,
+    price2,
+    price3,
+    sanitizedDescription,
+    coverImage,
+  });
 
   const validation = eventSchema.safeParse({
     title,
@@ -64,7 +80,7 @@ export async function createEventAction(_: unknown, formData: FormData) {
 
   const newEvent = await EventServices.createEvent({
     title: validation.data.title,
-    description: validation.data.description,
+    description: sanitizedDescription,
     price: validation.data.price,
     price2: validation.data.price2,
     price3: validation.data.price3,

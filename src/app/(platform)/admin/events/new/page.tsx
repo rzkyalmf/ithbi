@@ -4,6 +4,7 @@ import Image from "next/image";
 import React, { ChangeEvent, useActionState, useState } from "react";
 
 import { FileInput } from "@/components/isomorphic/file-input";
+import { Tiptap } from "@/components/isomorphic/tiptap";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 
@@ -11,6 +12,7 @@ import { createEventAction } from "./action";
 
 export default function Page() {
   const [preview, setPreview] = useState("");
+  const [description, setDescription] = useState("");
   const [_state, formAction] = useActionState(createEventAction, null);
 
   function handleCreatePreview(event: ChangeEvent<HTMLInputElement>) {
@@ -20,13 +22,18 @@ export default function Page() {
     setPreview(URL.createObjectURL(file));
   }
 
+  const handleSubmit = (formData: FormData) => {
+    formData.append("description", description);
+    formAction(formData);
+  };
+
   return (
     <main className="m-auto max-w-lg space-y-6">
       <section>
         <h3>Buat Event Baru</h3>
       </section>
       <section>
-        <form action={formAction} className="space-y-2">
+        <form action={handleSubmit} className="space-y-2">
           <Input
             className="py-6 text-base font-normal text-gray-500 placeholder:text-gray-300"
             name="title"
@@ -100,14 +107,7 @@ export default function Page() {
             inputMode="numeric"
             required
           />
-          <Input
-            className="py-6 text-base font-normal text-gray-500 placeholder:text-gray-300"
-            name="description"
-            placeholder="Deskripsi Event"
-            maxLength={150}
-            minLength={3}
-            required
-          />
+          <Tiptap content={description} onChange={setDescription} />
           <FileInput
             name="coverImage"
             placeholder="Wajib ukuran 724x340px"
