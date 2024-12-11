@@ -10,6 +10,8 @@ export const EventServices = {
       | "title"
       | "description"
       | "price"
+      | "price2"
+      | "price3"
       | "coverImage"
       | "date"
       | "time"
@@ -26,6 +28,8 @@ export const EventServices = {
           slug,
           description: eventData.description,
           price: eventData.price,
+          price2: eventData.price2,
+          price3: eventData.price3,
           date: eventData.date,
           time: eventData.time,
           location: eventData.location,
@@ -72,6 +76,8 @@ export const EventServices = {
     title: string,
     description: string,
     price: number,
+    price2: number,
+    price3: number,
     date: string,
     time: string,
     location: string,
@@ -89,6 +95,8 @@ export const EventServices = {
         slug,
         description,
         price,
+        price2,
+        price3,
         date,
         time,
         location,

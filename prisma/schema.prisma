@@ -166,6 +166,7 @@ model Event {
   price Int
   price2 Int?
   price3 Int?
+  specialPrice Int?
   coverImage String
   date String
   time String

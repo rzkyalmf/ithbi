@@ -20,6 +20,8 @@ export default async function Page(props: PageProps) {
         title={events?.title}
         description={events?.description}
         price={events?.price}
+        price2={events?.price2 ?? undefined}
+        price3={events?.price3 ?? undefined}
         date={events?.date}
         time={events?.time}
         location={events?.location}

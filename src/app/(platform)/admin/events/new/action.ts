@@ -13,6 +13,8 @@ const eventSchema = z.object({
   location: z.string().min(1),
   linkMaps: z.string().min(1),
   price: z.number(),
+  price2: z.number(),
+  price3: z.number(),
   description: z.string().min(1),
   coverImage: z.instanceof(File),
 });
@@ -24,6 +26,8 @@ export async function createEventAction(_: unknown, formData: FormData) {
   const location = formData.get("location");
   const linkMaps = formData.get("linkMaps");
   const price = Number(formData.get("price"));
+  const price2 = Number(formData.get("price2"));
+  const price3 = Number(formData.get("price3"));
   const description = formData.get("description");
   const coverImage = formData.get("coverImage");
 
@@ -34,6 +38,8 @@ export async function createEventAction(_: unknown, formData: FormData) {
     location,
     linkMaps,
     price,
+    price2,
+    price3,
     description,
     coverImage,
   });
@@ -42,7 +48,17 @@ export async function createEventAction(_: unknown, formData: FormData) {
     return {
       status: "error",
       errors: validation.error.flatten().fieldErrors,
-      data: { title, description, price, coverImage, date, time, location },
+      data: {
+        title,
+        description,
+        price,
+        price2,
+        price3,
+        coverImage,
+        date,
+        time,
+        location,
+      },
     };
   }
 
@@ -50,6 +66,8 @@ export async function createEventAction(_: unknown, formData: FormData) {
     title: validation.data.title,
     description: validation.data.description,
     price: validation.data.price,
+    price2: validation.data.price2,
+    price3: validation.data.price3,
     date: validation.data.date,
     time: validation.data.time,
     location: validation.data.location,

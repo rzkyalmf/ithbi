@@ -14,6 +14,8 @@ interface Props {
   title: string | undefined;
   description: string | undefined;
   price: number | undefined;
+  price2: number | undefined;
+  price3: number | undefined;
   date: string | undefined;
   time: string | undefined;
   location: string | undefined;
@@ -26,6 +28,8 @@ export const EditEvent: React.FC<Props> = ({
   title,
   description,
   price,
+  price2,
+  price3,
   date,
   time,
   location,
@@ -120,6 +124,30 @@ export const EditEvent: React.FC<Props> = ({
             inputMode="numeric"
             required
             defaultValue={price}
+          />
+          <Input
+            className="py-6 text-base font-normal text-gray-500 placeholder:text-gray-300"
+            name="price2"
+            placeholder="Harga 3 Ticket"
+            type="text"
+            pattern="[0-9]*"
+            maxLength={10}
+            minLength={1}
+            inputMode="numeric"
+            required
+            defaultValue={price2}
+          />
+          <Input
+            className="py-6 text-base font-normal text-gray-500 placeholder:text-gray-300"
+            name="price3"
+            placeholder="Harga 5 Ticket"
+            type="text"
+            pattern="[0-9]*"
+            maxLength={10}
+            minLength={1}
+            inputMode="numeric"
+            required
+            defaultValue={price3}
           />
           <Input
             className="py-6 text-base font-normal text-gray-500 placeholder:text-gray-300"

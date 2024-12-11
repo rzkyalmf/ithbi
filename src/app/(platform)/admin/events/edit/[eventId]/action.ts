@@ -14,6 +14,8 @@ interface EventBaseData {
   location: string;
   linkMaps: string;
   price: number;
+  price2: number;
+  price3: number;
   description: string;
 }
 
@@ -31,6 +33,8 @@ const eventBaseSchema = z.object({
   location: z.string().min(1),
   linkMaps: z.string().min(1),
   price: z.number(),
+  price2: z.number(),
+  price3: z.number(),
   description: z.string().min(1),
 });
 
@@ -47,6 +51,8 @@ export async function editEventAction(_state: unknown, formData: FormData) {
   const location = formData.get("location") as string;
   const linkMaps = formData.get("linkMaps") as string;
   const price = Number(formData.get("price"));
+  const price2 = Number(formData.get("price2"));
+  const price3 = Number(formData.get("price3"));
   const description = formData.get("description") as string;
   const coverImage = formData.get("coverImage") as File;
 
@@ -63,6 +69,8 @@ export async function editEventAction(_state: unknown, formData: FormData) {
       location,
       linkMaps,
       price,
+      price2,
+      price3,
       description,
     };
 
@@ -82,6 +90,8 @@ export async function editEventAction(_state: unknown, formData: FormData) {
       title,
       description,
       price,
+      price2,
+      price3,
       date,
       time,
       location,
@@ -99,6 +109,8 @@ export async function editEventAction(_state: unknown, formData: FormData) {
       location,
       linkMaps,
       price,
+      price2,
+      price3,
       description,
       coverImage,
     };
@@ -144,6 +156,8 @@ export async function editEventAction(_state: unknown, formData: FormData) {
       title,
       description,
       price,
+      price2,
+      price3,
       date,
       time,
       location,

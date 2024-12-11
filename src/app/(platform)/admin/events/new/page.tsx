@@ -80,6 +80,28 @@ export default function Page() {
           />
           <Input
             className="py-6 text-base font-normal text-gray-500 placeholder:text-gray-300"
+            name="price2"
+            placeholder="Harga 3 Ticket"
+            type="text"
+            pattern="[0-9]*"
+            maxLength={10}
+            minLength={1}
+            inputMode="numeric"
+            required
+          />
+          <Input
+            className="py-6 text-base font-normal text-gray-500 placeholder:text-gray-300"
+            name="price3"
+            placeholder="Harga 5 Ticket"
+            type="text"
+            pattern="[0-9]*"
+            maxLength={10}
+            minLength={1}
+            inputMode="numeric"
+            required
+          />
+          <Input
+            className="py-6 text-base font-normal text-gray-500 placeholder:text-gray-300"
             name="description"
             placeholder="Deskripsi Event"
             maxLength={150}
