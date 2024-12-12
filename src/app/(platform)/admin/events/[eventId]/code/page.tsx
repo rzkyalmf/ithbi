@@ -55,10 +55,10 @@ export default async function Page(props: PageProps) {
                   </td>
                   <td>{event.name}</td>
                   <td>
-                    {event.updateAt ? formatDate(event.updateAt as Date) : "-"}
+                    {event.updateAt ? formatDate(event.updateAt) : "-"}
                   </td>
                   <td>
-                    {event.updateAt ? formatTime(event.updateAt as Date) : "-"}
+                    {event.updateAt ? formatTime(event.updateAt) : "-"}
                   </td>
                 </tr>
               );

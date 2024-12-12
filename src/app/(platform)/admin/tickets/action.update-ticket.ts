@@ -32,11 +32,11 @@ export async function updateTicketAction(_: unknown, formData: FormData) {
   if (cekCode.isActive) {
     return {
       status: "error",
-      message: `Kode sudah digunakan oleh ${
-        cekCode.name as string
-      } pada ${formatDay(cekCode.updateAt as Date)}, ${formatDate(
-        cekCode.updateAt as Date
-      )} pukul ${formatTime(cekCode.updateAt as Date)}`,
+      message: `Kode sudah digunakan oleh ${cekCode.name ?? ""} pada ${
+        cekCode.updateAt ? formatDay(cekCode.updateAt) : ""
+      }, ${cekCode.updateAt ? formatDate(cekCode.updateAt) : ""} pukul ${
+        cekCode.updateAt ? formatTime(cekCode.updateAt) : ""
+      }`,
     };
   }
 
