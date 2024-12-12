@@ -16,6 +16,7 @@ export const sanitizeHTML = (content: string) => {
       "blockquote",
       "a",
       "br",
+      "s",
     ],
     ALLOWED_ATTR: ["href", "style"],
   });

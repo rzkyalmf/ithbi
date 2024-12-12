@@ -1,6 +1,6 @@
 import { EventServices } from "@/services/event.services";
 
-import { EditEvent } from "./comp.edit-consultant";
+import { EditEvent } from "./comp.edit-event";
 
 type Params = Promise<{ eventId: string }>;
 

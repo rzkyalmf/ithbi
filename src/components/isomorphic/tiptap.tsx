@@ -128,6 +128,7 @@ export const Tiptap = ({ content = "", onChange }: TiptapProps) => {
       },
     },
     onUpdate: ({ editor }) => {
+      // console.log("Content updated:", editor.getHTML()); // Debug log
       onChange?.(editor.getHTML());
     },
   });
@@ -188,7 +189,11 @@ export const Tiptap = ({ content = "", onChange }: TiptapProps) => {
         <Toggle
           size="sm"
           pressed={editor.isActive("strike")}
-          onPressedChange={() => editor.chain().focus().toggleStrike().run()}
+          onPressedChange={() => {
+            // console.log("Strike toggled"); // Debug log
+            editor.chain().focus().toggleStrike().run();
+            // console.log("After strike:", editor.getHTML()); // Debug log
+          }}
         >
           <Strikethrough className="h-4 w-4" />
         </Toggle>

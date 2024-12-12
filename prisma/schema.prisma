@@ -189,6 +189,8 @@ model EventAccess {
   event Event @relation(fields: [eventId], references: [id])
   code String
   isActive Boolean @default(false)
+  name String?
+  updateAt DateTime?
 }
 
 

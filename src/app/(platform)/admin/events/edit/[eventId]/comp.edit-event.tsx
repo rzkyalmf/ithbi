@@ -4,6 +4,7 @@ import Image from "next/image";
 import React, { ChangeEvent, useActionState, useState } from "react";
 
 import { FileInput } from "@/components/isomorphic/file-input";
+import { Tiptap } from "@/components/isomorphic/tiptap";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 
@@ -37,6 +38,7 @@ export const EditEvent: React.FC<Props> = ({
   coverImage,
 }) => {
   const [preview, setPreview] = useState<string>("");
+  const [editDescription, setEditDescription] = useState(description ?? "");
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
 
   // Inisialisasi state dengan null, bukan object kosong
@@ -56,6 +58,8 @@ export const EditEvent: React.FC<Props> = ({
   function handleSubmit(formData: FormData) {
     if (selectedFile) {
       formData.set("coverImage", selectedFile);
+    } else {
+      formData.append("description", editDescription || "");
     }
     formAction(formData);
   }
@@ -149,15 +153,9 @@ export const EditEvent: React.FC<Props> = ({
             required
             defaultValue={price3}
           />
-          <Input
-            className="py-6 text-base font-normal text-gray-500 placeholder:text-gray-300"
-            name="description"
-            placeholder="Deskripsi Event"
-            maxLength={150}
-            minLength={3}
-            required
-            defaultValue={description}
-          />
+
+          <Tiptap content={editDescription} onChange={setEditDescription} />
+
           <FileInput
             name="coverImage"
             accept="image/png,image/jpeg"

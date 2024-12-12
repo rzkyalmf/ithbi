@@ -37,7 +37,7 @@ export default async function Page() {
               <section className="space-y-3 p-4 border">
                 <TruncatedText content={event.title} maxLength={23} />
                 <div className="grid grid-cols-2 gap-3">
-                  <Link href={`/admin/events/${event.slug}/stats`}>
+                  <Link href={`/admin/events/${event.id}/stats`}>
                     <Button variant={"outline"} className="w-full">
                       Stats
                     </Button>

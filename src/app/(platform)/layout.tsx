@@ -68,6 +68,9 @@ export default async function Layout({ children }: React.PropsWithChildren) {
                 <Menu href="/admin/events" icon={<CirclePlus size={19} />}>
                   Buat Event
                 </Menu>
+                <Menu href="/admin/tickets" icon={<CirclePlus size={19} />}>
+                  Cek Tiket
+                </Menu>
                 <Menu
                   href="/admin/flash-sales"
                   icon={<TicketPercent size={19} />}

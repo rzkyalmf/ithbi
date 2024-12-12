@@ -185,6 +185,38 @@ export const TransactionServices = {
     return transactions;
   },
 
+  getTransactionsByEvent: async (idOrSlug: string) => {
+    const transactions = await prisma.transaction.findMany({
+      where: {
+        OR: [
+          {
+            id: idOrSlug,
+          },
+          {
+            event: {
+              id: idOrSlug,
+            },
+          },
+        ],
+      },
+      include: {
+        event: {
+          include: {
+            eventsAccess: {
+              select: {
+                code: true,
+                isActive: true,
+              },
+            },
+          },
+        },
+        user: true,
+      },
+    });
+
+    return transactions;
+  },
+
   getUserTransactions: async (userId: string) => {
     const transactions = await prisma.transaction.findMany({
       where: {

@@ -1,7 +1,9 @@
 "use server";
+
 import { redirect } from "next/navigation";
 import { z } from "zod";
 
+import { sanitizeHTML } from "@/libs/sanitize";
 import { EventServices } from "@/services/event.services";
 import { S3Services } from "@/services/s3.services";
 
@@ -27,7 +29,7 @@ type EventWithImageData = EventBaseData & {
 // Schema dasar untuk update tanpa gambar
 const eventBaseSchema = z.object({
   id: z.string(),
-  title: z.string().min(8),
+  title: z.string().min(3),
   date: z.string().min(1),
   time: z.string().min(1),
   location: z.string().min(1),
@@ -35,7 +37,7 @@ const eventBaseSchema = z.object({
   price: z.number(),
   price2: z.number(),
   price3: z.number(),
-  description: z.string().min(1),
+  description: z.string().min(1).transform(sanitizeHTML),
 });
 
 // Schema dengan gambar untuk update lengkap
@@ -55,6 +57,22 @@ export async function editEventAction(_state: unknown, formData: FormData) {
   const price3 = Number(formData.get("price3"));
   const description = formData.get("description") as string;
   const coverImage = formData.get("coverImage") as File;
+
+  const sanitizedDescription = sanitizeHTML(description);
+
+  console.log({
+    id,
+    title,
+    date,
+    time,
+    location,
+    linkMaps,
+    price,
+    price2,
+    price3,
+    description,
+    coverImage,
+  });
 
   // Cek apakah update dengan gambar baru atau tidak
   const isUpdatingWithoutImage = coverImage.name === "undefined";
@@ -76,6 +94,7 @@ export async function editEventAction(_state: unknown, formData: FormData) {
 
     // Validasi data dasar
     const validation = eventBaseSchema.safeParse(baseData);
+    console.log(validation.error);
 
     if (!validation.success) {
       return {
@@ -88,7 +107,7 @@ export async function editEventAction(_state: unknown, formData: FormData) {
     await EventServices.updateEvent(
       id,
       title,
-      description,
+      sanitizedDescription,
       price,
       price2,
       price3,
@@ -154,7 +173,7 @@ export async function editEventAction(_state: unknown, formData: FormData) {
     await EventServices.updateEvent(
       id,
       title,
-      description,
+      sanitizedDescription,
       price,
       price2,
       price3,
