@@ -47,34 +47,36 @@ export default async function Page() {
                   <TruncatedText content={course.title} />
                 </h3>
                 <div>
-                  {course.certificates.map((certificate) => {
-                    return (
-                      <div key={certificate.id}>
-                        {certificate.status === "APPROVED" && (
-                          <DownloadBtn certificateId={certificate.id} />
-                        )}
-                        {certificate.status === "NO_REQUEST" && (
-                          <form action={requestCertificateAction}>
-                            <input
-                              name="certificateId"
-                              value={certificate.id}
-                              type="hidden"
-                            />
-                            <Button
-                              size="sm"
-                              className="w-fit"
-                              variant="outline"
-                            >
-                              Request Sertifikat
-                            </Button>
-                          </form>
-                        )}
-                        {certificate.status === "UNDER_REVIEW" && (
-                          <p className="msg">Sertifkat sedang diproses</p>
-                        )}
-                      </div>
-                    );
-                  })}
+                  {course.certificates
+                    .filter((certificate) => certificate.userId === auth.id) // Filter sertifikat berdasarkan userId
+                    .map((certificate) => {
+                      return (
+                        <div key={certificate.id}>
+                          {certificate.status === "APPROVED" && (
+                            <DownloadBtn certificateId={certificate.id} />
+                          )}
+                          {certificate.status === "NO_REQUEST" && (
+                            <form action={requestCertificateAction}>
+                              <input
+                                name="certificateId"
+                                value={certificate.id}
+                                type="hidden"
+                              />
+                              <Button
+                                size="sm"
+                                className="w-fit"
+                                variant="outline"
+                              >
+                                Request Sertifikat
+                              </Button>
+                            </form>
+                          )}
+                          {certificate.status === "UNDER_REVIEW" && (
+                            <p className="msg">Sertifkat sedang diproses</p>
+                          )}
+                        </div>
+                      );
+                    })}
                 </div>
               </section>
             </Card>
