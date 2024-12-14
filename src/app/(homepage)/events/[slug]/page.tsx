@@ -6,10 +6,10 @@ import { redirect } from "next/navigation";
 import { Card } from "@/components/isomorphic/card";
 import { RenderHTML } from "@/components/isomorphic/render-html";
 import { currencyFormat } from "@/libs/currency-format";
+import { formatDate, formatTime } from "@/libs/dates-format";
 import { EventServices } from "@/services/event.services";
 
 import { QuantitySelector } from "./components/quantity";
-import { formatDate, formatTime } from "@/libs/dates-format";
 
 type Params = Promise<{ slug: string }>;
 

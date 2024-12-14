@@ -3,8 +3,8 @@ import Link from "next/link";
 
 import { TruncatedText } from "@/components/isomorphic/truncated-text";
 import { currencyFormat } from "@/libs/currency-format";
-import { EventServices } from "@/services/event.services";
 import { formatDay } from "@/libs/dates-format";
+import { EventServices } from "@/services/event.services";
 
 export default async function Page() {
   const events = await EventServices.getAllEvents();

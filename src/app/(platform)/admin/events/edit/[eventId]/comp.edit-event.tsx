@@ -7,9 +7,6 @@ import { FileInput } from "@/components/isomorphic/file-input";
 import { Tiptap } from "@/components/isomorphic/tiptap";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-
-import { editEventAction } from "./action";
-import { formatInputDate, formatInputTime } from "@/libs/dates-format";
 import {
   Select,
   SelectContent,
@@ -17,6 +14,9 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { formatInputDate, formatInputTime } from "@/libs/dates-format";
+
+import { editEventAction } from "./action";
 
 interface Props {
   id: string | undefined;

@@ -43,4 +43,4 @@ const formatInputTime = (dateTimeString?: Date): string => {
   return `${hours}:${minutes}`;
 };
 
-export { formatDate, formatDay, formatTime, formatInputDate, formatInputTime };
+export { formatDate, formatDay, formatInputDate, formatInputTime,formatTime };

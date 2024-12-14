@@ -7,8 +7,6 @@ import { FileInput } from "@/components/isomorphic/file-input";
 import { Tiptap } from "@/components/isomorphic/tiptap";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-
-import { createEventAction } from "./action";
 import {
   Select,
   SelectContent,
@@ -16,6 +14,8 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+
+import { createEventAction } from "./action";
 
 export default function Page() {
   const [preview, setPreview] = useState("");
