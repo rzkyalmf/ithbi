@@ -2,7 +2,7 @@ import { redirect } from "next/navigation";
 import { NextRequest } from "next/server";
 
 import { generateEventCode } from "@/libs/generate-code";
-import { EmailServices } from "@/services/email.services";
+// import { EmailServices } from "@/services/email.services";
 import prisma from "@/utils/prisma";
 
 interface ReqBody {
@@ -71,19 +71,19 @@ export async function POST(req: NextRequest) {
       });
 
       // Kirim email berdasarkan jumlah kode
-      if (Number(updatedTransaction.quantity) === 1) {
-        await EmailServices.sendEventCode(
-          updatedTransaction.userId,
-          eventCodes[0],
-          eventId
-        );
-      } else {
-        await EmailServices.sendMultipleEventCodes(
-          updatedTransaction.userId,
-          eventCodes,
-          eventId
-        );
-      }
+      // if (Number(updatedTransaction.quantity) === 1) {
+      //   await EmailServices.sendEventCode(
+      //     updatedTransaction.userId,
+      //     eventCodes[0],
+      //     eventId
+      //   );
+      // } else {
+      //   await EmailServices.sendMultipleEventCodes(
+      //     updatedTransaction.userId,
+      //     eventCodes,
+      //     eventId
+      //   );
+      // }
     }
 
     console.log("Transaction API has been hitted");
