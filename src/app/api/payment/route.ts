@@ -1,3 +1,4 @@
+import { redirect } from "next/navigation";
 import { NextRequest } from "next/server";
 
 import { generateEventCode } from "@/libs/generate-code";
@@ -88,5 +89,5 @@ export async function POST(req: NextRequest) {
     console.log("Transaction API has been hitted");
   }
 
-  return new Response("OK");
+  redirect("/dashboard/pembayaran");
 }
