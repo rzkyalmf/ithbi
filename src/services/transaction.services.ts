@@ -64,7 +64,8 @@ export const TransactionServices = {
   createEventTransaction: async (
     eventId: string,
     userId: string,
-    amount: number
+    amount: number,
+    quantity: number
   ) => {
     const eventDetail = await EventServices.getEventDetail(eventId);
 
@@ -108,6 +109,7 @@ export const TransactionServices = {
           },
         },
         paymentStatus: "UNPAID",
+        quantity,
         amount,
         paymentLink: data.data.link,
         transactionId: data.data.id,
