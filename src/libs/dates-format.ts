@@ -29,4 +29,18 @@ const formatDay = (dateTimeString: Date): string => {
   return days[date.getDay()];
 };
 
-export { formatDate, formatDay, formatTime };
+// Tambahan untuk input date default value
+const formatInputDate = (dateTimeString?: Date): string => {
+  if (!dateTimeString) return "";
+  return dateTimeString.toISOString().split("T")[0];
+};
+
+// Tambahan untuk input time default value
+const formatInputTime = (dateTimeString?: Date): string => {
+  if (!dateTimeString) return "";
+  const hours = dateTimeString.getHours().toString().padStart(2, "0");
+  const minutes = dateTimeString.getMinutes().toString().padStart(2, "0");
+  return `${hours}:${minutes}`;
+};
+
+export { formatDate, formatDay, formatTime, formatInputDate, formatInputTime };

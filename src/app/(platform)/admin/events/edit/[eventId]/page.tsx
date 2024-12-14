@@ -23,7 +23,9 @@ export default async function Page(props: PageProps) {
         price2={events?.price2 ?? undefined}
         price3={events?.price3 ?? undefined}
         date={events?.date}
-        time={events?.time}
+        timeStart={events?.timeStart}
+        timeEnd={events?.timeEnd}
+        timeZone={events?.timeZone}
         location={events?.location}
         linkMaps={events?.linkMaps}
         coverImage={events?.coverImage}

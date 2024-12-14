@@ -9,6 +9,13 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 
 import { createEventAction } from "./action";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 
 export default function Page() {
   const [preview, setPreview] = useState("");
@@ -43,21 +50,41 @@ export default function Page() {
             required
           />
           <Input
-            className="py-6 text-base font-normal text-gray-500 placeholder:text-gray-300"
+            className="py-6 text-base font-normal"
             name="date"
-            placeholder="dd-mm-yyyy"
-            maxLength={150}
-            minLength={3}
+            type="date"
             required
+            defaultValue={new Date().toISOString().split("T")[0]}
           />
-          <Input
-            className="py-6 text-base font-normal text-gray-500 placeholder:text-gray-300"
-            name="time"
-            placeholder="00:00 - 00:00 WIB"
-            maxLength={150}
-            minLength={3}
-            required
-          />
+          <div className="flex items-center gap-2">
+            <Input
+              className="py-6 text-base font-normal "
+              name="timeStart"
+              type="time"
+              required
+              defaultValue="08:00"
+            />
+            <span>-</span>
+            <Input
+              className="py-6 text-base font-normal"
+              name="timeEnd"
+              type="time"
+              required
+              defaultValue="17:00"
+            />
+          </div>
+          <div>
+            <Select name="timeZone" defaultValue="WIB">
+              <SelectTrigger className="w-full py-6 hover:border-yellow-400">
+                <SelectValue placeholder="Pilih zona waktu" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="WIB">WIB</SelectItem>
+                <SelectItem value="WITA">WITA</SelectItem>
+                <SelectItem value="WIT">WIT</SelectItem>
+              </SelectContent>
+            </Select>
+          </div>
           <Input
             className="py-6 text-base font-normal text-gray-500 placeholder:text-gray-300"
             name="location"

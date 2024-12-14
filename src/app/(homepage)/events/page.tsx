@@ -4,6 +4,7 @@ import Link from "next/link";
 import { TruncatedText } from "@/components/isomorphic/truncated-text";
 import { currencyFormat } from "@/libs/currency-format";
 import { EventServices } from "@/services/event.services";
+import { formatDay } from "@/libs/dates-format";
 
 export default async function Page() {
   const events = await EventServices.getAllEvents();
@@ -34,7 +35,7 @@ export default async function Page() {
                     <TruncatedText maxLength={18} content={event.title} />
                   </h4>
                   <p className="text-slate-400 font-normal text-">
-                    {event.date}
+                    <td>{formatDay(event.date)}</td>
                   </p>
                   <h4 className="font-semibold">
                     {currencyFormat(event.price)}

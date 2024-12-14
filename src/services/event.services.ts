@@ -14,7 +14,9 @@ export const EventServices = {
       | "price3"
       | "coverImage"
       | "date"
-      | "time"
+      | "timeStart"
+      | "timeEnd"
+      | "timeZone"
       | "location"
       | "linkMaps"
     >
@@ -31,7 +33,9 @@ export const EventServices = {
           price2: eventData.price2,
           price3: eventData.price3,
           date: eventData.date,
-          time: eventData.time,
+          timeStart: eventData.timeStart,
+          timeEnd: eventData.timeEnd,
+          timeZone: eventData.timeZone,
           location: eventData.location,
           linkMaps: eventData.linkMaps,
           coverImage: eventData.coverImage,
@@ -78,8 +82,10 @@ export const EventServices = {
     price: number,
     price2: number,
     price3: number,
-    date: string,
-    time: string,
+    date: Date,
+    timeStart: Date,
+    timeEnd: Date,
+    timeZone: string,
     location: string,
     linkMaps: string,
     coverImage?: string
@@ -98,7 +104,9 @@ export const EventServices = {
         price2,
         price3,
         date,
-        time,
+        timeStart,
+        timeEnd,
+        timeZone,
         location,
         linkMaps,
         coverImage,

@@ -9,6 +9,14 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 
 import { editEventAction } from "./action";
+import { formatInputDate, formatInputTime } from "@/libs/dates-format";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 
 interface Props {
   id: string | undefined;
@@ -17,8 +25,10 @@ interface Props {
   price: number | undefined;
   price2: number | undefined;
   price3: number | undefined;
-  date: string | undefined;
-  time: string | undefined;
+  date: Date | undefined;
+  timeStart: Date | undefined;
+  timeEnd: Date | undefined;
+  timeZone: string | undefined;
   location: string | undefined;
   linkMaps: string | undefined;
   coverImage: string | undefined;
@@ -32,7 +42,9 @@ export const EditEvent: React.FC<Props> = ({
   price2,
   price3,
   date,
-  time,
+  timeStart,
+  timeEnd,
+  timeZone,
   location,
   linkMaps,
   coverImage,
@@ -82,23 +94,41 @@ export const EditEvent: React.FC<Props> = ({
             defaultValue={title}
           />
           <Input
-            className="py-6 text-base font-normal text-gray-500 placeholder:text-gray-300"
+            className="py-6 text-base font-normal"
             name="date"
-            placeholder="dd-mm-yyyy"
-            maxLength={150}
-            minLength={3}
+            type="date"
             required
-            defaultValue={date}
+            defaultValue={formatInputDate(date)}
           />
-          <Input
-            className="py-6 text-base font-normal text-gray-500 placeholder:text-gray-300"
-            name="time"
-            placeholder="00:00 - 00:00 WIB"
-            maxLength={150}
-            minLength={3}
-            required
-            defaultValue={time}
-          />
+          <div className="flex items-center gap-2">
+            <Input
+              className="py-6 text-base font-normal "
+              name="timeStart"
+              type="time"
+              required
+              defaultValue={formatInputTime(timeStart)}
+            />
+            <span>-</span>
+            <Input
+              className="py-6 text-base font-normal"
+              name="timeEnd"
+              type="time"
+              required
+              defaultValue={formatInputTime(timeEnd)}
+            />
+          </div>
+          <div>
+            <Select name="timeZone" defaultValue={timeZone}>
+              <SelectTrigger className="w-full py-6 hover:border-yellow-400">
+                <SelectValue placeholder="Pilih zona waktu" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="WIB">WIB</SelectItem>
+                <SelectItem value="WITA">WITA</SelectItem>
+                <SelectItem value="WIT">WIT</SelectItem>
+              </SelectContent>
+            </Select>
+          </div>
           <Input
             className="py-6 text-base font-normal text-gray-500 placeholder:text-gray-300"
             name="location"

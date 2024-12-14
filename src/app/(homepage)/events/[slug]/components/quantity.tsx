@@ -32,8 +32,6 @@ export const QuantitySelector = ({ event }: Props) => {
     }
   };
 
-  const totalPrice = getPrice() * quantity;
-
   return (
     <article className="w-full max-w-md mx-auto bg-white">
       <header className="border-b p-4">
@@ -72,7 +70,7 @@ export const QuantitySelector = ({ event }: Props) => {
           <section className="space-y-2">
             <div className="flex justify-between font-normal text-lg">
               <span>Total Pembayaran:</span>
-              <span>{currencyFormat(totalPrice)}</span>
+              <span>{currencyFormat(getPrice())}</span>
             </div>
           </section>
         </div>

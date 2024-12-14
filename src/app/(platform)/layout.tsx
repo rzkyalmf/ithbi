@@ -1,5 +1,7 @@
 import {
   Award,
+  CalendarCheck2,
+  CalendarPlus,
   ChartNoAxesCombined,
   CirclePlus,
   ContactRound,
@@ -65,10 +67,10 @@ export default async function Layout({ children }: React.PropsWithChildren) {
                 <Menu href="/admin/courses" icon={<CirclePlus size={19} />}>
                   Tambah Kelas
                 </Menu>
-                <Menu href="/admin/events" icon={<CirclePlus size={19} />}>
+                <Menu href="/admin/events" icon={<CalendarPlus size={19} />}>
                   Buat Event
                 </Menu>
-                <Menu href="/admin/tickets" icon={<CirclePlus size={19} />}>
+                <Menu href="/admin/tickets" icon={<CalendarCheck2 size={19} />}>
                   Cek Tiket
                 </Menu>
                 <Menu

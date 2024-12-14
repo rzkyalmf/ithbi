@@ -34,6 +34,7 @@ export const CekTicket = ({ events }: Props) => {
         maxLength={10}
         minLength={1}
         required
+        className="py-6 text-base font-normal"
       />
       <Input
         name="code"
@@ -42,10 +43,11 @@ export const CekTicket = ({ events }: Props) => {
         maxLength={10}
         minLength={1}
         required
+        className="py-6 text-base font-normal"
       />
 
       <Select name="eventId">
-        <SelectTrigger className="w-full">
+        <SelectTrigger className="w-full py-6">
           <SelectValue placeholder="Pilih Event" />
         </SelectTrigger>
         <SelectContent>
@@ -57,7 +59,7 @@ export const CekTicket = ({ events }: Props) => {
         </SelectContent>
       </Select>
 
-      <Button className="w-full" disabled={pending}>
+      <Button className="w-full py-6" disabled={pending}>
         Cek Tiket
       </Button>
 

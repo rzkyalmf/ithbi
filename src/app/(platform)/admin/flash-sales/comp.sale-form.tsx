@@ -36,10 +36,11 @@ export const SaleForm = ({ courses }: Props) => {
         minLength={1}
         inputMode="numeric"
         required
+        className="py-6 text-base font-normal"
       />
 
       <Select name="courseId">
-        <SelectTrigger className="w-full">
+        <SelectTrigger className="w-full py-6">
           <SelectValue placeholder="Pilih Course" />
         </SelectTrigger>
         <SelectContent>

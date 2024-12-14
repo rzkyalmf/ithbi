@@ -9,6 +9,7 @@ import { currencyFormat } from "@/libs/currency-format";
 import { EventServices } from "@/services/event.services";
 
 import { QuantitySelector } from "./components/quantity";
+import { formatDate, formatTime } from "@/libs/dates-format";
 
 type Params = Promise<{ slug: string }>;
 
@@ -48,12 +49,17 @@ export default async function Page(props: PageProps) {
             <div className="space-y-4">
               <div className="flex items-center gap-3">
                 <CalendarDays className="h-5 w-5 text-green-500" />
-                <p className="font-light text-gray-700">{event.date}</p>
+                <p className="font-light text-gray-700">
+                  <td>{formatDate(event.date)}</td>
+                </p>
               </div>
 
               <div className="flex items-center gap-3">
                 <Clock className="h-5 w-5 text-green-500" />
-                <p className="font-light text-gray-700">{event.time}</p>
+                <p className="font-light text-gray-700">
+                  {formatTime(event.timeStart)} - {formatTime(event.timeEnd)}{" "}
+                  {event.timeZone}
+                </p>
               </div>
 
               <Link href={event.linkMaps}>

@@ -10,7 +10,9 @@ import { S3Services } from "@/services/s3.services";
 const eventSchema = z.object({
   title: z.string().min(8),
   date: z.string().min(1),
-  time: z.string().min(1),
+  timeStart: z.string().min(1),
+  timeEnd: z.string().min(1),
+  timeZone: z.enum(["WIB", "WITA", "WIT"]),
   location: z.string().min(1),
   linkMaps: z.string().min(1),
   price: z.number(),
@@ -23,7 +25,9 @@ const eventSchema = z.object({
 export async function createEventAction(_: unknown, formData: FormData) {
   const title = formData.get("title");
   const date = formData.get("date");
-  const time = formData.get("time");
+  const timeStart = formData.get("timeStart");
+  const timeEnd = formData.get("timeEnd");
+  const timeZone = formData.get("timeZone") as "WIB" | "WITA" | "WIT";
   const location = formData.get("location");
   const linkMaps = formData.get("linkMaps");
   const price = Number(formData.get("price"));
@@ -34,23 +38,12 @@ export async function createEventAction(_: unknown, formData: FormData) {
 
   const sanitizedDescription = sanitizeHTML(description);
 
-  console.log({
-    title,
-    date,
-    time,
-    location,
-    linkMaps,
-    price,
-    price2,
-    price3,
-    sanitizedDescription,
-    coverImage,
-  });
-
   const validation = eventSchema.safeParse({
     title,
     date,
-    time,
+    timeStart,
+    timeEnd,
+    timeZone,
     location,
     linkMaps,
     price,
@@ -72,7 +65,9 @@ export async function createEventAction(_: unknown, formData: FormData) {
         price3,
         coverImage,
         date,
-        time,
+        timeStart,
+        timeEnd,
+        timeZone,
         location,
       },
     };
@@ -84,8 +79,10 @@ export async function createEventAction(_: unknown, formData: FormData) {
     price: validation.data.price,
     price2: validation.data.price2,
     price3: validation.data.price3,
-    date: validation.data.date,
-    time: validation.data.time,
+    date: new Date(validation.data.date),
+    timeStart: new Date(`${validation.data.date} ${validation.data.timeStart}`),
+    timeEnd: new Date(`${validation.data.date} ${validation.data.timeEnd}`),
+    timeZone: validation.data.timeZone,
     location: validation.data.location,
     linkMaps: validation.data.linkMaps,
     coverImage: validation.data.coverImage.name,

@@ -11,8 +11,10 @@ import { S3Services } from "@/services/s3.services";
 interface EventBaseData {
   id: string;
   title: string;
-  date: string;
-  time: string;
+  date: string; // Ubah ke string
+  timeStart: string; // Ubah ke string
+  timeEnd: string; // Ubah ke string
+  timeZone: "WIB" | "WITA" | "WIT";
   location: string;
   linkMaps: string;
   price: number;
@@ -30,8 +32,10 @@ type EventWithImageData = EventBaseData & {
 const eventBaseSchema = z.object({
   id: z.string(),
   title: z.string().min(3),
-  date: z.string().min(1),
-  time: z.string().min(1),
+  date: z.string().min(1), // Terima string
+  timeStart: z.string().min(1), // Terima string
+  timeEnd: z.string().min(1), // Terima string
+  timeZone: z.enum(["WIB", "WITA", "WIT"]),
   location: z.string().min(1),
   linkMaps: z.string().min(1),
   price: z.number(),
@@ -49,7 +53,9 @@ export async function editEventAction(_state: unknown, formData: FormData) {
   const id = formData.get("id") as string;
   const title = formData.get("title") as string;
   const date = formData.get("date") as string;
-  const time = formData.get("time") as string;
+  const timeStart = formData.get("timeStart") as string;
+  const timeEnd = formData.get("timeEnd") as string;
+  const timeZone = formData.get("timeZone") as "WIB" | "WITA" | "WIT";
   const location = formData.get("location") as string;
   const linkMaps = formData.get("linkMaps") as string;
   const price = Number(formData.get("price"));
@@ -60,20 +66,6 @@ export async function editEventAction(_state: unknown, formData: FormData) {
 
   const sanitizedDescription = sanitizeHTML(description);
 
-  console.log({
-    id,
-    title,
-    date,
-    time,
-    location,
-    linkMaps,
-    price,
-    price2,
-    price3,
-    description,
-    coverImage,
-  });
-
   // Cek apakah update dengan gambar baru atau tidak
   const isUpdatingWithoutImage = coverImage.name === "undefined";
 
@@ -82,8 +74,10 @@ export async function editEventAction(_state: unknown, formData: FormData) {
     const baseData: EventBaseData = {
       id,
       title,
-      date,
-      time,
+      date, // Simpan sebagai string
+      timeStart, // Simpan sebagai string
+      timeEnd, // Simpan sebagai string
+      timeZone,
       location,
       linkMaps,
       price,
@@ -111,8 +105,10 @@ export async function editEventAction(_state: unknown, formData: FormData) {
       price,
       price2,
       price3,
-      date,
-      time,
+      new Date(date), // Konversi ke Date
+      new Date(`${date} ${timeStart}`), // Konversi ke Date
+      new Date(`${date} ${timeEnd}`), // Konversi ke Date
+      timeZone,
       location,
       linkMaps
     );
@@ -123,8 +119,10 @@ export async function editEventAction(_state: unknown, formData: FormData) {
     const withImageData: EventWithImageData = {
       id,
       title,
-      date,
-      time,
+      date, // Simpan sebagai string
+      timeStart, // Simpan sebagai string
+      timeEnd, // Simpan sebagai string
+      timeZone,
       location,
       linkMaps,
       price,
@@ -177,8 +175,10 @@ export async function editEventAction(_state: unknown, formData: FormData) {
       price,
       price2,
       price3,
-      date,
-      time,
+      new Date(date), // Konversi ke Date
+      new Date(`${date} ${timeStart}`), // DateTime lengkap
+      new Date(`${date} ${timeEnd}`), // DateTime lengkap
+      timeZone,
       location,
       linkMaps,
       coverImage.name

@@ -168,8 +168,10 @@ model Event {
   price3 Int?
   specialPrice Int?
   coverImage String
-  date String
-  time String
+  date DateTime
+  timeStart DateTime
+  timeEnd DateTime
+  timeZone String
   linkMaps String
   location String
 
@@ -192,6 +194,8 @@ model EventAccess {
   name String?
   updateAt DateTime?
 }
+
+
 
 
 
