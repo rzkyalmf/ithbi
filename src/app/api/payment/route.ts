@@ -70,6 +70,7 @@ export async function POST(req: NextRequest) {
       });
 
       // Dynamic import - dimuat hanya saat diperlukan
+      // Menghindari error saat build untuk modul yang membutuhkan env
       const { EmailServices } = await import("@/services/email.services");
 
       // Kirim email berdasarkan jumlah kode
