@@ -1,6 +1,6 @@
 "use server";
 
-import { generateVerificationCode } from "@/libs/generate-code";
+// import { generateVerificationCode } from "@/libs/generate-code";
 import { FormServices } from "@/services/form.services";
 
 export async function pendaftaranAction(_state: unknown, formData: FormData) {
@@ -23,8 +23,8 @@ export async function pendaftaranAction(_state: unknown, formData: FormData) {
     };
   }
 
-  const verificationCode = generateVerificationCode();
-  await FormServices.createVerificationCode(formulir.id, verificationCode);
+  // const verificationCode = generateVerificationCode();
+  // await FormServices.createVerificationCode(formulir.id, verificationCode);
 
   return {
     downloadUrl:
