@@ -1,6 +1,7 @@
 import React from "react";
 
 import { Card } from "@/components/isomorphic/card";
+import { TruncatedText } from "@/components/isomorphic/truncated-text";
 import { currencyFormat } from "@/libs/currency-format";
 import { formatDate } from "@/libs/dates-format";
 import { TransactionServices } from "@/services/transaction.services";
@@ -36,12 +37,13 @@ export default async function Page() {
         <table className="w-full table-auto">
           <thead className="border-y border-slate-200 bg-white text-left">
             <tr>
-              <th className="py-5 pl-12">No</th>
-              <th>Course Title</th>
-              <th>Student Name</th>
-              <th>Amount</th>
-              <th>Status</th>
-              <th>Date</th>
+              <th className="w-[10%] py-5 pl-12">No</th>
+              <th className="w-[20%]">Kelas</th>
+              <th className="w-[20%]">Event</th>
+              <th className="w-[20%]">User</th>
+              <th className="w-[10%]">Harga</th>
+              <th className="w-[10%]">Status</th>
+              <th className="w-[10%]">Date</th>
             </tr>
           </thead>
           <tbody>
@@ -52,8 +54,24 @@ export default async function Page() {
                   key={transaction.id}
                 >
                   <td className="py-5 pl-12">{index + 1}</td>
-                  <td>{transaction.course?.title}</td>
-                  <td>{transaction.user.name}</td>
+                  <td className="pr-4">
+                    <TruncatedText
+                      content={transaction.course?.title}
+                      maxLength={20}
+                    />
+                  </td>
+                  <td className="pr-4">
+                    <TruncatedText
+                      content={transaction.event?.title}
+                      maxLength={25}
+                    />
+                  </td>
+                  <td className="pr-4">
+                    <TruncatedText
+                      content={transaction.user.name}
+                      maxLength={25}
+                    />
+                  </td>
                   <td>{currencyFormat(transaction.amount)}</td>
                   <td>
                     {transaction.paymentStatus === "UNPAID" ? (

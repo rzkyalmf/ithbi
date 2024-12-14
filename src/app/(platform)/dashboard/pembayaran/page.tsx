@@ -1,5 +1,6 @@
 import { redirect } from "next/navigation";
 
+import { TruncatedText } from "@/components/isomorphic/truncated-text";
 import { currencyFormat } from "@/libs/currency-format";
 import { formatDate } from "@/libs/dates-format";
 import serverAuth from "@/libs/server.auth";
@@ -24,11 +25,12 @@ export default async function Page() {
         <table className="w-full table-auto">
           <thead className="border-y border-slate-200 bg-white text-left">
             <tr>
-              <th className="py-5 pl-12">No</th>
-              <th>Judul Kelas</th>
-              <th>Harga</th>
-              <th>Status</th>
-              <th>Waktu</th>
+              <th className="w-[10%] py-5 pl-12">No</th>
+              <th className="w-[20%]">Kelas</th>
+              <th className="w-[20%]">Event</th>
+              <th className="w-[10%]">Harga</th>
+              <th className="w-[10%]">Status</th>
+              <th className="w-[10%]">Waktu</th>
             </tr>
           </thead>
           <tbody>
@@ -39,7 +41,12 @@ export default async function Page() {
                   key={transaction.id}
                 >
                   <td className="py-5 pl-12">{index + 1}</td>
-                  <td>{transaction.course?.title}</td>
+                  <td className="pr-4">
+                    <TruncatedText content={transaction.course?.title} />
+                  </td>
+                  <td className="pr-4">
+                    <TruncatedText content={transaction.event?.title} />
+                  </td>
                   <td>{currencyFormat(transaction.amount)}</td>
                   <td>
                     {transaction.paymentStatus === "UNPAID" ? (

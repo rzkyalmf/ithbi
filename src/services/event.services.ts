@@ -114,13 +114,21 @@ export const EventServices = {
     });
   },
 
-  getUserEvents: async (eventId: string) => {
+  getUserEvents: async (eventOrUser: string) => {
     const courseAccess = await prisma.eventAccess.findMany({
       where: {
-        eventId,
+        OR: [
+          {
+            eventId: eventOrUser,
+          },
+          {
+            userId: eventOrUser,
+          },
+        ],
       },
       include: {
         user: true,
+        event: true,
       },
     });
 

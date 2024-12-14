@@ -9,6 +9,7 @@ import {
   House,
   MonitorDown,
   Search,
+  Ticket,
   TicketPercent,
   Wallet,
 } from "lucide-react";
@@ -50,6 +51,9 @@ export default async function Layout({ children }: React.PropsWithChildren) {
               <p className="pb-2 font-medium">Main Menu</p>
               <Menu href="/dashboard/kelas-online" icon={<House size={19} />}>
                 Dashboard
+              </Menu>
+              <Menu href="/dashboard/events" icon={<Ticket size={19} />}>
+                Tiket Acara
               </Menu>
               <Menu
                 href="/dashboard/certificates"

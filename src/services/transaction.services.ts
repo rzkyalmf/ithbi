@@ -156,6 +156,7 @@ export const TransactionServices = {
       include: {
         course: true,
         user: true,
+        event: true,
       },
     });
 
@@ -224,6 +225,7 @@ export const TransactionServices = {
       },
       include: {
         course: true,
+        event: true,
       },
     });
 
