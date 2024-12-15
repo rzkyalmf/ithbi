@@ -103,6 +103,25 @@ export default function Page() {
           />
           <Input
             className="py-6 text-base font-normal text-gray-500 placeholder:text-gray-300"
+            name="kuota"
+            placeholder="Kuota Peserta"
+            type="text"
+            pattern="[0-9]*"
+            maxLength={10}
+            minLength={1}
+            inputMode="numeric"
+            required
+          />
+          <Input
+            className="py-6 text-base font-normal text-gray-500 placeholder:text-gray-300"
+            name="videoUrl"
+            placeholder="Link Video Youtube"
+            maxLength={150}
+            minLength={3}
+            required
+          />
+          <Input
+            className="py-6 text-base font-normal text-gray-500 placeholder:text-gray-300"
             name="price"
             placeholder="Harga Event"
             type="text"

@@ -15,6 +15,8 @@ const eventSchema = z.object({
   timeZone: z.enum(["WIB", "WITA", "WIT"]),
   location: z.string().min(1),
   linkMaps: z.string().min(1),
+  kuota: z.string().min(1),
+  videoUrl: z.string().min(1),
   price: z.number(),
   price2: z.number(),
   price3: z.number(),
@@ -30,6 +32,8 @@ export async function createEventAction(_: unknown, formData: FormData) {
   const timeZone = formData.get("timeZone") as "WIB" | "WITA" | "WIT";
   const location = formData.get("location");
   const linkMaps = formData.get("linkMaps");
+  const kuota = formData.get("kuota");
+  const videoUrl = formData.get("videoUrl");
   const price = Number(formData.get("price"));
   const price2 = Number(formData.get("price2"));
   const price3 = Number(formData.get("price3"));
@@ -46,6 +50,8 @@ export async function createEventAction(_: unknown, formData: FormData) {
     timeZone,
     location,
     linkMaps,
+    kuota,
+    videoUrl,
     price,
     price2,
     price3,
@@ -69,6 +75,9 @@ export async function createEventAction(_: unknown, formData: FormData) {
         timeEnd,
         timeZone,
         location,
+        linkMaps,
+        kuota,
+        videoUrl,
       },
     };
   }
@@ -85,6 +94,8 @@ export async function createEventAction(_: unknown, formData: FormData) {
     timeZone: validation.data.timeZone,
     location: validation.data.location,
     linkMaps: validation.data.linkMaps,
+    kuota: validation.data.kuota,
+    videoUrl: validation.data.videoUrl,
     coverImage: validation.data.coverImage.name,
   });
 

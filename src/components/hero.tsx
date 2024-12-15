@@ -34,12 +34,12 @@ export const Hero: React.FC = () => {
           </Link>
         </div>
 
-        <div className="flex h-[600px] w-1/2 items-center justify-end">
+        <div className="flex h-[600px] w-1/2 pb-12 items-center text-end justify-end">
           <Image
-            src="https://pub-b3bbd8acb34f4f18b3140380b48ae46d.r2.dev/ustdani.png"
+            src="https://pub-c203e6e53e5e4f39abd18a3b25c37b06.r2.dev/ithbi-lms/hero-image.png"
             alt="hero"
-            width={400}
-            height={400}
+            width={450}
+            height={450}
           />
         </div>
       </div>

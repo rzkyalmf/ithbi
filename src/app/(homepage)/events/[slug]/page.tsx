@@ -1,4 +1,4 @@
-import { Banknote, CalendarDays, Clock, MapPin } from "lucide-react";
+import { Banknote, CalendarDays, Clock, MapPin, Users } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { redirect } from "next/navigation";
@@ -9,6 +9,7 @@ import { currencyFormat } from "@/libs/currency-format";
 import { formatDate, formatTime } from "@/libs/dates-format";
 import { EventServices } from "@/services/event.services";
 
+import Countdown from "./components/countdown";
 import { QuantitySelector } from "./components/quantity";
 
 type Params = Promise<{ slug: string }>;
@@ -65,9 +66,23 @@ export default async function Page(props: PageProps) {
               <Link href={event.linkMaps}>
                 <div className="flex items-center gap-3 pt-4 hover:text-green-600 transition-colors">
                   <MapPin className="h-5 w-5 text-green-500" />
-                  <p className="font-light hover:underline">{event.location}</p>
+                  <p className="font-light underline">{event.location}</p>
                 </div>
               </Link>
+
+              <div className="flex items-center gap-3">
+                <Users className="h-5 w-5 text-green-500" />
+                <p
+                  className={`font-light ${
+                    event.eventsAccess.length >= Number(event.kuota)
+                      ? "text-red-500"
+                      : "text-gray-700"
+                  }`}
+                >
+                  {event.eventsAccess.length} / {event.kuota} Peserta telah
+                  terdaftar
+                </p>
+              </div>
 
               <div className="flex items-center gap-3">
                 <Banknote className="h-5 w-5 text-green-500" />
@@ -88,16 +103,33 @@ export default async function Page(props: PageProps) {
       </section>
       <section className="m-auto my-12 grid max-w-7xl grid-cols-3 gap-10">
         <div className="col-span-2 space-y-4">
-          <h3 className="border-b-2 pb-3">Deskripsi :</h3>
+          <h4 className="font-bold">Deskripsi Acara :</h4>
           <RenderHTML
             content={event.description}
-            className="prose-sm text-gray-900"
+            className="prose-sm text-gray-800 rounded-xl border p-10"
           />
+          <section className="relative h-[445px] w-full">
+            <iframe
+              width="100%"
+              height="100%"
+              src={`https://www.youtube.com/embed/${event.videoUrl}`}
+              allowFullScreen
+              className=" rounded-xl"
+            />
+          </section>
         </div>
         <div className="relative">
-          <Card className="space-y-2 p-4 sticky top-4 rounded-2xl">
-            <QuantitySelector event={event} />
-          </Card>
+          <div className="sticky top-4">
+            <Card className="space-y-2 p-4 rounded-xl mb-4">
+              <QuantitySelector event={event} />
+            </Card>
+            <Card className="space-y-2 p-4 rounded-xl">
+              <Countdown
+                eventDate={event.date}
+                eventStartTime={event.timeStart}
+              />
+            </Card>
+          </div>
         </div>
       </section>
     </main>

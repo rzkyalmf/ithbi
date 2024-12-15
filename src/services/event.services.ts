@@ -19,6 +19,8 @@ export const EventServices = {
       | "timeZone"
       | "location"
       | "linkMaps"
+      | "kuota"
+      | "videoUrl"
     >
   ) => {
     try {
@@ -38,6 +40,8 @@ export const EventServices = {
           timeZone: eventData.timeZone,
           location: eventData.location,
           linkMaps: eventData.linkMaps,
+          kuota: eventData.kuota,
+          videoUrl: eventData.videoUrl,
           coverImage: eventData.coverImage,
         },
       });
@@ -70,6 +74,9 @@ export const EventServices = {
           },
         ],
       },
+      include: {
+        eventsAccess: true,
+      },
     });
 
     return data;
@@ -88,6 +95,8 @@ export const EventServices = {
     timeZone: string,
     location: string,
     linkMaps: string,
+    kuota: string,
+    videoUrl: string,
     coverImage?: string
   ) => {
     const slug = slugify(title, { lower: true });
@@ -109,6 +118,8 @@ export const EventServices = {
         timeZone,
         location,
         linkMaps,
+        kuota,
+        videoUrl,
         coverImage,
       },
     });

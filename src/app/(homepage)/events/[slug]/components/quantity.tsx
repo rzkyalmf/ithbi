@@ -1,19 +1,61 @@
 "use client";
-import { Event } from "@prisma/client";
+
+import { Event, EventAccess } from "@prisma/client";
 import { Minus, Plus, Ticket } from "lucide-react";
 import { useState } from "react";
 
 import { Button } from "@/components/ui/button";
 import { currencyFormat } from "@/libs/currency-format";
 
-import { buyCourseAction } from "../action";
+import { buyEventAction } from "../action";
 
 interface Props {
-  event: Event;
+  event: Event & {
+    eventsAccess: EventAccess[];
+  };
 }
 
 export const QuantitySelector = ({ event }: Props) => {
   const [quantity, setQuantity] = useState(1);
+  const [error, setError] = useState<string | null>(null);
+
+  const handleSubmit = async (formData: FormData) => {
+    try {
+      const result = await buyEventAction(formData);
+
+      if (result.error) {
+        setError(result.message);
+
+        // Refresh halaman setelah beberapa detik
+        setTimeout(() => {
+          window.location.reload();
+        }, 3000);
+      }
+    } catch (err) {
+      setError("Terjadi kesalahan sistem. Silakan coba beberapa saat lagi.");
+      // Refresh halaman setelah beberapa detik
+      setTimeout(() => {
+        window.location.reload();
+      }, 3000);
+    }
+  };
+
+  // Cek apakah event telah berakhir
+  const isEventExpired = () => {
+    const eventDateTime = new Date(event.date);
+    eventDateTime.setHours(
+      event.timeStart.getHours(),
+      event.timeStart.getMinutes(),
+      event.timeStart.getSeconds()
+    );
+    return eventDateTime < new Date();
+  };
+
+  // Cek apakah kuota telah penuh
+  const isQuotaFull = event.eventsAccess.length >= parseInt(event.kuota);
+
+  // Button akan dinonaktifkan jika event berakhir ATAU kuota penuh
+  const isDisabled = isEventExpired() || isQuotaFull;
 
   const getPrice = () => {
     switch (quantity) {
@@ -77,14 +119,29 @@ export const QuantitySelector = ({ event }: Props) => {
       </main>
 
       <footer className="p-4">
-        <form action={buyCourseAction} className="w-full">
+        <form action={handleSubmit} className="w-full">
           <input type="hidden" value={event.id} name="eventId" />
           <input type="hidden" value={event.slug} name="slug" />
           <input type="hidden" value={getPrice()} name="amount" />
           <input type="hidden" value={quantity} name="quantity" />
-          <Button className="w-full py-6 shadow-md">Beli Sekarang</Button>
+          <Button className="w-full py-6 shadow-md" disabled={isDisabled}>
+            {isQuotaFull
+              ? "Kuota Telah Terpenuhi"
+              : isEventExpired()
+              ? "Pembelian Telah Berakhir"
+              : "Beli Sekarang"}
+          </Button>
+          <p className="pt-5 italic text-sm font-light text-gray-500">
+            * Ticket berbentuk kode akan dikirim ke alamat gmail setelah
+            berhasil melakukan pembayaran!
+          </p>
         </form>
       </footer>
+      {error && (
+        <div className="p-4 mb-4 text-sm text-red-700 bg-red-100 rounded-lg">
+          {error}
+        </div>
+      )}
     </article>
   );
 };

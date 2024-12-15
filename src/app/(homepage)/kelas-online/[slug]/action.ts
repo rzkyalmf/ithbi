@@ -12,8 +12,6 @@ export async function buyCourseAction(formData: FormData) {
   const amount = formData.get("amount") as string;
   const slug = formData.get("slug") as string;
 
-  console.log({ courseId, amount, slug });
-
   const user = await serverAuth();
 
   if (!user) {

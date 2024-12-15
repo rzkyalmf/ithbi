@@ -28,6 +28,8 @@ export default async function Page(props: PageProps) {
         timeZone={events?.timeZone}
         location={events?.location}
         linkMaps={events?.linkMaps}
+        kuota={events?.kuota}
+        videoUrl={events?.videoUrl}
         coverImage={events?.coverImage}
       />
     </main>

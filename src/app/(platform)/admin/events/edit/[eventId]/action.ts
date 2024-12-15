@@ -17,6 +17,8 @@ interface EventBaseData {
   timeZone: "WIB" | "WITA" | "WIT";
   location: string;
   linkMaps: string;
+  kuota: string;
+  videoUrl: string;
   price: number;
   price2: number;
   price3: number;
@@ -38,6 +40,8 @@ const eventBaseSchema = z.object({
   timeZone: z.enum(["WIB", "WITA", "WIT"]),
   location: z.string().min(1),
   linkMaps: z.string().min(1),
+  kuota: z.string().min(1),
+  videoUrl: z.string().min(1),
   price: z.number(),
   price2: z.number(),
   price3: z.number(),
@@ -58,6 +62,8 @@ export async function editEventAction(_state: unknown, formData: FormData) {
   const timeZone = formData.get("timeZone") as "WIB" | "WITA" | "WIT";
   const location = formData.get("location") as string;
   const linkMaps = formData.get("linkMaps") as string;
+  const kuota = formData.get("kuota") as string;
+  const videoUrl = formData.get("videoUrl") as string;
   const price = Number(formData.get("price"));
   const price2 = Number(formData.get("price2"));
   const price3 = Number(formData.get("price3"));
@@ -80,6 +86,8 @@ export async function editEventAction(_state: unknown, formData: FormData) {
       timeZone,
       location,
       linkMaps,
+      kuota,
+      videoUrl,
       price,
       price2,
       price3,
@@ -109,7 +117,9 @@ export async function editEventAction(_state: unknown, formData: FormData) {
       new Date(`${date} ${timeEnd}`), // Konversi ke Date
       timeZone,
       location,
-      linkMaps
+      linkMaps,
+      kuota,
+      videoUrl
     );
 
     redirect("/admin/events");
@@ -124,6 +134,8 @@ export async function editEventAction(_state: unknown, formData: FormData) {
       timeZone,
       location,
       linkMaps,
+      kuota,
+      videoUrl,
       price,
       price2,
       price3,
@@ -170,6 +182,8 @@ export async function editEventAction(_state: unknown, formData: FormData) {
       timeZone,
       location,
       linkMaps,
+      kuota,
+      videoUrl,
       coverImage.name
     );
 

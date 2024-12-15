@@ -31,6 +31,8 @@ interface Props {
   timeZone: string | undefined;
   location: string | undefined;
   linkMaps: string | undefined;
+  kuota: string | undefined;
+  videoUrl: string | undefined;
   coverImage: string | undefined;
 }
 
@@ -47,6 +49,8 @@ export const EditEvent: React.FC<Props> = ({
   timeZone,
   location,
   linkMaps,
+  kuota,
+  videoUrl,
   coverImage,
 }) => {
   const [preview, setPreview] = useState<string>("");
@@ -149,6 +153,27 @@ export const EditEvent: React.FC<Props> = ({
             minLength={3}
             required
             defaultValue={linkMaps}
+          />
+          <Input
+            className="py-6 text-base font-normal text-gray-500 placeholder:text-gray-300"
+            name="kuota"
+            placeholder="Kuota Peserta"
+            type="text"
+            pattern="[0-9]*"
+            maxLength={10}
+            minLength={1}
+            inputMode="numeric"
+            required
+            defaultValue={kuota}
+          />
+          <Input
+            className="py-6 text-base font-normal text-gray-500 placeholder:text-gray-300"
+            name="videoUrl"
+            placeholder="Link Video"
+            maxLength={150}
+            minLength={3}
+            required
+            defaultValue={videoUrl}
           />
           <Input
             className="py-6 text-base font-normal text-gray-500 placeholder:text-gray-300"

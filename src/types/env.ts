@@ -4,6 +4,7 @@ import z from "zod";
 
 const envSchema = z.object({
   DATABASE_URL: z.string().min(1),
+  NEXT_PUBLIC_R2_PUBLIC_URL: z.string().min(1),
   RESEND_API_KEY: z.string().min(1),
   JWT_SECRET: z.string().min(1),
   R2_PUBLIC_URL: z.string().min(1),
@@ -15,6 +16,7 @@ const envSchema = z.object({
 
 const envParse = envSchema.safeParse({
   DATABASE_URL: process.env.DATABASE_URL,
+  NEXT_PUBLIC_R2_PUBLIC_URL: process.env.NEXT_PUBLIC_R2_PUBLIC_URL,
   RESEND_API_KEY: process.env.RESEND_API_KEY,
   JWT_SECRET: process.env.JWT_SECRET,
   R2_PUBLIC_URL: process.env.R2_PUBLIC_URL,
