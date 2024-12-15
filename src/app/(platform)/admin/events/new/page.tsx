@@ -45,7 +45,7 @@ export default function Page() {
             className="py-6 text-base font-normal text-gray-500 placeholder:text-gray-300"
             name="title"
             placeholder="Judul Event"
-            maxLength={50}
+            maxLength={100}
             minLength={3}
             required
           />

@@ -68,11 +68,14 @@ export const EditEvent: React.FC<Props> = ({
   }
 
   function handleSubmit(formData: FormData) {
+    // Selalu tambahkan description terlepas dari ada file atau tidak
+    formData.append("description", editDescription || "");
+
+    // Tambahkan file jika ada
     if (selectedFile) {
       formData.set("coverImage", selectedFile);
-    } else {
-      formData.append("description", editDescription || "");
     }
+
     formAction(formData);
   }
 
@@ -88,7 +91,7 @@ export const EditEvent: React.FC<Props> = ({
             className="py-6 text-base font-normal text-gray-500 placeholder:text-gray-300"
             name="title"
             placeholder="Judul Event"
-            maxLength={50}
+            maxLength={100}
             minLength={3}
             required
             defaultValue={title}

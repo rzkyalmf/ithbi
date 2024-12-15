@@ -41,7 +41,7 @@ const eventBaseSchema = z.object({
   price: z.number(),
   price2: z.number(),
   price3: z.number(),
-  description: z.string().min(1).transform(sanitizeHTML),
+  description: z.string().min(1),
 });
 
 // Schema dengan gambar untuk update lengkap
@@ -88,7 +88,6 @@ export async function editEventAction(_state: unknown, formData: FormData) {
 
     // Validasi data dasar
     const validation = eventBaseSchema.safeParse(baseData);
-    console.log(validation.error);
 
     if (!validation.success) {
       return {
@@ -140,16 +139,6 @@ export async function editEventAction(_state: unknown, formData: FormData) {
         status: "error",
         errors: validation.error.flatten().fieldErrors,
         data: withImageData,
-      };
-    }
-
-    if (
-      validation.data.coverImage.type !== "image/png" &&
-      validation.data.coverImage.type !== "image/jpeg"
-    ) {
-      return {
-        status: "error",
-        message: "File harus PNG/JPG!",
       };
     }
 
