@@ -52,7 +52,7 @@ export const SaleForm = ({ courses }: Props) => {
         </SelectContent>
       </Select>
 
-      <Button className="w-full" disabled={pending}>
+      <Button className="w-full py-6" disabled={pending}>
         Create Sale
       </Button>
 
