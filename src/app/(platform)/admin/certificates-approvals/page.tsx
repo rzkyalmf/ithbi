@@ -49,9 +49,11 @@ export default async function Page() {
                     </div>
                   </td>
                   <td>
-                    {cert.course?.exams.reduce((total, exam) => {
-                      return total + (exam.result ? 10 : 0);
-                    }, 0)}{" "}
+                    {cert.course?.exams
+                      .reduce((total, exam) => {
+                        return total + (exam.result ? 6.666666667 : 0);
+                      }, 0)
+                      .toFixed(0)}{" "}
                     / 100
                   </td>
                   <td>{cert.user.name}</td>
@@ -89,6 +91,11 @@ export default async function Page() {
                       <input
                         name="courseId"
                         value={cert.course?.id}
+                        type="hidden"
+                      />
+                      <input
+                        name="certificateId"
+                        value={cert.id}
                         type="hidden"
                       />
                       <Button size="sm" type="submit">

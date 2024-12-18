@@ -1,10 +1,7 @@
 "use client";
-
 import { Exam, Question } from "@prisma/client";
-import { useEffect, useState } from "react";
-
+import { useState } from "react";
 import { Card } from "@/components/isomorphic/card";
-
 import { CompQuestion } from "./comp.question";
 
 interface Props {
@@ -15,14 +12,6 @@ export const CompExam = ({ exam }: Props) => {
   const [selectedQuestionId, setSelectedQuestionId] = useState<string | null>(
     null
   );
-
-  // Load data dari local storage saat komponen mount
-  useEffect(() => {
-    const savedAnswer = localStorage.getItem(`exam-${exam.id}-answer`);
-    if (savedAnswer) {
-      setSelectedQuestionId(savedAnswer);
-    }
-  }, [exam.id]);
 
   const handleSelect = (questionId: string) => {
     setSelectedQuestionId(questionId);
@@ -36,7 +25,6 @@ export const CompExam = ({ exam }: Props) => {
           <div>{exam.title}</div>
         </div>
       </section>
-
       <section className="space-y-2 bg-slate-50 p-2 rounded-xl">
         {exam.questions.map((question) => (
           <CompQuestion

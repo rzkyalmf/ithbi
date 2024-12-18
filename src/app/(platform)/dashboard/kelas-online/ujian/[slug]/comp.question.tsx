@@ -1,17 +1,14 @@
 "use client";
 import { Question } from "@prisma/client";
-import { useEffect } from "react";
-
 import { Card } from "@/components/isomorphic/card";
 import { Button } from "@/components/ui/button";
-
 import { resultAction } from "./action.result";
 
 interface Props {
   question: Question;
   isSelected: boolean;
   onSelect: (questionId: string) => void;
-  examId: string; // Tambahkan examId sebagai prop
+  examId: string;
 }
 
 export const CompQuestion = ({
@@ -20,13 +17,6 @@ export const CompQuestion = ({
   onSelect,
   examId,
 }: Props) => {
-  // Simpan ke local storage saat ada perubahan selection
-  useEffect(() => {
-    if (isSelected) {
-      localStorage.setItem(`exam-${examId}-answer`, question.id);
-    }
-  }, [isSelected, question.id, examId]);
-
   const handleSubmit = () => {
     onSelect(question.id);
   };

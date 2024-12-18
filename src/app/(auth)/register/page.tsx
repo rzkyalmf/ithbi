@@ -44,6 +44,8 @@ export default function Page() {
               className="py-6 text-lg font-normal text-gray-500 placeholder:text-gray-300"
               placeholder="abdullah"
               name="name"
+              maxLength={30}
+              minLength={3}
               defaultValue={state?.data?.name}
             />
             {state?.errors && (

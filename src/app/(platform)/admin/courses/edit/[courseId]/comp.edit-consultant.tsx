@@ -60,7 +60,7 @@ export const EditCourse: React.FC<Props> = ({
             name="title"
             placeholder="Judul kursus"
             defaultValue={title}
-            maxLength={50}
+            maxLength={35}
             minLength={3}
             required
           />

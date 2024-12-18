@@ -31,7 +31,7 @@ export default function Page() {
             className="py-6 text-base font-normal text-gray-500 placeholder:text-gray-300"
             name="title"
             placeholder="Judul Kelas"
-            maxLength={50}
+            maxLength={35}
             minLength={3}
             required
           />

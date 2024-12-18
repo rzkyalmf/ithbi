@@ -1,85 +1,135 @@
 "use server";
 
-import fontkit from "@pdf-lib/fontkit";
 import fs from "fs/promises";
-import { redirect } from "next/navigation";
 import path from "path";
-import { PDFDocument, rgb } from "pdf-lib";
+import { PDFDocument, rgb, StandardFonts } from "pdf-lib";
 
 import { S3Services } from "@/services/s3.services";
 import prisma from "@/utils/prisma";
+
+function wrapText(text: string, maxChars: number): string[] {
+  const words = text.split(" ");
+  const lines: string[] = [];
+  let currentLine = "";
+
+  for (const word of words) {
+    if (currentLine.length + word.length + 1 <= maxChars) {
+      currentLine += (currentLine ? " " : "") + word;
+    } else {
+      lines.push(currentLine);
+      currentLine = word;
+    }
+  }
+  if (currentLine) {
+    lines.push(currentLine);
+  }
+  return lines;
+}
 
 export async function downloadCertificateAction(
   _: unknown,
   formData: FormData
 ) {
-  const certificateId = formData.get("certificateId") as string;
+  try {
+    const certificateId = formData.get("certificateId") as string;
 
-  const certificate = await prisma.certificate.findFirst({
-    where: {
-      id: certificateId,
-    },
-    include: {
-      user: true,
-      course: true,
-    },
-  });
+    const certificate = await prisma.certificate.findFirst({
+      where: { id: certificateId },
+      include: { user: true, course: true },
+    });
 
-  if (!certificate) {
-    redirect("/dashboard/certificates");
-  }
+    if (!certificate) {
+      return { success: false, error: "Sertifikat tidak ditemukan" };
+    }
 
-  // reading file template
-  const certificateTemplatePath = path.resolve(
-    "public",
-    "CertificateTemplate.pdf"
-  );
-  const certificateTemplate = await fs.readFile(certificateTemplatePath);
-  const fontPath = path.resolve("public", "Inter-Bold.ttf");
-  const font = await fs.readFile(fontPath);
-  const pdfDoc = await PDFDocument.load(certificateTemplate);
+    const templatePath = path.resolve("public", "CertificateTemplate.pdf");
+    const templateBytes = await fs.readFile(templatePath);
+    const pdfDoc = await PDFDocument.load(templateBytes);
+    const page = pdfDoc.getPages()[0];
+    const { width, height } = page.getSize();
 
-  // first page of PDF
-  const page = pdfDoc.getPage(0);
-  pdfDoc.registerFontkit(fontkit);
-  const customFont = await pdfDoc.embedFont(font);
-  const letterSpacing = -5;
+    const helveticaBold = await pdfDoc.embedFont(StandardFonts.HelveticaBold);
+    const helvetica = await pdfDoc.embedFont(StandardFonts.Helvetica);
 
-  // modify template
-  let nameXPos = 132;
-  for (const char of certificate.user.name) {
-    page.drawText(char, {
-      x: nameXPos,
-      y: 480,
-      size: 25,
-      font: customFont,
+    // Nama peserta
+    const name = certificate.user.name.toUpperCase();
+    const nameWidth = helveticaBold.widthOfTextAtSize(name, 24);
+    page.drawText(name, {
+      x: (width - nameWidth) / 2,
+      y: height / 2 + 50,
+      size: 24,
+      font: helveticaBold,
       color: rgb(0, 0, 0),
     });
-    nameXPos += customFont.widthOfTextAtSize(char, 40) + letterSpacing;
-  }
 
-  let titleXPos = 190;
-  for (const char of certificate.course?.title ?? "") {
-    page.drawText(char, {
-      x: titleXPos,
-      y: 420,
-      size: 16,
+    // Nama kelas dengan font lebih kecil
+    const courseName = certificate.course?.title ?? "";
+    const wrappedCourseLines = wrapText(courseName, 45); // Menambah max chars karena font lebih kecil
+    const lineHeight = 20; // Mengurangi spasi antar baris
+    const courseFontSize = 16; // Ukuran font dikurangi
+
+    wrappedCourseLines.forEach((line, index) => {
+      const courseTextWidth = helveticaBold.widthOfTextAtSize(
+        line,
+        courseFontSize
+      );
+      page.drawText(line, {
+        x: (width - courseTextWidth) / 2,
+        y: height / 2 - index * lineHeight,
+        size: courseFontSize,
+        font: helveticaBold,
+        color: rgb(0, 0, 0),
+      });
+    });
+
+    // Posisi untuk penilaian (tetap)
+    const assessmentText = "Mumtaz Murta'fi";
+    const startY = height / 2 - 88; // Posisi Y tetap
+    const lineSpacing = 20;
+    const xPosition = width / 2 + 48;
+
+    // Akhlak & Adab
+    page.drawText(assessmentText, {
+      x: xPosition,
+      y: startY,
+      size: 12,
+      font: helvetica,
       color: rgb(0, 0, 0),
     });
-    titleXPos += customFont.widthOfTextAtSize(char, 30) + letterSpacing;
+
+    // Kehadiran
+    page.drawText(assessmentText, {
+      x: xPosition,
+      y: startY - lineSpacing,
+      size: 12,
+      font: helvetica,
+      color: rgb(0, 0, 0),
+    });
+
+    // Tugas
+    page.drawText(assessmentText, {
+      x: xPosition,
+      y: startY - lineSpacing * 2,
+      size: 12,
+      font: helvetica,
+      color: rgb(0, 0, 0),
+    });
+
+    const pdfBytes = await pdfDoc.save();
+    const fileName = `${certificate.userId}/${certificate.id}.pdf`;
+
+    await S3Services.uploadFile({
+      key: fileName,
+      folder: "certificates",
+      body: Buffer.from(pdfBytes),
+    });
+
+    return {
+      success: true,
+      url: `${process.env.R2_PUBLIC_URL}/ithbi-lms/certificates/${fileName}`,
+    };
+  } catch (error) {
+    console.error("Error:", error);
+    return { success: false, error: "Gagal membuat sertifikat" };
   }
-
-  // upload file ke S3
-  const pdfBytes = await pdfDoc.save();
-
-  await S3Services.uploadFile({
-    key: `${certificate.userId}/${certificate.id}.pdf`,
-    folder: "certificates",
-    body: pdfBytes,
-  });
-
-  // redirect ke URL S3
-  redirect(
-    `${process.env.R2_PUBLIC_URL}/ithbi-lms/certificates/${certificate.userId}/${certificate.id}.pdf`
-  );
 }
