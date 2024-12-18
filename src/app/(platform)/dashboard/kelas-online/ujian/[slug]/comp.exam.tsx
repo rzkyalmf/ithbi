@@ -1,7 +1,9 @@
 "use client";
 import { Exam, Question } from "@prisma/client";
 import { useState } from "react";
+
 import { Card } from "@/components/isomorphic/card";
+
 import { CompQuestion } from "./comp.question";
 
 interface Props {

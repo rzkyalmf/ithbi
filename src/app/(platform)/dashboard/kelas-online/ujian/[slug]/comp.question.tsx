@@ -1,7 +1,9 @@
 "use client";
 import { Question } from "@prisma/client";
+
 import { Card } from "@/components/isomorphic/card";
 import { Button } from "@/components/ui/button";
+
 import { resultAction } from "./action.result";
 
 interface Props {
@@ -11,12 +13,7 @@ interface Props {
   examId: string;
 }
 
-export const CompQuestion = ({
-  question,
-  isSelected,
-  onSelect,
-  examId,
-}: Props) => {
+export const CompQuestion = ({ question, isSelected, onSelect }: Props) => {
   const handleSubmit = () => {
     onSelect(question.id);
   };
