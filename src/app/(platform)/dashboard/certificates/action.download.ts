@@ -126,10 +126,15 @@ export async function downloadCertificateAction(
 
     return {
       success: true,
-      url: `${process.env.R2_PUBLIC_URL}/ithbi-lms/certificates/${fileName}`,
+      data: pdfBytes,
+      filename: `${certificate.user.name.replace(/\s+/g, "_")}_certificate.pdf`,
+      contentType: "application/pdf",
     };
   } catch (error) {
     console.error("Error:", error);
-    return { success: false, error: "Gagal membuat sertifikat" };
+    return {
+      success: false,
+      error: "Gagal membuat sertifikat",
+    };
   }
 }
